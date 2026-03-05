@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:html.ditsolution.net)",
+      "WebFetch(domain:www.artgreenpousada.com.br)",
+      "WebFetch(domain:web.archive.org)",
+      "WebFetch(domain:themeforest.net)",
+      "WebFetch(domain:webcache.googleusercontent.com)"
+    ]
+  }
+}
