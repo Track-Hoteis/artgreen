@@ -76,7 +76,7 @@ function BookingFormContent() {
 
 export default function HeroSection() {
   return (
-    <section className="pb-0 lg:pb-24 bg-primary lg:bg-[linear-gradient(to_bottom,_#2D5016_0%,_#2D5016_50%,_#ffffff_50%,_#ffffff_100%)]">
+    <section className="pb-0 lg:pb-24 bg-primary lg:bg-[linear-gradient(to_bottom,_#2D5016_0%,_#2D5016_70%,_#ffffff_70%,_#ffffff_100%)]">
       <div>
         {/* ═══════════════════════════════════════════
             TOP CONTENT — 2-column grid
@@ -124,8 +124,8 @@ export default function HeroSection() {
             BOTTOM — Media (2/3) + Booking Form (1/3)
             Flush, no gap between them
             ═══════════════════════════════════════════ */}
-        <div className="max-w-[1920px] w-full mx-auto px-3 lg:px-0">
-          <div className="flex flex-col lg:flex-row items-stretch gap-3 lg:gap-[10px]">
+        <div className="w-full px-3 lg:px-0">
+          <div className="flex flex-col lg:flex-row items-stretch gap-3 lg:gap-0 lg:max-w-[1440px]">
             {/* ── Media (left 2/3) ── */}
             <div className="w-full lg:flex-[2] relative">
               <div className="aspect-video sm:h-[380px] md:h-[460px] lg:h-[560px] overflow-hidden bg-black">
@@ -141,8 +141,8 @@ export default function HeroSection() {
             </div>
 
             {/* ── Booking Form (right 1/3) — dark ── */}
-            <div className="hidden lg:block w-full lg:flex-1 bg-[#374E38] mr-0 lg:mr-6">
-              <div className="h-full flex flex-col justify-center px-8 lg:px-12 py-10 lg:py-0">
+            <div className="hidden lg:block lg:w-[380px] lg:flex-shrink-0 bg-[#374E38]">
+              <div className="h-full flex flex-col justify-center px-8 lg:px-10 py-10 lg:py-0">
                 <BookingFormContent />
               </div>
             </div>
