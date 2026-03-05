@@ -5,6 +5,7 @@ export interface Room {
   tagColor: string;
   description: string;
   capacity: string;
+  amenities: string;
   features: { icon: string; label: string }[];
 }
 
@@ -17,6 +18,7 @@ export const rooms: Room[] = [
     description:
       'Suite de dois cômodos, ideal para famílias. Próxima ao lago principal e à piscina.',
     capacity: 'Até 5 pessoas',
+    amenities: '35m2 | Cama Queen | Ar-condicionado | Frigobar',
     features: [
       { icon: 'bed', label: 'Queen' },
       { icon: 'users', label: '5 pessoas' },
@@ -31,6 +33,7 @@ export const rooms: Room[] = [
     description:
       '6 suítes únicas, cada uma com características próprias e vistas encantadoras da serra.',
     capacity: '3 a 5 pessoas',
+    amenities: '38m2 | Cama Queen | Vista serrana | Frigobar',
     features: [
       { icon: 'bed', label: 'Queen' },
       { icon: 'users', label: '5 pessoas' },
@@ -45,6 +48,7 @@ export const rooms: Room[] = [
     description:
       '32 m², dois cômodos, lareira externa, alguns com hidromassagem, cama king e varanda.',
     capacity: 'Até 4 pessoas',
+    amenities: '32m2 | Cama King | Lareira externa | Hidromassagem',
     features: [
       { icon: 'bed', label: 'King' },
       { icon: 'pawprint', label: 'Aceita pets' },
@@ -59,6 +63,7 @@ export const rooms: Room[] = [
     description:
       'Dois pavimentos, charm, conforto e privacidade. Perfeito para casais ou pequenas famílias.',
     capacity: 'Até 4 pessoas',
+    amenities: '40m2 | Cama Queen | Dois pavimentos | Vista natureza',
     features: [
       { icon: 'bed', label: 'Queen' },
       { icon: 'users', label: '4 pessoas' },
@@ -73,6 +78,7 @@ export const rooms: Room[] = [
     description:
       'Próxima à recepção, espaço, conforto e fácil acesso às áreas centrais da pousada.',
     capacity: 'Até 5 pessoas',
+    amenities: '45m2 | Cama Queen | Sala privativa | Ar-condicionado',
     features: [
       { icon: 'bed', label: 'Queen' },
       { icon: 'users', label: '5 pessoas' },

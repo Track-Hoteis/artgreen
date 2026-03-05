@@ -10,14 +10,17 @@ import TestimonialsSection from './components/TestimonialsSection';
 import LocationSection from './components/LocationSection';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import VideoTransition from './components/VideoTransition';
+import FloatingCTA from './components/FloatingCTA';
 
 function App() {
   return (
     <>
       <Header />
-      <main className="pt-20 md:pt-24 bg-primary">
+      <main className="bg-cream">
         <HeroSection />
         <AboutSection />
+        <VideoTransition />
         <RoomsSection />
         <ExperiencesSection />
         <PackagesSection />
@@ -27,6 +30,7 @@ function App() {
         <LocationSection />
       </main>
       <Footer />
+      <FloatingCTA />
       <WhatsAppButton />
     </>
   );

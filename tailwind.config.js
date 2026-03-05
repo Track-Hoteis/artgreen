@@ -1,3 +1,5 @@
+import tailwindcssAnimate from 'tailwindcss-animate';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
@@ -5,21 +7,23 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#2D5016',
-          medium: '#4A7C2F',
+          DEFAULT: '#374E38',
+          medium: '#5A7A5C',
         },
-        accent: '#8B7355',
-        cream: '#FAF8F4',
-        farmgreen: '#F0F7E8',
-        dark: '#1C2B0E',
-        'text-medium': '#5C6B4A',
+        accent: '#B99B48',
+        cream: '#E6DEC8',
+        farmgreen: '#F3F8F1',
+        dark: '#1E1E1E',
+        'text-primary': '#252525',
+        'text-medium': '#7A7A7A',
+        'sage-light': '#D5E5D1',
       },
       fontFamily: {
-        display: ['"Montserrat"', 'sans-serif'],
-        body: ['"Montserrat"', 'sans-serif'],
-        sans: ['"Montserrat"', 'sans-serif'],
+        display: ['"Playfair Display"', 'serif'],
+        body: ['"Inter"', 'sans-serif'],
+        sans: ['"Inter"', 'sans-serif'],
       },
     },
   },
-  plugins: [],
-}
+  plugins: [tailwindcssAnimate],
+};

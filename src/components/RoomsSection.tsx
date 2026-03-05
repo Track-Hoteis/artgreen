@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { rooms } from '../data/rooms';
+
+import FadeInUp from '@/components/animations/FadeInUp';
+import { rooms } from '@/data/rooms';
 
 type RoomMedia = {
   imageUrl: string;
@@ -10,6 +13,8 @@ type RoomMedia = {
 type CarouselRoom = {
   id: number;
   name: string;
+  description: string;
+  amenities: string;
   imageUrl: string;
   price: number;
 };
@@ -43,7 +48,7 @@ const roomMediaById: Record<number, RoomMedia> = {
 };
 
 function getCardsPerView(width: number): 1 | 2 | 3 {
-  if (width >= 1024) return 3;
+  if (width >= 1200) return 3;
   if (width >= 768) return 2;
   return 1;
 }
@@ -57,7 +62,7 @@ const brlFormatter = new Intl.NumberFormat('pt-BR', {
 export default function RoomsSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [cardsPerView, setCardsPerView] = useState<1 | 2 | 3>(() =>
-    typeof window === 'undefined' ? 1 : getCardsPerView(window.innerWidth)
+    typeof window === 'undefined' ? 1 : getCardsPerView(window.innerWidth),
   );
 
   useEffect(() => {
@@ -67,14 +72,13 @@ export default function RoomsSection() {
   }, []);
 
   const carouselRooms = useMemo<CarouselRoom[]>(() => {
-    const fallback = roomMediaById[1];
-
     return rooms.map((room) => {
-      const media = roomMediaById[room.id] ?? fallback;
-
+      const media = roomMediaById[room.id] ?? roomMediaById[1];
       return {
         id: room.id,
         name: room.name,
+        description: room.description,
+        amenities: room.amenities,
         imageUrl: media.imageUrl,
         price: media.price,
       };
@@ -95,29 +99,21 @@ export default function RoomsSection() {
     setCurrentSlide((prev) => Math.min(prev, Math.max(slides.length - 1, 0)));
   }, [slides.length]);
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? Math.max(slides.length - 1, 0) : prev - 1
-    );
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === slides.length - 1 ? 0 : prev + 1
-    );
-  };
-
   return (
     <section id="acomodacoes" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-10 md:mb-12">
-          <p className="section-eyebrow">Nossas Acomodações</p>
-          <h2 className="section-title">Quartos e Suítes</h2>
-        </div>
+        <FadeInUp className="text-center mb-10 md:mb-12">
+          <p className="section-eyebrow">Nossas Acomodacoes</p>
+          <h2 className="section-title">Quartos e Suites</h2>
+        </FadeInUp>
 
         <div className="relative">
           <button
-            onClick={prevSlide}
+            onClick={() =>
+              setCurrentSlide((prev) =>
+                prev === 0 ? Math.max(slides.length - 1, 0) : prev - 1,
+              )
+            }
             aria-label="Slide anterior"
             className="absolute left-2 md:-left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/95 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
           >
@@ -125,47 +121,57 @@ export default function RoomsSection() {
           </button>
 
           <button
-            onClick={nextSlide}
-            aria-label="Próximo slide"
+            onClick={() =>
+              setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
+            }
+            aria-label="Proximo slide"
             className="absolute right-2 md:-right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/95 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
           >
             <ChevronRight size={20} />
           </button>
 
           <div className="overflow-hidden">
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {slides.map((slide, slideIndex) => (
-              <div key={slideIndex} className="w-full flex-shrink-0">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {slide.map((room) => (
-                    <article
-                      key={room.id}
-                      className="relative h-[440px] md:h-[480px] lg:h-[520px] overflow-hidden"
-                    >
-                      <img
-                        src={room.imageUrl}
-                        alt={room.name}
-                        loading="lazy"
-                        className="w-full h-full object-cover"
-                      />
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {slides.map((slide, slideIndex) => (
+                <div key={slideIndex} className="w-full flex-shrink-0">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {slide.map((room) => (
+                      <motion.article
+                        key={room.id}
+                        whileHover={{ scale: 1.02, boxShadow: '0 20px 45px rgba(0,0,0,0.2)' }}
+                        transition={{ duration: 0.35 }}
+                        className="group relative h-[440px] md:h-[480px] overflow-hidden bg-black"
+                      >
+                        <img
+                          src={room.imageUrl}
+                          alt={room.name}
+                          loading="lazy"
+                          className="w-full h-full object-cover"
+                        />
 
-                      <div className="absolute left-0 right-0 bottom-0 bg-primary px-6 py-5">
-                        <span className="inline-flex border border-white/70 text-white text-sm font-semibold px-3 py-1.5 mb-3">
-                          {brlFormatter.format(room.price)} / Noite
-                        </span>
-                        <h3 className="font-display text-white text-3xl leading-tight font-bold">
-                          {room.name}
-                        </h3>
-                      </div>
-                    </article>
-                  ))}
+                        <div className="absolute inset-x-0 bottom-0 h-[28%] bg-[rgba(82,97,78,0.95)] backdrop-blur-sm px-6 py-5 transition-all duration-500 group-hover:h-[90%]">
+                          <span className="inline-flex border border-white/60 text-white text-sm font-medium px-3 py-1.5 mb-4">
+                            {brlFormatter.format(room.price)} / noite
+                          </span>
+                          <h3 className="font-display text-white text-3xl leading-tight mb-3">
+                            {room.name}
+                          </h3>
+                          <p className="text-white/85 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mb-4">
+                            {room.description}
+                          </p>
+                          <p className="text-white/80 text-xs uppercase tracking-[0.12em] opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150">
+                            {room.amenities}
+                          </p>
+                        </div>
+                      </motion.article>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           </div>
         </div>
 

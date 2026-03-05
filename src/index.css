@@ -6,44 +6,16 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
-    font-family: 'Montserrat', sans-serif;
   }
   body {
-    @apply font-body text-dark antialiased;
-    font-family: 'Montserrat', sans-serif;
+    @apply font-body antialiased;
+    color: #252525;
+    background-color: #E6DEC8;
     margin: 0;
     padding: 0;
     border: none;
     outline: none;
     overflow-x: hidden;
-  }
-
-  *,
-  *::before,
-  *::after {
-    font-family: 'Montserrat', sans-serif !important;
-  }
-
-  button,
-  input,
-  select,
-  textarea,
-  option {
-    font: inherit;
-    font-family: inherit;
-  }
-
-  button,
-  input,
-  select,
-  textarea,
-  img,
-  video,
-  form,
-  article,
-  [class*='card'],
-  [class*='Card'] {
-    border-radius: 3px;
   }
 
   #root {
@@ -53,19 +25,21 @@
 
 @layer components {
   .section-eyebrow {
-    @apply text-sm font-semibold uppercase tracking-[0.2em] text-accent mb-3;
+    @apply text-sm font-medium uppercase tracking-[0.2em] text-primary-medium mb-3 font-display;
   }
   .section-title {
-    @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-4;
+    @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4;
+    color: #252525;
   }
   .section-subtitle {
-    @apply text-text-medium text-base md:text-lg max-w-2xl;
+    @apply text-base md:text-lg max-w-2xl font-body;
+    color: #7A7A7A;
   }
+
   .btn-primary {
-    @apply inline-flex items-center justify-center bg-primary text-white font-semibold
-           px-6 py-3 transition-all duration-300
-           text-sm md:text-base;
-    border-radius: 3px;
+    @apply inline-flex items-center justify-center bg-primary-medium text-white font-medium
+           px-7 py-3.5 transition-all duration-500 uppercase tracking-wider
+           text-sm font-display;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -86,91 +60,126 @@
     left: 0;
   }
   .btn-primary:hover {
-    color: #2D5016;
-  }
-  .btn-outline {
-    @apply inline-flex items-center justify-center border-2 border-white text-white font-semibold
-           px-6 py-3 hover:bg-white hover:text-primary transition-all duration-300
-           text-sm md:text-base;
-    border-radius: 3px;
-  }
-  .btn-outline-green {
-    @apply inline-flex items-center justify-center border-2 border-primary text-primary font-semibold
-           px-6 py-3 transition-all duration-300
-           text-sm md:text-base;
-    border-radius: 3px;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-  .btn-outline-green::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 100%;
-    left: 50%;
-    top: 0;
-    background: #2D5016;
-    z-index: -1;
-    transition: 0.5s;
-  }
-  .btn-outline-green:hover::before {
-    width: 100%;
-    left: 0;
-  }
-  .btn-outline-green:hover {
-    color: #fff;
-  }
-  .btn-cta {
-    @apply inline-flex items-center justify-center border-2 font-semibold
-           px-6 py-3 transition-all duration-300
-           text-sm md:text-base;
-    border-radius: 3px;
-    border-color: #B99B48;
-    color: #B99B48;
-    background: transparent;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-  .btn-cta::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 100%;
-    left: 50%;
-    top: 0;
-    background: #B99B48;
-    z-index: -1;
-    transition: 0.5s;
-  }
-  .btn-cta:hover::before {
-    width: 100%;
-    left: 0;
-  }
-  .btn-cta:hover {
-    color: #fff;
+    color: #5A7A5C;
   }
 
   .btn-reserve {
-    @apply inline-flex items-center justify-center font-semibold
-           px-6 py-3 transition-all duration-300
-           text-sm md:text-base;
-    border-radius: 3px;
-    background: #B99B48;
+    @apply inline-flex items-center justify-center bg-accent text-white font-medium
+           px-7 py-3.5 transition-all duration-500 uppercase tracking-wider
+           text-sm font-display;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .btn-reserve::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    background: #fff;
+    z-index: -1;
+    transition: 0.5s;
+  }
+  .btn-reserve:hover::before {
+    width: 100%;
+    left: 0;
+  }
+  .btn-reserve:hover {
+    color: #B99B48;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center border border-white text-white font-medium
+           px-7 py-3.5 transition-all duration-500 uppercase tracking-wider
+           text-sm font-display;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .btn-outline::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    background: #fff;
+    z-index: -1;
+    transition: 0.5s;
+  }
+  .btn-outline:hover::before {
+    width: 100%;
+    left: 0;
+  }
+  .btn-outline:hover {
+    color: #374E38;
+  }
+
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center border border-text-primary text-text-primary font-medium
+           px-7 py-3.5 transition-all duration-500 uppercase tracking-wider
+           text-sm font-display;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .btn-outline-dark::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    background: #252525;
+    z-index: -1;
+    transition: 0.5s;
+  }
+  .btn-outline-dark:hover::before {
+    width: 100%;
+    left: 0;
+  }
+  .btn-outline-dark:hover {
     color: #fff;
   }
 
-  .btn-reserve:hover {
-    background: #a68a3d;
+  .hero-field {
+    @apply w-full border border-white/20 bg-transparent px-4 py-3.5 text-sm text-white placeholder:text-white/50
+           focus:outline-none focus:border-white/60 transition-colors;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.7s ease forwards;
   }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@media (min-width: 1024px) {
+  .hero-form-align {
+    margin-right: max(2rem, calc((100vw - 80rem) / 2 + 2rem));
+  }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
