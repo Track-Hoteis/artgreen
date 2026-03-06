@@ -68,7 +68,7 @@ export default function ExperiencesSection() {
           <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {serviceItems.map((item, index) => (
               <FadeInUp key={item.title} delay={index * 0.06}>
-                <article className="bg-white p-6 border border-primary/10 h-full">
+                <article className="service-card">
                   <h3 className="font-display text-3xl text-text-primary mb-3 leading-tight">
                     {item.title}
                   </h3>
@@ -87,24 +87,32 @@ export default function ExperiencesSection() {
               <motion.article
                 whileHover={{ scale: 1.02, boxShadow: '0 14px 35px rgba(0,0,0,0.15)' }}
                 transition={{ duration: 0.3 }}
-                className="bg-white overflow-hidden h-full"
+                className="service-media-card group"
               >
-                <img
-                  src={experienceMedia[index].image}
-                  alt={card.title}
-                  loading="lazy"
-                  className="w-full h-56 object-cover"
+                <div
+                  className="h-[270px] bg-cover bg-center"
+                  style={{ backgroundImage: `url(${experienceMedia[index].image})` }}
+                  role="img"
+                  aria-label={card.title}
                 />
-                <div className="px-6 py-6">
-                  <p className="text-xs uppercase tracking-[0.2em] text-primary-medium font-medium mb-2">
+                <div className="service-media-card__content px-6 py-6">
+                  <p className="service-media-card__category text-xs uppercase tracking-[0.2em] font-medium mb-2">
                     {experienceMedia[index].category}
                   </p>
-                  <h3 className="font-display text-2xl text-text-primary mb-2">
+                  <h3 className="service-media-card__title font-display text-2xl mb-2">
                     {card.title}
                   </h3>
-                  <p className="text-sm text-text-medium leading-relaxed">
+                  <p className="service-media-card__description text-sm leading-relaxed mb-6">
                     {card.description}
                   </p>
+                  <a
+                    href="https://reservas.artgreenpousada.com.br/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="service-media-card__button mt-auto"
+                  >
+                    Saiba mais
+                  </a>
                 </div>
               </motion.article>
             </FadeInUp>

@@ -130,6 +130,86 @@
     color: #B99B48;
   }
 
+  .service-card {
+    @apply bg-white p-6 border border-primary/10 h-full transition-all duration-500;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .service-card::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    background: #5A7A5C;
+    z-index: -1;
+    transition: 0.5s;
+  }
+  .service-card:hover::before,
+  .service-card:focus-within::before {
+    width: 100%;
+    left: 0;
+  }
+  .service-card:hover,
+  .service-card:focus-within {
+    border-color: #4A6A4C;
+  }
+  .service-card h3,
+  .service-card p {
+    transition: color 0.35s ease;
+  }
+  .service-card:hover h3,
+  .service-card:hover p,
+  .service-card:focus-within h3,
+  .service-card:focus-within p {
+    color: #FFFFFF;
+  }
+
+  .service-media-card {
+    @apply bg-white overflow-hidden h-full border border-primary/10 transition-all duration-500 flex flex-col;
+  }
+  .service-media-card__content {
+    @apply transition-colors duration-500 flex-1 flex flex-col;
+    background: #ffffff;
+  }
+  .service-media-card__category {
+    color: #5A7A5C;
+    transition: color 0.35s ease;
+  }
+  .service-media-card__title {
+    color: #252525;
+    transition: color 0.35s ease;
+  }
+  .service-media-card__description {
+    color: #6F6F6F;
+    transition: color 0.35s ease;
+  }
+  .service-media-card__button {
+    @apply inline-flex items-center justify-center uppercase tracking-[0.12em] text-xs font-semibold px-5 py-2.5 transition-all duration-500;
+    background: #EEF2EB;
+    color: #374E38;
+  }
+  .service-media-card:hover .service-media-card__content {
+    background: #212428;
+  }
+  .service-media-card:hover {
+    background: #212428;
+    border-color: #212428;
+  }
+  .service-media-card:hover .service-media-card__category {
+    color: #AFC7B1;
+  }
+  .service-media-card:hover .service-media-card__title,
+  .service-media-card:hover .service-media-card__description {
+    color: #FFFFFF;
+  }
+  .service-media-card:hover .service-media-card__button {
+    background: #5A7A5C;
+    color: #FFFFFF;
+  }
+
   .btn-outline {
     @apply inline-flex items-center justify-center border border-white text-white font-medium
            px-7 py-3.5 transition-all duration-500 uppercase tracking-wider

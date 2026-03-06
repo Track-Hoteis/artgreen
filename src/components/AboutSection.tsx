@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { Star } from 'lucide-react';
 
 import FadeInUp from '@/components/animations/FadeInUp';
 
@@ -198,21 +199,15 @@ export default function AboutSection() {
               ))}
 
               {/* ── Counter overlay (bottom-right, dark bg) ── */}
-              <div className="absolute bottom-6 right-6 z-20 w-36 h-36 md:w-40 md:h-40 bg-primary/80 backdrop-blur-sm flex flex-col items-center justify-center text-center shadow-xl">
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  className="mb-2 opacity-70"
+              <div className="absolute bottom-6 left-6 z-20 w-36 h-36 md:w-40 md:h-40 bg-primary/80 backdrop-blur-sm flex flex-col items-center justify-center text-center shadow-xl">
+                <Star
+                  size={30}
+                  strokeWidth={1.75}
+                  className="mb-2 text-white"
                   aria-hidden="true"
-                >
-                  <path d="M12 2l2.09 6.26L20.18 9l-5 4.07L16.82 20 12 16.27 7.18 20l1.64-6.93L3.82 9l6.09-.74L12 2z" />
-                </svg>
-                <p className="font-display text-3xl md:text-4xl font-bold text-white leading-none">
-                  6K+
+                />
+                <p className="font-body text-3xl md:text-4xl font-bold text-white leading-none">
+                  6k+
                 </p>
                 <p className="text-[10px] uppercase tracking-[0.16em] text-white/80 mt-1.5 px-2">
                   Hospedes satisfeitos
