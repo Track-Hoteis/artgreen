@@ -53,12 +53,7 @@ export default function GastronomySection() {
               ))}
             </ul>
 
-            <a
-              href="https://reservas.artgreenpousada.com.br/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-reserve"
-            >
+            <a href="#experiencias" className="btn-primary">
               Ver Experiencia
             </a>
           </FadeInUp>

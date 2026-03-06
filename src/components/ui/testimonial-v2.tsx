@@ -156,7 +156,7 @@ export default function TestimonialV2() {
     <section
       id="depoimentos"
       aria-labelledby="testimonials-heading"
-      className="relative overflow-hidden bg-farmgreen py-20 md:py-28"
+      className="relative overflow-hidden bg-cream py-20 md:py-28"
     >
       <motion.div
         initial={{ opacity: 0, y: 40, rotate: -1 }}

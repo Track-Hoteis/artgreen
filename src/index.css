@@ -26,6 +26,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "High Spirited";
+  src: url("/fonts/High%20Spirited/High%20Spirited.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -55,6 +63,13 @@
     font-variant: normal !important;
     font-synthesis: none !important;
     text-transform: lowercase !important;
+  }
+
+  .font-high-spirited {
+    font-family: "High Spirited", serif !important;
+    font-feature-settings: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
   }
 
   body {
@@ -345,4 +360,64 @@
 
 .bounce-animate3 {
   animation: bounceFloat3 3.5s ease-in-out infinite;
+}
+
+@media (max-width: 767px) {
+  .mobile-center-content section,
+  .mobile-center-content section *:not(video):not(svg):not(path):not(img):not(iframe) {
+    text-align: center !important;
+  }
+
+  .mobile-center-content section .flex,
+  .mobile-center-content section .inline-flex {
+    justify-content: center !important;
+  }
+
+  .mobile-center-content #pacotes .packages-track {
+    justify-content: flex-start !important;
+  }
+
+  .mobile-center-content section .items-start {
+    align-items: center !important;
+  }
+
+  .mobile-center-content section .justify-start {
+    justify-content: center !important;
+  }
+
+  .mobile-center-content section .text-left {
+    text-align: center !important;
+  }
+
+  .mobile-center-content section ul,
+  .mobile-center-content section ol {
+    list-style-position: inside;
+    padding-left: 0 !important;
+  }
+
+  .mobile-center-content section .btn-primary,
+  .mobile-center-content section .btn-reserve,
+  .mobile-center-content section .btn-outline,
+  .mobile-center-content section .btn-outline-dark {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mobile-center-footer,
+  .mobile-center-footer *:not(video):not(svg):not(path):not(img):not(iframe) {
+    text-align: center !important;
+  }
+
+  .mobile-center-footer .flex,
+  .mobile-center-footer .inline-flex,
+  .mobile-center-footer nav {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .mobile-center-footer ul,
+  .mobile-center-footer ol {
+    list-style-position: inside;
+    padding-left: 0 !important;
+  }
 }

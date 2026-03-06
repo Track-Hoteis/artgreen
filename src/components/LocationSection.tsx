@@ -10,7 +10,7 @@ const distances = [
 
 export default function LocationSection() {
   return (
-    <section id="contato" className="py-20 md:py-28 bg-white">
+    <section id="contato" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <FadeInUp>

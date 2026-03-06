@@ -47,7 +47,7 @@ const serviceItems = [
 
 export default function ExperiencesSection() {
   return (
-    <section id="experiencias" className="py-20 md:py-28 bg-farmgreen">
+    <section id="experiencias" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-14 md:mb-16">
           <FadeInUp className="lg:col-span-4">
@@ -69,7 +69,7 @@ export default function ExperiencesSection() {
             {serviceItems.map((item, index) => (
               <FadeInUp key={item.title} delay={index * 0.06}>
                 <article className="service-card">
-                  <h3 className="font-display text-3xl text-text-primary mb-3 leading-tight">
+                  <h3 className="font-high-spirited text-4xl md:text-5xl text-text-primary mb-3 leading-tight">
                     {item.title}
                   </h3>
                   <p className="text-sm text-text-medium leading-relaxed">
@@ -99,7 +99,7 @@ export default function ExperiencesSection() {
                   <p className="service-media-card__category text-xs uppercase tracking-[0.2em] font-medium mb-2">
                     {experienceMedia[index].category}
                   </p>
-                  <h3 className="service-media-card__title font-display text-2xl mb-2">
+                  <h3 className="service-media-card__title font-high-spirited text-2xl mb-2">
                     {card.title}
                   </h3>
                   <p className="service-media-card__description text-sm leading-relaxed mb-6">

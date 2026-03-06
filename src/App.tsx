@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="bg-cream">
+      <main className="bg-cream mobile-center-content">
         <HeroSection />
         <AboutSection />
         <VideoTransition />

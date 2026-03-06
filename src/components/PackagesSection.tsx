@@ -46,7 +46,7 @@ const packages = [
 function getCardsPerView(width: number): 1 | 2 | 3 {
   if (width >= 1200) return 3;
   if (width >= 768) return 2;
-  return 1;
+  return 2;
 }
 
 export default function PackagesSection() {
@@ -174,7 +174,7 @@ export default function PackagesSection() {
                 touchStartX.current = null;
                 setIsPaused(false);
               }}
-              className={`flex ${isTransitionEnabled ? 'transition-transform duration-500 ease-in-out' : ''}`}
+              className={`packages-track flex ${isTransitionEnabled ? 'transition-transform duration-500 ease-in-out' : ''}`}
               style={{ transform: `translateX(-${(currentSlide * 100) / cardsPerView}%)` }}
             >
               {loopedPackages.map((pkg, index) => (

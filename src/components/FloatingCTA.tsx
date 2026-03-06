@@ -7,7 +7,7 @@ export default function FloatingCTA() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Reservar agora"
-      className="fixed bottom-4 right-4 z-50 md:hidden btn-reserve shadow-2xl animate-pulse"
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden btn-reserve shadow-2xl"
     >
       <CalendarDays size={17} className="mr-2" />
       Reservar

@@ -20,7 +20,7 @@ const gallery = [
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white">
+    <footer className="bg-dark text-white mobile-center-footer">
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           <FadeInUp>

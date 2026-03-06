@@ -67,7 +67,7 @@ export default function FazendinhaSection() {
   const bottomImages = restImages.slice(4);
 
   return (
-    <section id="fazendinha" className="py-20 md:py-28 bg-farmgreen">
+    <section id="fazendinha" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4">
         <FadeInUp className="text-center max-w-2xl mx-auto mb-12">
           <p className="section-eyebrow">Diversao para toda a familia</p>
