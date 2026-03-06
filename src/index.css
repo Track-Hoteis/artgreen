@@ -2,11 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Luxerie Display";
+  src: url("/fonts/luxerie/Luxerie%20Display.otf") format("opentype"),
+       url("/fonts/luxerie/Luxerie%20Display.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Luxerie Display";
+  src: url("/fonts/luxerie/Luxerie%20Display.otf") format("opentype"),
+       url("/fonts/luxerie/Luxerie%20Display.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Luxerie Display", serif !important;
+  }
+
+  .font-display {
+    font-family: "Luxerie Display", serif !important;
+  }
+
   body {
     @apply font-body antialiased;
     color: #252525;
@@ -25,7 +65,7 @@
 
 @layer components {
   .section-eyebrow {
-    @apply text-sm font-medium uppercase tracking-[0.2em] text-primary-medium mb-3 font-display;
+    @apply text-sm font-medium uppercase tracking-[0.2em] text-primary-medium mb-3 font-body;
   }
   .section-title {
     @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4;
@@ -39,7 +79,7 @@
   .btn-primary {
     @apply inline-flex items-center justify-center bg-primary-medium text-white font-medium
            px-7 py-3.5 transition-all duration-500 uppercase tracking-wider
-           text-sm font-display;
+           text-sm font-body;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -66,7 +106,7 @@
   .btn-reserve {
     @apply inline-flex items-center justify-center bg-accent text-white font-medium
            px-7 py-3.5 transition-all duration-500 uppercase tracking-wider
-           text-sm font-display;
+           text-sm font-body;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -93,7 +133,7 @@
   .btn-outline {
     @apply inline-flex items-center justify-center border border-white text-white font-medium
            px-7 py-3.5 transition-all duration-500 uppercase tracking-wider
-           text-sm font-display;
+           text-sm font-body;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -120,7 +160,7 @@
   .btn-outline-dark {
     @apply inline-flex items-center justify-center border border-text-primary text-text-primary font-medium
            px-7 py-3.5 transition-all duration-500 uppercase tracking-wider
-           text-sm font-display;
+           text-sm font-body;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -176,4 +216,43 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes bounceFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes bounceFloat2 {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes bounceFloat3 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.bounce-animate {
+  animation: bounceFloat 4s ease-in-out infinite;
+}
+
+.bounce-animate2 {
+  animation: bounceFloat2 5s ease-in-out infinite;
+}
+
+.bounce-animate3 {
+  animation: bounceFloat3 3.5s ease-in-out infinite;
 }

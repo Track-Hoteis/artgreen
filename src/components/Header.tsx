@@ -55,7 +55,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="font-display uppercase text-[15px] font-medium tracking-[0.08em] text-white/90 transition-colors duration-300 hover:text-white"
+              className="font-body uppercase text-[15px] font-medium tracking-[0.08em] text-white/90 transition-colors duration-300 hover:text-white"
             >
               {link.label}
             </a>
@@ -95,7 +95,7 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="font-display text-xl uppercase tracking-wide text-white/90 transition-colors hover:text-white"
+                    className="font-body text-xl uppercase tracking-wide text-white/90 transition-colors hover:text-white"
                   >
                     {link.label}
                   </a>

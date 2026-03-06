@@ -132,7 +132,7 @@ function TestimonialsColumn(props: {
                         className="h-10 w-10 rounded-full object-cover ring-2 ring-[#efe6cf] transition-all duration-300 ease-in-out group-hover:ring-accent/50"
                       />
                       <div className="flex flex-col">
-                        <cite className="not-italic font-display text-lg leading-5 tracking-tight text-text-primary">
+                        <cite className="not-italic font-body text-lg leading-5 tracking-tight text-text-primary">
                           {name}
                         </cite>
                         <span className="mt-0.5 text-sm leading-5 tracking-tight text-text-medium">

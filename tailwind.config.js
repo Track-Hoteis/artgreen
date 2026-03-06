@@ -19,9 +19,9 @@ export default {
         'sage-light': '#D5E5D1',
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'serif'],
-        body: ['"Inter"', 'sans-serif'],
-        sans: ['"Inter"', 'sans-serif'],
+        display: ['"Luxerie Display"', 'serif'],
+        body: ['"Montserrat"', 'sans-serif'],
+        sans: ['"Montserrat"', 'sans-serif'],
       },
     },
   },
