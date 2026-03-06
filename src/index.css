@@ -154,12 +154,6 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .hero-form-align {
-    margin-right: max(2rem, calc((100vw - 80rem) / 2 + 2rem));
-  }
-}
-
 @keyframes fadeInUp {
   from {
     opacity: 0;

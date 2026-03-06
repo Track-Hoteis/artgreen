@@ -120,11 +120,12 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom row: video bleeds left, form aligns with content container */}
-      <div className="flex flex-col lg:flex-row gap-4 md:gap-6 lg:gap-8 pb-8 lg:pb-0">
-        {/* Video — flush left on desktop, full-bleed mobile */}
-        <FadeInUp className="lg:flex-1 min-w-0">
-          <div className="relative overflow-hidden aspect-video lg:aspect-auto lg:h-full bg-black">
+      {/* Bottom row: hotelhub-like proportions */}
+      <div className="pb-8 lg:pb-0 lg:pr-[clamp(16px,3vw,64px)]">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_460px] gap-4 md:gap-6 lg:gap-7 items-start">
+          {/* Video */}
+          <FadeInUp className="min-w-0">
+            <div className="relative overflow-hidden bg-black h-[280px] sm:h-[360px] md:h-[430px] lg:h-[520px] xl:h-[560px]">
             <video
               autoPlay
               muted
@@ -134,17 +135,15 @@ export default function HeroSection() {
               className="w-full h-full object-cover"
             />
           </div>
-        </FadeInUp>
+          </FadeInUp>
 
-        {/* Form — fixed width, right-aligned with max-w-7xl content boundary */}
-        <FadeInUp
-          delay={0.12}
-          className="mx-4 md:mx-8 lg:mx-0 lg:w-[380px] xl:w-[420px] flex-shrink-0 hero-form-align"
-        >
-          <div className="h-full bg-[#333333] px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-11">
-            <BookingFormContent />
-          </div>
-        </FadeInUp>
+          {/* Booking form */}
+          <FadeInUp delay={0.12} className="mx-4 md:mx-8 lg:mx-0">
+            <div className="bg-[#333333] h-[420px] sm:h-[460px] md:h-[500px] lg:h-[520px] xl:h-[560px] px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-11 overflow-y-auto">
+              <BookingFormContent />
+            </div>
+          </FadeInUp>
+        </div>
       </div>
     </section>
   );
