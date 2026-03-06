@@ -19,7 +19,7 @@ export default {
         'sage-light': '#D5E5D1',
       },
       fontFamily: {
-        display: ['"Luxerie Display"', 'serif'],
+        display: ['"Luxerie Display Std"', 'serif'],
         body: ['"Montserrat"', 'sans-serif'],
         sans: ['"Montserrat"', 'sans-serif'],
       },

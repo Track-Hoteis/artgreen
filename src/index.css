@@ -3,18 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Luxerie Display";
-  src: url("/fonts/luxerie/Luxerie%20Display.otf") format("opentype"),
-       url("/fonts/luxerie/Luxerie%20Display.ttf") format("truetype");
+  font-family: "Luxerie Display Std";
+  src: url("/fonts/luxerie/Luxerie%20Display.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Luxerie Display";
-  src: url("/fonts/luxerie/Luxerie%20Display.otf") format("opentype"),
-       url("/fonts/luxerie/Luxerie%20Display.ttf") format("truetype");
+  font-family: "Luxerie Display Std";
+  src: url("/fonts/luxerie/Luxerie%20Display.ttf") format("truetype");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -40,11 +38,23 @@
   h4,
   h5,
   h6 {
-    font-family: "Luxerie Display", serif !important;
+    font-family: "Luxerie Display Std", serif !important;
+    font-feature-settings: "liga" 0, "clig" 0, "dlig" 0, "hlig" 0, "calt" 0, "salt" 0, "swsh" 0, "ss01" 0, "ss02" 0 !important;
+    font-variant-ligatures: none !important;
+    font-variant-alternates: normal !important;
+    font-variant: normal !important;
+    font-synthesis: none !important;
+    text-transform: lowercase !important;
   }
 
   .font-display {
-    font-family: "Luxerie Display", serif !important;
+    font-family: "Luxerie Display Std", serif !important;
+    font-feature-settings: "liga" 0, "clig" 0, "dlig" 0, "hlig" 0, "calt" 0, "salt" 0, "swsh" 0, "ss01" 0, "ss02" 0 !important;
+    font-variant-ligatures: none !important;
+    font-variant-alternates: normal !important;
+    font-variant: normal !important;
+    font-synthesis: none !important;
+    text-transform: lowercase !important;
   }
 
   body {

@@ -122,7 +122,7 @@ export default function AboutSection() {
   }, [next]);
 
   return (
-    <section id="a-pousada" className="relative py-20 md:py-28 bg-cream overflow-hidden">
+    <section id="a-pousada" className="relative -mt-12 md:-mt-16 pt-32 md:pt-44 pb-20 md:pb-28 bg-cream overflow-hidden z-10">
       {/* ── Decorative floating shapes ── */}
       <LeafLine className="absolute top-16 left-4 lg:left-12 bounce-animate pointer-events-none" />
       <DotGrid className="absolute bottom-20 left-1/2 -translate-x-1/2 lg:left-[42%] bounce-animate3 pointer-events-none" />

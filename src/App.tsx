@@ -21,10 +21,10 @@ function App() {
         <HeroSection />
         <AboutSection />
         <VideoTransition />
+        <GastronomySection />
         <RoomsSection />
         <ExperiencesSection />
         <PackagesSection />
-        <GastronomySection />
         <FazendinhaSection />
         <TestimonialsSection />
         <LocationSection />

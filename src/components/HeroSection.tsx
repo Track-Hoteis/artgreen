@@ -121,8 +121,10 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom row: hotelhub-like proportions */}
-      <div className="pb-8 lg:pb-0 lg:pr-[clamp(16px,3vw,64px)]">
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_460px] gap-4 md:gap-6 lg:gap-7 items-start">
+      <div className="relative pb-8 lg:pb-0 lg:pr-[clamp(16px,3vw,64px)]">
+        {/* Cream background bleeding up from the About section */}
+        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-cream pointer-events-none" />
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_460px] gap-4 md:gap-6 lg:gap-7 items-start">
           {/* Video */}
           <FadeInUp className="min-w-0">
             <div className="relative overflow-hidden bg-black h-[280px] sm:h-[360px] md:h-[430px] lg:h-[520px] xl:h-[560px]">
