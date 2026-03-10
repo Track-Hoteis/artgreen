@@ -33,14 +33,14 @@ const WORD_HEIGHT_MOBILE = 52; // px
 
 export default function ImmersiveScrollSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [zoomStarted, setZoomStarted] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const mobileSectionRef = useRef<HTMLDivElement>(null);
 
   // Scroll-based index detection (shared for both desktop and mobile)
   useEffect(() => {
     const handleScroll = () => {
-      const desktopSegment = window.innerHeight * 0.5;
+      const desktopSegment = window.innerHeight * 0.25;
       const mobileSegment = window.innerHeight * 0.8;
 
       // Desktop
@@ -49,8 +49,6 @@ export default function ImmersiveScrollSection() {
         const scrolled = -desktop.getBoundingClientRect().top;
         const idx = Math.min(sections.length - 1, Math.max(0, Math.floor(scrolled / desktopSegment)));
         setActiveIndex(idx);
-        const progressInSegment = Math.max(0, Math.min(1, (scrolled - idx * desktopSegment) / desktopSegment));
-        setScrollProgress(progressInSegment);
         return;
       }
 
@@ -77,13 +75,19 @@ export default function ImmersiveScrollSection() {
     });
   }, []);
 
+  // Trigger after first paint so the first active image animates from 1 -> 1.2.
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setZoomStarted(true), 40);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
   return (
     <section>
       {/* Desktop layout — total height = N × 50vh + buffer */}
       <div
         className="hidden lg:block"
         ref={sectionRef}
-        style={{ height: `${sections.length * 50 + 100}vh` }}
+        style={{ height: `${sections.length * 25 + 100}vh` }}
       >
         <div className="sticky top-0 h-dvh flex">
           {/* Left column */}
@@ -144,11 +148,11 @@ export default function ImmersiveScrollSection() {
             </div>
           </div>
 
-          {/* Right column — stacked images with crossfade + scroll zoom */}
+          {/* Right column — stacked images with crossfade + automatic zoom */}
           <div className="w-1/2 relative overflow-hidden">
             {sections.map((s, i) => {
               const isActive = i === activeIndex;
-              const zoom = isActive ? 1 + scrollProgress * 0.2 : 1;
+              const zoom = isActive ? (zoomStarted ? 1 : 1.2) : 1.2;
               return (
                 <img
                   key={s.id}
@@ -158,9 +162,7 @@ export default function ImmersiveScrollSection() {
                   style={{
                     opacity: isActive ? 1 : 0,
                     transform: `scale(${zoom})`,
-                    transition: isActive
-                      ? 'opacity 1000ms ease-out'
-                      : 'all 1000ms ease-out',
+                    transition: 'opacity 1000ms ease-out, transform 7000ms ease-out',
                   }}
                 />
               );
