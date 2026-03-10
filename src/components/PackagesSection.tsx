@@ -1,47 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import FadeInUp from '@/components/animations/FadeInUp';
-
-const packages = [
-  {
-    id: 1,
-    tag: 'Experiencia Exclusiva',
-    title: 'Bolhas & Fiori',
-    description: 'Evento especial para adultos',
-    imageUrl:
-      'https://lirp.cdn-website.com/8406003a/dms3rep/multi/opt/Banner+site+%2832%29-1920w.png',
-    href: 'https://reservas.artgreenpousada.com.br/',
-  },
-  {
-    id: 2,
-    tag: 'Pacote de Pascoa',
-    title: 'Pascoa 2026',
-    description: '02 a 05 de abril',
-    imageUrl:
-      'https://lirp.cdn-website.com/8406003a/dms3rep/multi/opt/Banner+site+%2833%29-1920w.png',
-    href: 'https://reservas.artgreenpousada.com.br/hotels/HOTEL_OMNI_19674#adults=2&children=0&clientId=19b9aba4-a5a9-4f9b-bb84-a5ff66a6b4ae&clientName=Motor%20Niara&contentType=property&destinationCountry=BR&destinationName=Pousada%20Art%20Green&enablePromoCode=true&endDate=2026-04-05&hotelIds[]=HOTEL_OMNI_19674&personName=&propertyId=793cabb9-2843-4bc6-8afd-d8cbd4df535d&rooms[]=a2&startDate=2026-04-02',
-  },
-  {
-    id: 3,
-    tag: 'Feriado',
-    title: 'Feriado de Tiradentes',
-    description: 'Dias para desacelerar na serra',
-    imageUrl:
-      'https://lirp.cdn-website.com/8406003a/dms3rep/multi/opt/Banner+site+%2836%29-1920w.png',
-    href: 'https://reservas.artgreenpousada.com.br/hotels/HOTEL_OMNI_19674?locate=pt-BR&currencyId=16&destinationName=&mysite=ob&startDate=2026-04-19&endDate=2026-04-21&adults=1&children=0&ag=&childrenAges=&promoCode=',
-  },
-  {
-    id: 4,
-    tag: 'Feriado',
-    title: 'Dia do Trabalhador',
-    description: '01 a 03 de maio',
-    imageUrl:
-      'https://lirp.cdn-website.com/8406003a/dms3rep/multi/opt/Banner+site+%2835%29-1920w.png',
-    href: 'https://reservas.artgreenpousada.com.br/hotels/HOTEL_OMNI_19674?locate=pt-BR&currencyId=16&destinationName=&mysite=ob&startDate=2026-05-01&endDate=2026-05-03&adults=2&children=0&ag=&childrenAges=&promoCode=',
-  },
-];
+import { packages } from '@/data/packages';
 
 function getCardsPerView(width: number): 1 | 2 | 3 {
   if (width >= 1200) return 3;
@@ -184,41 +147,40 @@ export default function PackagesSection() {
                   style={{ width: cardWidth }}
                 >
                   <FadeInUp delay={(index % packages.length) * 0.04}>
-                    <motion.a
-                      whileHover={{ scale: 1.01 }}
-                      transition={{ duration: 0.3 }}
-                      href={pkg.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group relative block h-[336px] md:h-[384px] lg:h-[432px] overflow-hidden bg-black"
-                    >
-                      <img
-                        src={pkg.imageUrl}
-                        alt={pkg.title}
-                        loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
+                    <Link to={`/pacotes/${pkg.slug}`}>
+                      <motion.div
+                        whileHover={{ scale: 1.01 }}
+                        transition={{ duration: 0.3 }}
+                        className="group relative block h-[336px] md:h-[384px] lg:h-[432px] overflow-hidden bg-black"
+                      >
+                        <img
+                          src={pkg.imageUrl}
+                          alt={pkg.title}
+                          loading="lazy"
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
 
-                      <div className="absolute left-4 top-4">
-                        <span className="inline-flex text-[11px] uppercase tracking-[0.2em] font-medium text-white/90 bg-black/40 px-3 py-1.5 backdrop-blur-sm">
-                          {pkg.tag}
-                        </span>
-                      </div>
+                        <div className="absolute left-4 top-4">
+                          <span className="inline-flex text-[11px] uppercase tracking-[0.2em] font-medium text-white/90 bg-black/40 px-3 py-1.5 backdrop-blur-sm">
+                            {pkg.tag}
+                          </span>
+                        </div>
 
-                      <div className="absolute left-4 right-4 bottom-4">
-                        <h3 className="font-display text-white text-2xl md:text-[2rem] leading-tight mb-1">
-                          {pkg.title}
-                        </h3>
-                        <p className="text-white/85 text-sm mb-3">{pkg.description}</p>
+                        <div className="absolute left-4 right-4 bottom-4">
+                          <h3 className="font-display text-white text-2xl md:text-[2rem] leading-tight mb-1">
+                            {pkg.title}
+                          </h3>
+                          <p className="text-white/85 text-sm mb-3">{pkg.description}</p>
 
-                        <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-white bg-black/65 px-4 py-2 group-hover:bg-primary transition-colors duration-300">
-                          Cotacao
-                          <ArrowUpRight size={14} />
-                        </span>
-                      </div>
-                    </motion.a>
+                          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-white bg-black/65 px-4 py-2 group-hover:bg-primary transition-colors duration-300">
+                            Ver Detalhes
+                            <ArrowUpRight size={14} />
+                          </span>
+                        </div>
+                      </motion.div>
+                    </Link>
                   </FadeInUp>
                 </div>
               ))}

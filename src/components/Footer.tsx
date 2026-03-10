@@ -7,6 +7,7 @@ const quickLinks = [
   { label: 'A Pousada', to: '/' },
   { label: 'Acomodacoes', to: '/acomodacoes' },
   { label: 'Experiencias', to: '/experiencias' },
+  { label: 'Pacotes', to: '/pacotes' },
   { label: 'Gastronomia', to: '/gastronomia' },
   { label: 'Contato', to: '/contato' },
 ];

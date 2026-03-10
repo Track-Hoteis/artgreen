@@ -33,21 +33,24 @@ const WORD_HEIGHT_MOBILE = 52; // px
 
 export default function ImmersiveScrollSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const mobileSectionRef = useRef<HTMLDivElement>(null);
 
   // Scroll-based index detection (shared for both desktop and mobile)
   useEffect(() => {
     const handleScroll = () => {
-      const segment = window.innerHeight * 0.8;
+      const desktopSegment = window.innerHeight * 0.5;
+      const mobileSegment = window.innerHeight * 0.8;
 
       // Desktop
       const desktop = sectionRef.current;
       if (desktop && desktop.offsetParent !== null) {
         const scrolled = -desktop.getBoundingClientRect().top;
-        setActiveIndex(
-          Math.min(sections.length - 1, Math.max(0, Math.floor(scrolled / segment)))
-        );
+        const idx = Math.min(sections.length - 1, Math.max(0, Math.floor(scrolled / desktopSegment)));
+        setActiveIndex(idx);
+        const progressInSegment = Math.max(0, Math.min(1, (scrolled - idx * desktopSegment) / desktopSegment));
+        setScrollProgress(progressInSegment);
         return;
       }
 
@@ -56,7 +59,7 @@ export default function ImmersiveScrollSection() {
       if (mobile) {
         const scrolled = -mobile.getBoundingClientRect().top;
         setActiveIndex(
-          Math.min(sections.length - 1, Math.max(0, Math.floor(scrolled / segment)))
+          Math.min(sections.length - 1, Math.max(0, Math.floor(scrolled / mobileSegment)))
         );
       }
     };
@@ -76,11 +79,11 @@ export default function ImmersiveScrollSection() {
 
   return (
     <section>
-      {/* Desktop layout — total height = N × 80vh; both columns stick */}
+      {/* Desktop layout — total height = N × 50vh + buffer */}
       <div
         className="hidden lg:block"
         ref={sectionRef}
-        style={{ height: `${sections.length * 80 + 100}vh` }}
+        style={{ height: `${sections.length * 50 + 100}vh` }}
       >
         <div className="sticky top-0 h-dvh flex">
           {/* Left column */}
@@ -97,10 +100,7 @@ export default function ImmersiveScrollSection() {
                   Feito para
                 </p>
 
-                <div
-                  className="overflow-hidden relative"
-                  style={{ height: WORD_HEIGHT }}
-                >
+                <div className="relative">
                   <div
                     className="flex flex-col"
                     style={{
@@ -108,7 +108,7 @@ export default function ImmersiveScrollSection() {
                       transition: 'transform 700ms ease-out',
                     }}
                   >
-                    {sections.map((s) => (
+                    {sections.map((s, i) => (
                       <span
                         key={s.id}
                         className="font-display italic text-5xl xl:text-6xl block"
@@ -116,6 +116,8 @@ export default function ImmersiveScrollSection() {
                           color: '#9A8B55',
                           height: WORD_HEIGHT,
                           lineHeight: `${WORD_HEIGHT}px`,
+                          opacity: i === activeIndex ? 1 : 0.3,
+                          transition: 'opacity 700ms ease-out',
                         }}
                       >
                         {s.word}
@@ -142,10 +144,11 @@ export default function ImmersiveScrollSection() {
             </div>
           </div>
 
-          {/* Right column — stacked images with crossfade */}
+          {/* Right column — stacked images with crossfade + scroll zoom */}
           <div className="w-1/2 relative overflow-hidden">
             {sections.map((s, i) => {
               const isActive = i === activeIndex;
+              const zoom = isActive ? 1 + scrollProgress * 0.2 : 1;
               return (
                 <img
                   key={s.id}
@@ -154,8 +157,10 @@ export default function ImmersiveScrollSection() {
                   className="absolute inset-0 w-full h-full object-cover"
                   style={{
                     opacity: isActive ? 1 : 0,
-                    transform: isActive ? 'scale(1)' : 'scale(1.05)',
-                    transition: 'all 1000ms ease-out',
+                    transform: `scale(${zoom})`,
+                    transition: isActive
+                      ? 'opacity 1000ms ease-out'
+                      : 'all 1000ms ease-out',
                   }}
                 />
               );

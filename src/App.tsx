@@ -11,6 +11,8 @@ import RoomDetailPage from './pages/RoomDetailPage';
 import ExperiencesPage from './pages/ExperiencesPage';
 import GastronomyPage from './pages/GastronomyPage';
 import ContactPage from './pages/ContactPage';
+import PackagesPage from './pages/PackagesPage';
+import PackageDetailPage from './pages/PackageDetailPage';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/experiencias" element={<ExperiencesPage />} />
         <Route path="/gastronomia" element={<GastronomyPage />} />
         <Route path="/contato" element={<ContactPage />} />
+        <Route path="/pacotes" element={<PackagesPage />} />
+        <Route path="/pacotes/:slug" element={<PackageDetailPage />} />
       </Routes>
       <Footer />
       <FloatingCTA />
