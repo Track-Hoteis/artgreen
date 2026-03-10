@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -12,6 +13,7 @@ type RoomMedia = {
 
 type CarouselRoom = {
   id: number;
+  slug: string;
   name: string;
   description: string;
   amenities: string;
@@ -77,6 +79,7 @@ export default function RoomsSection() {
       const media = roomMediaById[room.id] ?? roomMediaById[1];
       return {
         id: room.id,
+        slug: room.slug,
         name: room.name,
         description: room.description,
         amenities: room.amenities,
@@ -176,33 +179,35 @@ export default function RoomsSection() {
                   className="flex-shrink-0 px-3"
                   style={{ width: cardWidth }}
                 >
-                  <motion.article
-                    whileHover={{ scale: 1.02, boxShadow: '0 20px 45px rgba(0,0,0,0.2)' }}
-                    transition={{ duration: 0.35 }}
-                    className="group relative h-[440px] md:h-[480px] overflow-hidden bg-black"
-                  >
-                    <img
-                      src={room.imageUrl}
-                      alt={room.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
+                  <Link to={`/acomodacoes/${room.slug}`}>
+                    <motion.article
+                      whileHover={{ scale: 1.02, boxShadow: '0 20px 45px rgba(0,0,0,0.2)' }}
+                      transition={{ duration: 0.35 }}
+                      className="group relative h-[440px] md:h-[480px] overflow-hidden bg-black"
+                    >
+                      <img
+                        src={room.imageUrl}
+                        alt={room.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
 
-                    <div className="absolute inset-x-0 bottom-0 h-[28%] bg-[rgba(82,97,78,0.95)] backdrop-blur-sm px-6 py-5 transition-all duration-500 group-hover:h-[90%]">
-                      <span className="inline-flex border border-white/60 text-white text-sm font-medium px-3 py-1.5 mb-4">
-                        {brlFormatter.format(room.price)} / noite
-                      </span>
-                      <h3 className="font-display text-white text-3xl leading-tight mb-3">
-                        {room.name}
-                      </h3>
-                      <p className="text-white/85 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mb-4">
-                        {room.description}
-                      </p>
-                      <p className="text-white/80 text-xs uppercase tracking-[0.12em] opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150">
-                        {room.amenities}
-                      </p>
-                    </div>
-                  </motion.article>
+                      <div className="absolute inset-x-0 bottom-0 h-[28%] bg-[rgba(82,97,78,0.95)] backdrop-blur-sm px-6 py-5 transition-all duration-500 group-hover:h-[90%]">
+                        <span className="inline-flex border border-white/60 text-white text-sm font-medium px-3 py-1.5 mb-4">
+                          {brlFormatter.format(room.price)} / noite
+                        </span>
+                        <h3 className="font-display text-white text-3xl leading-tight mb-3">
+                          {room.name}
+                        </h3>
+                        <p className="text-white/85 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mb-4">
+                          {room.description}
+                        </p>
+                        <p className="text-white/80 text-xs uppercase tracking-[0.12em] opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150">
+                          {room.amenities}
+                        </p>
+                      </div>
+                    </motion.article>
+                  </Link>
                 </div>
               ))}
             </div>

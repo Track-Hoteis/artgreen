@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 interface Testimonial {
   text: string;
-  image: string;
   name: string;
   role: string;
 }
@@ -11,64 +10,46 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     text: 'A pousada superou nossas expectativas. O ambiente e o atendimento tornaram nossa viagem inesquecivel.',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Mariana Souza',
     role: 'Hospede',
   },
   {
     text: 'A reserva foi simples e a experiencia foi impecavel. Voltaremos com certeza na proxima temporada.',
-    image:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Carlos Mendes',
     role: 'Hospede',
   },
   {
     text: 'Estrutura excelente para descansar em familia, com contato com a natureza e muito conforto.',
-    image:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Fernanda Lima',
     role: 'Hospede',
   },
   {
     text: 'Paisagem linda, quartos confortaveis e gastronomia de alto nivel. Experiencia completa na serra.',
-    image:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Rafael Duarte',
     role: 'Hospede',
   },
   {
     text: 'Atendimento atencioso do inicio ao fim. Nos sentimos acolhidos em todos os detalhes da estadia.',
-    image:
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Juliana Rocha',
     role: 'Hospede',
   },
   {
     text: 'Ideal para desacelerar e aproveitar momentos especiais. Ambiente tranquilo e muito bem cuidado.',
-    image:
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Bruno Almeida',
     role: 'Hospede',
   },
   {
     text: 'A fazendinha e as areas externas encantaram toda a familia. Tudo muito bonito e organizado.',
-    image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Patricia Nunes',
     role: 'Hospede',
   },
   {
     text: 'Cada espaco da pousada transmite cuidado e qualidade. Foi uma viagem perfeita para descansar.',
-    image:
-      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Camila Martins',
     role: 'Hospede',
   },
   {
     text: 'Excelente custo-beneficio para quem busca conforto, natureza e um atendimento realmente diferenciado.',
-    image:
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Eduardo Silva',
     role: 'Hospede',
   },
@@ -100,7 +81,7 @@ function TestimonialsColumn(props: {
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
-              {props.testimonials.map(({ text, image, name, role }, i) => (
+              {props.testimonials.map(({ text, name, role }, i) => (
                 <motion.li
                   key={`${index}-${i}`}
                   aria-hidden={index === 1 ? 'true' : 'false'}
@@ -124,13 +105,6 @@ function TestimonialsColumn(props: {
                   <blockquote className="m-0 p-0">
                     <p className="m-0 font-body leading-relaxed text-text-medium">{text}</p>
                     <footer className="mt-6 flex items-center gap-3">
-                      <img
-                        width={42}
-                        height={42}
-                        src={image}
-                        alt={`Avatar de ${name}`}
-                        className="h-10 w-10 rounded-full object-cover ring-2 ring-[#efe6cf] transition-all duration-300 ease-in-out group-hover:ring-accent/50"
-                      />
                       <div className="flex flex-col">
                         <cite className="not-italic font-body text-lg leading-5 tracking-tight text-text-primary">
                           {name}

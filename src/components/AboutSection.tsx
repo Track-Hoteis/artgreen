@@ -16,80 +16,6 @@ const carouselImages = [
   'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-27.jpg',
 ];
 
-/* ── Decorative SVG shapes ─────────────────────────────── */
-
-function DotGrid({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      width="100"
-      height="80"
-      viewBox="0 0 100 80"
-      fill="none"
-      aria-hidden="true"
-    >
-      {Array.from({ length: 4 }).map((_, row) =>
-        Array.from({ length: 5 }).map((_, col) => (
-          <circle
-            key={`${row}-${col}`}
-            cx={10 + col * 20}
-            cy={10 + row * 20}
-            r="3"
-            fill="#5A7A5C"
-            opacity="0.35"
-          />
-        )),
-      )}
-    </svg>
-  );
-}
-
-function LeafLine({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      width="60"
-      height="120"
-      viewBox="0 0 60 120"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M30 0 C30 40,5 50,5 80 C5 100,20 115,30 120 C40 115,55 100,55 80 C55 50,30 40,30 0Z"
-        stroke="#5A7A5C"
-        strokeWidth="1.5"
-        fill="none"
-        opacity="0.25"
-      />
-    </svg>
-  );
-}
-
-function CornerShape({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      width="80"
-      height="80"
-      viewBox="0 0 80 80"
-      fill="none"
-      aria-hidden="true"
-    >
-      <rect
-        x="4"
-        y="4"
-        width="72"
-        height="72"
-        rx="4"
-        stroke="#5A7A5C"
-        strokeWidth="1.5"
-        fill="none"
-        opacity="0.2"
-      />
-    </svg>
-  );
-}
-
 function PlayIcon() {
   return (
     <svg
@@ -123,10 +49,32 @@ export default function AboutSection() {
 
   return (
     <section id="a-pousada" className="relative -mt-12 md:-mt-16 pt-32 md:pt-44 pb-20 md:pb-28 bg-cream overflow-hidden z-10">
-      {/* ── Decorative floating shapes ── */}
-      <LeafLine className="absolute top-16 left-4 lg:left-12 bounce-animate pointer-events-none" />
-      <DotGrid className="absolute bottom-20 left-1/2 -translate-x-1/2 lg:left-[42%] bounce-animate3 pointer-events-none" />
-      <CornerShape className="absolute bottom-8 left-6 lg:left-16 bounce-animate2 pointer-events-none" />
+      <img
+        src="/background.webp"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover opacity-5 pointer-events-none select-none"
+      />
+
+      {/* ── Decorative floating pines ── */}
+      <img
+        src="/pinheiro.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute top-8 left-4 lg:left-10 w-12 sm:w-14 md:w-16 opacity-25 bounce-animate pointer-events-none select-none"
+      />
+      <img
+        src="/pinheiro.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute bottom-20 left-1/2 -translate-x-1/2 lg:left-[42%] lg:translate-x-0 w-10 sm:w-12 md:w-14 opacity-20 bounce-animate3 pointer-events-none select-none"
+      />
+      <img
+        src="/pinheiro.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute bottom-8 left-6 lg:left-16 w-11 sm:w-12 md:w-14 opacity-20 bounce-animate2 pointer-events-none select-none"
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">

@@ -69,10 +69,10 @@ export default function ExperiencesSection() {
             {serviceItems.map((item, index) => (
               <FadeInUp key={item.title} delay={index * 0.06}>
                 <article className="service-card">
-                  <h3 className="font-high-spirited text-4xl md:text-5xl text-text-primary mb-3 leading-tight">
+                  <h3 className="font-display text-[29px] md:text-[29px] text-text-primary mb-3 leading-tight">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-text-medium leading-relaxed">
+                  <p className="text-sm text-text-medium leading-relaxed font-body">
                     {item.description}
                   </p>
                 </article>
@@ -99,10 +99,10 @@ export default function ExperiencesSection() {
                   <p className="service-media-card__category text-xs uppercase tracking-[0.2em] font-medium mb-2">
                     {experienceMedia[index].category}
                   </p>
-                  <h3 className="service-media-card__title font-high-spirited text-2xl mb-2">
+                  <h3 className="service-media-card__title font-display text-2xl mb-2">
                     {card.title}
                   </h3>
-                  <p className="service-media-card__description text-sm leading-relaxed mb-6">
+                  <p className="service-media-card__description text-sm leading-relaxed mb-6 font-body">
                     {card.description}
                   </p>
                   <a

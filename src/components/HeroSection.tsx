@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-function BookingFormContent() {
+export function BookingFormContent() {
   return (
     <>
       <h3 className="font-display text-3xl text-white text-center mb-8">Reserva</h3>
@@ -139,9 +139,9 @@ export default function HeroSection() {
           </div>
           </FadeInUp>
 
-          {/* Booking form */}
-          <FadeInUp delay={0.12} className="mx-4 md:mx-8 lg:mx-0">
-            <div className="bg-[#333333] h-[420px] sm:h-[460px] md:h-[500px] lg:h-[520px] xl:h-[560px] px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-11 overflow-y-auto">
+          {/* Booking form – hidden on mobile, visible on lg+ */}
+          <FadeInUp delay={0.12} className="hidden lg:block">
+            <div className="bg-[#333333] lg:h-[520px] xl:h-[560px] px-10 py-11 overflow-y-auto">
               <BookingFormContent />
             </div>
           </FadeInUp>

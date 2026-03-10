@@ -1,34 +1,30 @@
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import AboutSection from './components/AboutSection';
-import RoomsSection from './components/RoomsSection';
-import ExperiencesSection from './components/ExperiencesSection';
-import PackagesSection from './components/PackagesSection';
-import GastronomySection from './components/GastronomySection';
-import FazendinhaSection from './components/FazendinhaSection';
-import TestimonialsSection from './components/TestimonialsSection';
-import LocationSection from './components/LocationSection';
 import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
-import VideoTransition from './components/VideoTransition';
 import FloatingCTA from './components/FloatingCTA';
+import WhatsAppButton from './components/WhatsAppButton';
+import ScrollToTop from './components/ScrollToTop';
+
+import HomePage from './pages/HomePage';
+import AccommodationsPage from './pages/AccommodationsPage';
+import RoomDetailPage from './pages/RoomDetailPage';
+import ExperiencesPage from './pages/ExperiencesPage';
+import GastronomyPage from './pages/GastronomyPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Header />
-      <main className="bg-cream mobile-center-content">
-        <HeroSection />
-        <AboutSection />
-        <VideoTransition />
-        <GastronomySection />
-        <RoomsSection />
-        <ExperiencesSection />
-        <PackagesSection />
-        <FazendinhaSection />
-        <TestimonialsSection />
-        <LocationSection />
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/acomodacoes" element={<AccommodationsPage />} />
+        <Route path="/acomodacoes/:slug" element={<RoomDetailPage />} />
+        <Route path="/experiencias" element={<ExperiencesPage />} />
+        <Route path="/gastronomia" element={<GastronomyPage />} />
+        <Route path="/contato" element={<ContactPage />} />
+      </Routes>
       <Footer />
       <FloatingCTA />
       <WhatsAppButton />

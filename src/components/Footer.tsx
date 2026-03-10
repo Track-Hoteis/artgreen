@@ -1,14 +1,14 @@
 import { Instagram, MessageCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import FadeInUp from '@/components/animations/FadeInUp';
 
 const quickLinks = [
-  { label: 'A Pousada', href: '#a-pousada' },
-  { label: 'Acomodacoes', href: '#acomodacoes' },
-  { label: 'Experiencias', href: '#experiencias' },
-  { label: 'Pacotes', href: '#pacotes' },
-  { label: 'Gastronomia', href: '#gastronomia' },
-  { label: 'Contato', href: '#contato' },
+  { label: 'A Pousada', to: '/' },
+  { label: 'Acomodacoes', to: '/acomodacoes' },
+  { label: 'Experiencias', to: '/experiencias' },
+  { label: 'Gastronomia', to: '/gastronomia' },
+  { label: 'Contato', to: '/contato' },
 ];
 
 const gallery = [
@@ -25,10 +25,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           <FadeInUp>
             <div className="mb-4">
-              <h3 className="font-display text-3xl">Art Green</h3>
-              <p className="text-xs uppercase tracking-[0.25em] text-white/60">
-                Pousada
-              </p>
+              <img
+                src="/logo.png"
+                alt="Art Green"
+                className="h-12 w-auto object-contain"
+              />
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Um refugio acolhedor em meio a natureza da serra fluminense,
@@ -60,13 +61,13 @@ export default function Footer() {
             <h4 className="font-display text-xl mb-4">Links Rapidos</h4>
             <nav className="flex flex-col gap-2.5">
               {quickLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
+                <Link
+                  key={link.to}
+                  to={link.to}
                   className="text-white/70 text-sm hover:text-white transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </FadeInUp>

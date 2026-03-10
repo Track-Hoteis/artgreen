@@ -37,7 +37,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1,
@@ -80,11 +80,11 @@
     padding: 0;
     border: none;
     outline: none;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   #root {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 }
 
