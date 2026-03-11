@@ -16,7 +16,7 @@ export const experiences: Experience[] = [
   {
     id: 6,
     icon: 'fish',
-    title: 'Lago de Pesca',
+    title: 'Áreas ao ar livre',
     description: 'Momentos tranquilos e divertidos em família.',
   },
   {
