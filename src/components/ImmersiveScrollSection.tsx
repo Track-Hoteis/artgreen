@@ -30,9 +30,9 @@ const sections = [
 ];
 
 const WORD_HEIGHT_MOBILE = 52; // px
-const DESKTOP_SEGMENT_VH = 25;
-const MOBILE_SEGMENT_VH = 25;
-const LAST_SLIDE_HOLD_VH = 100;
+const DESKTOP_SEGMENT_VH = 13;
+const MOBILE_SEGMENT_VH = 13;
+const LAST_SLIDE_HOLD_VH = 80;
 
 export default function ImmersiveScrollSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -86,12 +86,12 @@ export default function ImmersiveScrollSection() {
 
   return (
     <section>
-      {/* Desktop layout — keep last slide visible for 100vh before exiting */}
+      {/* Desktop layout */}
       <div
         className="hidden lg:block"
         ref={sectionRef}
         style={{
-          height: `${(sections.length - 1) * DESKTOP_SEGMENT_VH + LAST_SLIDE_HOLD_VH + 100}vh`,
+          height: `${(sections.length - 1) * DESKTOP_SEGMENT_VH + LAST_SLIDE_HOLD_VH + 50}vh`,
         }}
       >
         <div className="sticky top-0 h-dvh flex">
@@ -182,7 +182,7 @@ export default function ImmersiveScrollSection() {
         className="lg:hidden"
         ref={mobileSectionRef}
         style={{
-          height: `${(sections.length - 1) * MOBILE_SEGMENT_VH + LAST_SLIDE_HOLD_VH + 100}vh`,
+          height: `${(sections.length - 1) * MOBILE_SEGMENT_VH + LAST_SLIDE_HOLD_VH + 50}vh`,
         }}
       >
         <div className="sticky top-0 h-dvh relative overflow-hidden">

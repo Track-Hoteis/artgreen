@@ -150,7 +150,7 @@ export default function TestimonialV2() {
 
           <h2
             id="testimonials-heading"
-            className="mt-6 font-display text-4xl font-extrabold tracking-tight text-text-primary md:text-5xl"
+            className="mt-6 font-display text-4xl font-extrabold tracking-tight text-text-primary"
           >
             O que nossos hospedes dizem
           </h2>
