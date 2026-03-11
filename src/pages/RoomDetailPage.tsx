@@ -1,5 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   Bed,
   Users,
@@ -14,10 +15,12 @@ import {
   ChevronLeft,
   ChevronRight,
   Check,
+  X,
 } from 'lucide-react';
 
 import PageHero from '@/components/PageHero';
 import FadeInUp from '@/components/animations/FadeInUp';
+import { BookingFormContent } from '@/components/HeroSection';
 import { rooms } from '@/data/rooms';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -31,10 +34,22 @@ const iconMap: Record<string, React.ReactNode> = {
   home: <Home size={20} />,
 };
 
+const galleryImages = [
+  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg',
+  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-05.jpg',
+  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg',
+  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
+  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-27.jpg',
+  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg',
+  'https://irp.cdn-website.com/8406003a/dms3rep/multi/IMG_6358.jpg',
+  'https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG',
+];
+
 export default function RoomDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const room = rooms.find((r) => r.slug === slug);
   const [currentImage, setCurrentImage] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   if (!room) return <Navigate to="/acomodacoes" replace />;
 
@@ -61,14 +76,14 @@ export default function RoomDetailPage() {
         ]}
       />
 
-      <section className="py-16 md:py-24">
+      <section className="pt-16 md:pt-24 pb-8 md:pb-10">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="grid lg:grid-cols-[1fr_400px] gap-12 lg:gap-16">
-            {/* Left column - Gallery + Details */}
+          <div className="grid lg:grid-cols-[1fr_460px] gap-6 lg:gap-7 items-start">
+            {/* Left column - Gallery */}
             <div>
               {/* Image Gallery */}
-              <FadeInUp>
-                <div className="relative overflow-hidden mb-4 bg-black aspect-[16/10]">
+              <div>
+                <div className="relative overflow-hidden bg-black aspect-[29/14]">
                   <img
                     src={room.images[currentImage]}
                     alt={`${room.name} - Foto ${currentImage + 1}`}
@@ -89,12 +104,12 @@ export default function RoomDetailPage() {
                     <ChevronRight size={20} />
                   </button>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 mt-3">
                   {room.images.map((img, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentImage(i)}
-                      className={`flex-1 aspect-[16/10] overflow-hidden border-2 transition-colors ${
+                      className={`flex-1 aspect-[29/14] overflow-hidden border-2 transition-colors ${
                         i === currentImage
                           ? 'border-accent'
                           : 'border-transparent opacity-60 hover:opacity-100'
@@ -108,154 +123,103 @@ export default function RoomDetailPage() {
                     </button>
                   ))}
                 </div>
-              </FadeInUp>
-
-              {/* Description */}
-              <FadeInUp delay={0.1}>
-                <div className="mt-10">
-                  <h2 className="font-display text-3xl text-text-primary mb-4">
-                    sobre a acomodacao
-                  </h2>
-                  <p className="text-text-medium font-body leading-relaxed">
-                    {room.fullDescription}
-                  </p>
-                </div>
-              </FadeInUp>
-
-              {/* Amenities Grid */}
-              <FadeInUp delay={0.15}>
-                <div className="mt-10">
-                  <h2 className="font-display text-3xl text-text-primary mb-6">
-                    comodidades
-                  </h2>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {room.features.map((f) => (
-                      <div
-                        key={f.label}
-                        className="flex items-center gap-3 bg-white p-4 text-text-primary"
-                      >
-                        <span className="text-accent">
-                          {iconMap[f.icon]}
-                        </span>
-                        <span className="font-body text-sm">{f.label}</span>
-                      </div>
-                    ))}
-                    <div className="flex items-center gap-3 bg-white p-4 text-text-primary">
-                      <span className="text-accent">
-                        <Maximize2 size={20} />
-                      </span>
-                      <span className="font-body text-sm">{room.size}</span>
-                    </div>
-                  </div>
-                </div>
-              </FadeInUp>
-
-              {/* Rules */}
-              <FadeInUp delay={0.2}>
-                <div className="mt-10">
-                  <h2 className="font-display text-3xl text-text-primary mb-6">
-                    politicas
-                  </h2>
-                  <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                    <div className="flex items-center gap-3 bg-white p-4">
-                      <Clock size={20} className="text-accent shrink-0" />
-                      <div>
-                        <p className="font-body text-xs uppercase tracking-wider text-text-medium">
-                          Check-in
-                        </p>
-                        <p className="font-body text-sm font-medium text-text-primary">
-                          A partir das {room.checkIn}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 bg-white p-4">
-                      <Clock size={20} className="text-accent shrink-0" />
-                      <div>
-                        <p className="font-body text-xs uppercase tracking-wider text-text-medium">
-                          Check-out
-                        </p>
-                        <p className="font-body text-sm font-medium text-text-primary">
-                          Ate as {room.checkOut}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <ul className="space-y-2">
-                    {room.rules.map((rule) => (
-                      <li
-                        key={rule}
-                        className="flex items-center gap-2 text-text-medium font-body text-sm"
-                      >
-                        <Check size={14} className="text-primary shrink-0" />
-                        {rule}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </FadeInUp>
+              </div>
             </div>
 
-            {/* Right column - Booking sidebar */}
-            <div>
-              <FadeInUp delay={0.1}>
-                <div className="bg-white p-8 sticky top-24">
-                  <div className="mb-6">
-                    <span
-                      className={`${room.tagColor} text-white text-xs uppercase tracking-wider px-3 py-1 font-body font-medium`}
-                    >
-                      {room.tag}
-                    </span>
-                  </div>
-
-                  <h3 className="font-display text-3xl text-text-primary mb-2">
-                    {room.name}
-                  </h3>
-
-                  <div className="flex items-baseline gap-1 mb-6">
-                    <span className="font-display text-4xl text-accent">
-                      R${room.price}
-                    </span>
-                    <span className="text-text-medium font-body text-sm">
-                      /noite
-                    </span>
-                  </div>
-
-                  <div className="space-y-3 mb-8 border-t border-b border-gray-100 py-6">
-                    <div className="flex items-center gap-3 text-sm font-body text-text-medium">
-                      <Users size={16} className="text-accent" />
-                      {room.capacity}
-                    </div>
-                    <div className="flex items-center gap-3 text-sm font-body text-text-medium">
-                      <Maximize2 size={16} className="text-accent" />
-                      {room.size}
-                    </div>
-                    <div className="flex items-center gap-3 text-sm font-body text-text-medium">
-                      <Clock size={16} className="text-accent" />
-                      Check-in {room.checkIn} / Check-out {room.checkOut}
-                    </div>
-                  </div>
-
-                  <a
-                    href="https://reservas.artgreenpousada.com.br/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-reserve w-full text-center block"
-                  >
-                    Reservar Agora
-                  </a>
-
-                  <a
-                    href="https://wa.me/5521969688419"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-outline-dark w-full text-center block mt-3"
-                  >
-                    Falar no WhatsApp
-                  </a>
-                </div>
-              </FadeInUp>
+            {/* Right column - Booking widget (same as home) */}
+            <div className="bg-[#333333] px-10 py-11">
+              <BookingFormContent />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Full-width content below */}
+      <section className="pt-8 md:pt-10 pb-16 md:pb-24">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
+          {/* Description */}
+          <FadeInUp>
+            <div className="mb-14 text-center">
+              <h2 className="font-display text-3xl text-text-primary mb-4">
+                sobre a acomodacao
+              </h2>
+              <p className="text-text-medium font-body leading-relaxed">
+                {room.fullDescription}
+              </p>
+            </div>
+          </FadeInUp>
+
+          {/* Amenities Grid */}
+          <FadeInUp>
+            <div className="mb-14">
+              <h2 className="font-display text-3xl text-text-primary mb-6 text-center">
+                comodidades
+              </h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                {room.features.map((f) => (
+                  <div
+                    key={f.label}
+                    className="flex items-center gap-3 bg-white p-4 text-text-primary"
+                  >
+                    <span className="text-accent">
+                      {iconMap[f.icon]}
+                    </span>
+                    <span className="font-body text-sm">{f.label}</span>
+                  </div>
+                ))}
+                <div className="flex items-center gap-3 bg-white p-4 text-text-primary">
+                  <span className="text-accent">
+                    <Maximize2 size={20} />
+                  </span>
+                  <span className="font-body text-sm">{room.size}</span>
+                </div>
+              </div>
+            </div>
+          </FadeInUp>
+
+          {/* Rules */}
+          <FadeInUp>
+            <div>
+              <h2 className="font-display text-3xl text-text-primary mb-6 text-center">
+                politicas
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-4 mb-6">
+                <div className="flex items-center gap-3 bg-white p-4">
+                  <Clock size={20} className="text-accent shrink-0" />
+                  <div>
+                    <p className="font-body text-xs uppercase tracking-wider text-text-medium">
+                      Check-in
+                    </p>
+                    <p className="font-body text-sm font-medium text-text-primary">
+                      A partir das {room.checkIn}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 bg-white p-4">
+                  <Clock size={20} className="text-accent shrink-0" />
+                  <div>
+                    <p className="font-body text-xs uppercase tracking-wider text-text-medium">
+                      Check-out
+                    </p>
+                    <p className="font-body text-sm font-medium text-text-primary">
+                      Ate as {room.checkOut}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <ul className="space-y-2">
+                {room.rules.map((rule) => (
+                  <li
+                    key={rule}
+                    className="flex items-center gap-2 text-text-medium font-body text-sm"
+                  >
+                    <Check size={14} className="text-primary shrink-0" />
+                    {rule}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeInUp>
         </div>
       </section>
 
@@ -273,39 +237,103 @@ export default function RoomDetailPage() {
               <FadeInUp key={r.id} delay={i * 0.08}>
                 <Link
                   to={`/acomodacoes/${r.slug}`}
-                  className="group block bg-white overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500"
+                  className="group block overflow-hidden"
                 >
-                  <div className="relative h-52 overflow-hidden">
+                  <motion.article
+                    whileHover={{ scale: 1.02, boxShadow: '0 20px 45px rgba(0,0,0,0.2)' }}
+                    transition={{ duration: 0.35 }}
+                    className="relative h-[360px] overflow-hidden bg-black"
+                  >
                     <img
                       src={r.images[0]}
                       alt={r.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover"
                     />
-                    <span
-                      className={`absolute top-4 left-4 ${r.tagColor} text-white text-xs uppercase tracking-wider px-3 py-1.5 font-body font-medium`}
-                    >
-                      {r.tag}
-                    </span>
-                  </div>
-                  <div className="p-5">
-                    <div className="flex items-start justify-between">
-                      <h3 className="font-display text-xl text-text-primary">
+                    <div className="absolute inset-x-0 bottom-0 h-[28%] bg-[rgba(82,97,78,0.95)] backdrop-blur-sm px-6 py-5 transition-all duration-500 group-hover:h-[90%]">
+                      <h3 className="font-display text-white text-2xl leading-tight mb-3">
                         {r.name}
                       </h3>
-                      <span className="font-display text-xl text-accent shrink-0 ml-3">
-                        R${r.price}
-                        <span className="text-xs text-text-medium font-body">
-                          /noite
-                        </span>
-                      </span>
+                      <p className="text-white/85 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mb-4">
+                        {r.description}
+                      </p>
+                      <p className="text-white/80 text-xs uppercase tracking-[0.12em] opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150">
+                        {r.amenities}
+                      </p>
                     </div>
-                  </div>
+                  </motion.article>
                 </Link>
               </FadeInUp>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Full-width image gallery */}
+      <section>
+        <div className="flex">
+          {galleryImages.map((src, i) => (
+            <button
+              key={i}
+              onClick={() => setLightboxIndex(i)}
+              className="relative overflow-hidden flex-1 aspect-square group"
+            >
+              <img
+                src={src}
+                alt={`Galeria Art Green - Foto ${i + 1}`}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Lightbox */}
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+          onClick={() => setLightboxIndex(null)}
+        >
+          <button
+            onClick={() => setLightboxIndex(null)}
+            className="absolute top-6 right-6 text-white hover:text-white/70 transition-colors z-10"
+            aria-label="Fechar"
+          >
+            <X size={32} />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) =>
+                prev === null ? null : prev === 0 ? galleryImages.length - 1 : prev - 1
+              );
+            }}
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+            aria-label="Foto anterior"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) =>
+                prev === null ? null : prev === galleryImages.length - 1 ? 0 : prev + 1
+              );
+            }}
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+            aria-label="Próxima foto"
+          >
+            <ChevronRight size={24} />
+          </button>
+          <img
+            src={galleryImages[lightboxIndex]}
+            alt={`Galeria Art Green - Foto ${lightboxIndex + 1}`}
+            className="max-w-[90vw] max-h-[85vh] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </main>
   );
 }

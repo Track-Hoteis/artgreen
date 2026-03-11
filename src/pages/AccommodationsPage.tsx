@@ -50,10 +50,10 @@ export default function AccommodationsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {rooms.map((room, i) => (
-              <FadeInUp key={room.id} delay={i * 0.08}>
+              <FadeInUp key={room.id} delay={i * 0.08} className="h-full">
                 <Link
                   to={`/acomodacoes/${room.slug}`}
-                  className="group block bg-white overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500"
+                  className="group flex flex-col h-full bg-white overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500"
                 >
                   <div className="relative h-64 overflow-hidden">
                     <img
@@ -61,26 +61,13 @@ export default function AccommodationsPage() {
                       alt={room.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <span
-                      className={`absolute top-4 left-4 ${room.tagColor} text-white text-xs uppercase tracking-wider px-3 py-1.5 font-body font-medium`}
-                    >
-                      {room.tag}
-                    </span>
                   </div>
 
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-3">
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="mb-3">
                       <h3 className="font-display text-2xl text-text-primary">
                         {room.name}
                       </h3>
-                      <div className="text-right shrink-0 ml-4">
-                        <span className="font-display text-2xl text-accent">
-                          R${room.price}
-                        </span>
-                        <span className="block text-xs text-text-medium font-body">
-                          /noite
-                        </span>
-                      </div>
                     </div>
 
                     <p className="text-text-medium text-sm leading-relaxed mb-4 font-body">
@@ -99,7 +86,7 @@ export default function AccommodationsPage() {
                       ))}
                     </div>
 
-                    <div className="mt-5">
+                    <div className="mt-auto pt-5">
                       <span className="btn-outline-dark text-center block text-sm py-2.5">
                         Ver Detalhes
                       </span>
