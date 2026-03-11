@@ -24,28 +24,23 @@ type CarouselRoom = {
 const roomMediaById: Record<number, RoomMedia> = {
   1: {
     price: 489,
-    imageUrl:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg',
+    imageUrl: '/acomodacoes/suíte standard.jpeg',
   },
   2: {
     price: 569,
-    imageUrl:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-05.jpg',
+    imageUrl: '/acomodacoes/superior (pula Pula).jpeg',
   },
   3: {
     price: 649,
-    imageUrl:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG',
+    imageUrl: '/acomodacoes/Loft Árvore.jpeg',
   },
   4: {
     price: 729,
-    imageUrl:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/IMG_6358.jpg',
+    imageUrl: '/acomodacoes/Chalé Árvore.jpeg',
   },
   5: {
     price: 839,
-    imageUrl:
-      'https://lirp.cdn-website.com/8406003a/dms3rep/multi/opt/4F3A8835-1920w.JPG',
+    imageUrl: '/acomodacoes/casa.jpeg',
   },
 };
 

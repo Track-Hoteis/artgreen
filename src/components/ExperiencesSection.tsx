@@ -6,29 +6,28 @@ import { experiences } from '@/data/experiences';
 const experienceMedia = [
   {
     image:
-      'https://lirp.cdn-website.com/8406003a/dms3rep/multi/opt/ag_area_lazer_ft-18-1920w.jpg',
-    category: 'Lazer ao ar livre',
-  },
-  {
-    image:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg',
-    category: 'Experiencia rural',
-  },
-  {
-    image:
       'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
-    category: 'Sabores selecionados',
+    category: 'Diversão aquática',
   },
   {
     image:
       'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-27.jpg',
-    category: 'Diversao indoor',
+    category: 'Refúgio na natureza',
+  },
+  {
+    image:
+      'https://lirp.cdn-website.com/8406003a/dms3rep/multi/opt/ag_area_lazer_ft-18-1920w.jpg',
+    category: 'Experiência rural',
+  },
+  {
+    image: '/evento.webp',
+    category: 'Entretenimento ao vivo',
   },
 ];
 
 const serviceItems = [
   {
-    title: 'Atendimento Premium',
+    title: 'Atendimento de Qualidade',
     description: 'Equipe dedicada para personalizar sua estadia.',
   },
   {

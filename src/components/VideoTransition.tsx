@@ -4,14 +4,19 @@ export default function VideoTransition() {
   return (
     <section aria-label="Video de transicao" className="hidden md:block bg-cream">
       <FadeInUp>
-        <div className="w-full h-[300px] md:h-[360px] lg:h-[400px] overflow-hidden">
+        <div className="relative w-full h-[60dvh] overflow-hidden">
           <video
             autoPlay
             muted
             loop
             playsInline
             src="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
+          />
+          <img
+            src="/logo-artcucina.png"
+            alt="Art Cucina"
+            className="absolute bottom-4 right-4 h-12 lg:h-16 opacity-60 pointer-events-none"
           />
         </div>
       </FadeInUp>

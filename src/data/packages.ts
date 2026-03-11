@@ -22,8 +22,7 @@ export const packages: Package[] = [
     fullDescription:
       'Uma experiencia exclusiva para adultos na Pousada Art Green. O evento Bolhas & Fiori combina gastronomia refinada, espumantes selecionados e um cenario encantador em meio a serra fluminense. Uma noite inesquecivel com musica ao vivo, degustacao e momentos de pura sofisticacao.',
     dates: 'Consulte datas disponiveis',
-    imageUrl:
-      'https://lirp.cdn-website.com/8406003a/dms3rep/multi/opt/Banner+site+%2832%29-1920w.png',
+    imageUrl: '/Pacotes/bolhas.webp',
     href: 'https://reservas.artgreenpousada.com.br/',
     includes: [
       'Espumantes e vinhos selecionados',

@@ -14,10 +14,10 @@ export const experiences: Experience[] = [
       '3 piscinas: hidro aquecida, adulto/infantil com escorrega, piscina kids.',
   },
   {
-    id: 2,
-    icon: 'gamepad2',
-    title: 'Salão de Jogos',
-    description: 'Totó, ping pong e sinuca.',
+    id: 6,
+    icon: 'fish',
+    title: 'Lago de Pesca',
+    description: 'Momentos tranquilos e divertidos em família.',
   },
   {
     id: 3,
@@ -38,10 +38,10 @@ export const experiences: Experience[] = [
     description: 'Pedale ao redor de toda a área de lazer.',
   },
   {
-    id: 6,
-    icon: 'fish',
-    title: 'Lago de Pesca',
-    description: 'Momentos tranquilos e divertidos em família.',
+    id: 2,
+    icon: 'gamepad2',
+    title: 'Salão de Jogos',
+    description: 'Totó, ping pong e sinuca.',
   },
   {
     id: 7,

@@ -106,7 +106,7 @@ export default function ImmersiveScrollSection() {
                   className="font-body uppercase text-sm tracking-[0.3em] shrink-0"
                   style={{ color: '#6B6B6B' }}
                 >
-                  Feito para
+                  Pensado para
                 </p>
 
                 <div className="relative">
@@ -211,7 +211,7 @@ export default function ImmersiveScrollSection() {
               className="font-body uppercase text-xs tracking-[0.3em] mb-3"
               style={{ color: 'rgba(255,255,255,0.7)' }}
             >
-              Feito para
+              Pensado para
             </p>
 
             {/* Animated word slot */}
