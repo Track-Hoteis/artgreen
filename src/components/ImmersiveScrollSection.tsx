@@ -30,6 +30,9 @@ const sections = [
 ];
 
 const WORD_HEIGHT_MOBILE = 52; // px
+const DESKTOP_SEGMENT_VH = 25;
+const MOBILE_SEGMENT_VH = 25;
+const LAST_SLIDE_HOLD_VH = 100;
 
 export default function ImmersiveScrollSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -40,8 +43,8 @@ export default function ImmersiveScrollSection() {
   // Scroll-based index detection (shared for both desktop and mobile)
   useEffect(() => {
     const handleScroll = () => {
-      const desktopSegment = window.innerHeight * 0.25;
-      const mobileSegment = window.innerHeight * 0.8;
+      const desktopSegment = window.innerHeight * (DESKTOP_SEGMENT_VH / 100);
+      const mobileSegment = window.innerHeight * (MOBILE_SEGMENT_VH / 100);
 
       // Desktop
       const desktop = sectionRef.current;
@@ -75,7 +78,7 @@ export default function ImmersiveScrollSection() {
     });
   }, []);
 
-  // Trigger after first paint so the first active image animates from 1 -> 1.2.
+  // Trigger after first paint so the first active image animates from 1.2 -> 1.
   useEffect(() => {
     const timeout = window.setTimeout(() => setZoomStarted(true), 40);
     return () => window.clearTimeout(timeout);
@@ -83,11 +86,13 @@ export default function ImmersiveScrollSection() {
 
   return (
     <section>
-      {/* Desktop layout — total height = N × 50vh + buffer */}
+      {/* Desktop layout — keep last slide visible for 100vh before exiting */}
       <div
         className="hidden lg:block"
         ref={sectionRef}
-        style={{ height: `${sections.length * 25 + 100}vh` }}
+        style={{
+          height: `${(sections.length - 1) * DESKTOP_SEGMENT_VH + LAST_SLIDE_HOLD_VH + 100}vh`,
+        }}
       >
         <div className="sticky top-0 h-dvh flex">
           {/* Left column */}
@@ -176,7 +181,9 @@ export default function ImmersiveScrollSection() {
       <div
         className="lg:hidden"
         ref={mobileSectionRef}
-        style={{ height: `${sections.length * 80 + 100}vh` }}
+        style={{
+          height: `${(sections.length - 1) * MOBILE_SEGMENT_VH + LAST_SLIDE_HOLD_VH + 100}vh`,
+        }}
       >
         <div className="sticky top-0 h-dvh relative overflow-hidden">
           {/* Stacked images with crossfade */}
