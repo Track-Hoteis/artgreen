@@ -28,7 +28,7 @@ export default function GastronomySection() {
                 muted
                 loop
                 playsInline
-                src="https://greenland.b-cdn.net/vertical%20interno.mp4"
+                src="https://greenland.b-cdn.net/vertical%20artcucina.mp4"
                 className="absolute inset-0 w-full h-full object-cover object-center scale-[1.9]"
               />
             </div>
