@@ -138,12 +138,11 @@ export default function GastronomyPage() {
           </FadeInUp>
           <FadeInUp>
             <div className="relative overflow-hidden bg-black aspect-video">
-              <video
+              <VideoLazy
+                lazySrc="https://greenland.b-cdn.net/WhatsApp%20Video%202026-02-26%20at%2010.55.57.mp4"
                 autoPlay
-                muted
                 loop
                 playsInline
-                src="https://greenland.b-cdn.net/WhatsApp%20Video%202026-02-26%20at%2010.55.57.mp4"
                 className="w-full h-full object-cover"
               />
             </div>

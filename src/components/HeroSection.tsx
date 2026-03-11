@@ -1,6 +1,7 @@
 import { ArrowUpRight, Baby, CalendarDays, Users } from 'lucide-react';
 
 import FadeInUp from '@/components/animations/FadeInUp';
+import VideoLazy from '@/components/VideoLazy';
 import { Input } from '@/components/ui/input';
 import {
   Select,
@@ -128,15 +129,14 @@ export default function HeroSection() {
           {/* Video */}
           <FadeInUp className="min-w-0">
             <div className="relative overflow-hidden bg-black h-[280px] sm:h-[360px] md:h-[430px] lg:h-[520px] xl:h-[560px]">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              src="https://greenland.b-cdn.net/hero.mp4"
-              className="w-full h-full object-cover"
-            />
-          </div>
+              <VideoLazy
+                lazySrc="https://greenland.b-cdn.net/hero.mp4"
+                autoPlay
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            </div>
           </FadeInUp>
 
           {/* Booking form – hidden on mobile, visible on lg+ */}

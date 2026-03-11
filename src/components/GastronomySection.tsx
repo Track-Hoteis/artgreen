@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import FadeInUp from '@/components/animations/FadeInUp';
+import VideoLazy from '@/components/VideoLazy';
 
 const highlights = [
   'Culinaria italiana artesanal',
@@ -11,9 +12,10 @@ const highlights = [
 
 export default function GastronomySection() {
   const initVideo = useCallback((el: HTMLVideoElement | null) => {
+    // kept for compatibility if some browsers still reference ref, but
+    // actual lazy-loading is handled by VideoLazy component below.
     if (!el) return;
     el.muted = true;
-    el.play().catch(() => {});
   }, []);
 
   return (
@@ -22,13 +24,11 @@ export default function GastronomySection() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           <FadeInUp>
             <div className="relative overflow-hidden h-[460px] sm:h-[560px] lg:h-[620px]">
-              <video
-                ref={initVideo}
+              <VideoLazy
+                lazySrc="https://greenland.b-cdn.net/vertical%20artcucina.mp4"
                 autoPlay
-                muted
                 loop
                 playsInline
-                src="https://greenland.b-cdn.net/vertical%20artcucina.mp4"
                 className="absolute inset-0 w-full h-full object-cover object-center scale-[1.9]"
               />
             </div>
