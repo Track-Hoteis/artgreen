@@ -1,11 +1,9 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   UtensilsCrossed,
   Coffee,
   Wine,
   CalendarDays,
-  ChevronDown,
   Lamp,
   Mountain,
   Music,

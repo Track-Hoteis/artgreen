@@ -1,5 +1,3 @@
-import { useCallback } from 'react';
-
 import FadeInUp from '@/components/animations/FadeInUp';
 import VideoLazy from '@/components/VideoLazy';
 
@@ -11,12 +9,7 @@ const highlights = [
 ];
 
 export default function GastronomySection() {
-  const initVideo = useCallback((el: HTMLVideoElement | null) => {
-    // kept for compatibility if some browsers still reference ref, but
-    // actual lazy-loading is handled by VideoLazy component below.
-    if (!el) return;
-    el.muted = true;
-  }, []);
+  
 
   return (
     <section id="gastronomia" className="py-20 md:py-28 bg-cream">
