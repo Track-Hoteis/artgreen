@@ -49,7 +49,7 @@ export default function AccommodationsPage() {
           </FadeInUp>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {rooms.map((room, i) => (
+            {rooms.filter((r) => !r.hidden).map((room, i) => (
               <FadeInUp key={room.id} delay={i * 0.08} className="h-full">
                 <Link
                   to={`/acomodacoes/${room.slug}`}

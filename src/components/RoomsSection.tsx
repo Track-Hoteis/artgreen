@@ -42,7 +42,9 @@ export default function RoomsSection() {
   }, []);
 
   const carouselRooms = useMemo<CarouselRoom[]>(() => {
-    return rooms.map((room) => ({
+    return rooms
+      .filter((r) => !r.hidden)
+      .map((room) => ({
       id: room.id,
       slug: room.slug,
       name: room.name,

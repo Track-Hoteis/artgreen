@@ -409,6 +409,7 @@ export const rooms: Room[] = [
       'Suíte confortável com vista para a natureza.',
     fullDescription:
       'Suíte confortável com vista para a natureza da serra fluminense.',
+    hidden: true,
     capacity: 'Até 4 pessoas',
     size: '30m²',
     price: 569,
@@ -445,6 +446,7 @@ export const rooms: Room[] = [
       'Suíte confortável com vista para a natureza.',
     fullDescription:
       'Suíte confortável com vista para a natureza da serra fluminense.',
+    hidden: true,
     capacity: 'Até 4 pessoas',
     size: '30m²',
     price: 569,

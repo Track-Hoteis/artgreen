@@ -38,13 +38,13 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default function RoomDetailPage() {
   const { slug } = useParams<{ slug: string }>();
-  const room = rooms.find((r) => r.slug === slug);
+  const room = rooms.find((r) => r.slug === slug && !r.hidden);
   const [currentImage, setCurrentImage] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   if (!room) return <Navigate to="/acomodacoes" replace />;
 
-  const relatedRooms = rooms.filter((r) => r.id !== room.id).slice(0, 3);
+  const relatedRooms = rooms.filter((r) => !r.hidden && r.id !== room.id).slice(0, 3);
 
   const prevImage = () =>
     setCurrentImage((prev) =>
