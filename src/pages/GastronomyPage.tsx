@@ -1,7 +1,19 @@
-import { UtensilsCrossed, Coffee, Wine, CalendarDays } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import {
+  UtensilsCrossed,
+  Coffee,
+  Wine,
+  CalendarDays,
+  ChevronDown,
+  Lamp,
+  Mountain,
+  Music,
+} from 'lucide-react';
 
-import PageHero from '@/components/PageHero';
 import FadeInUp from '@/components/animations/FadeInUp';
+import ParallaxImage from '@/components/animations/ParallaxImage';
+import VideoLazy from '@/components/VideoLazy';
 
 const highlights = [
   {
@@ -31,30 +43,100 @@ const highlights = [
 ];
 
 const gallery = [
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/IMG_6358.jpg',
+  {
+    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG',
+    alt: 'Prato Art Cucina',
+  },
+  {
+    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg',
+    alt: 'Ambiente do restaurante',
+  },
+  {
+    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg',
+    alt: 'Detalhes da mesa',
+  },
+  {
+    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
+    alt: 'Ambiente externo',
+  },
+  {
+    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg',
+    alt: 'Vista do restaurante',
+  },
+  {
+    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/IMG_6358.jpg',
+    alt: 'Espaco ao ar livre',
+  },
 ];
 
 export default function GastronomyPage() {
+  const [heroImage, ...restImages] = gallery;
+  const sideImages = restImages.slice(0, 4);
+  const bottomImages = restImages.slice(4);
+
   return (
     <main className="bg-cream">
-      <PageHero
-        title="art cucina"
-        image="https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG"
-        breadcrumbs={[
-          { label: 'Home', to: '/' },
-          { label: 'Gastronomia' },
-        ]}
-      />
+      {/* ============================================================ */}
+      {/* 1. HERO CINEMATOGRÁFICO — Vídeo 100vh                       */}
+      {/* ============================================================ */}
+      <section className="relative h-dvh overflow-hidden">
+        <VideoLazy
+          lazySrc="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
+          autoPlay
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Fallback poster for mobile / slow connections */}
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center -z-10"
+          style={{
+            backgroundImage:
+              'url(https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG)',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
 
-      {/* About */}
-      <section className="py-16 md:py-24">
+
+        {/* Central content — Logo + subtitle */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6">
+          <motion.img
+            src="/logo-artcucina.png"
+            alt="Art Cucina"
+            className="h-20 md:h-28 lg:h-32 mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.8, ease: 'easeOut' }}
+          />
+          <motion.h1
+            className="font-display text-3xl md:text-4xl lg:text-5xl text-white text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.7 }}
+          >
+            culinaria italiana na serra
+          </motion.h1>
+          <motion.p
+            className="text-white/60 font-body text-sm md:text-base mt-4 text-center max-w-md"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.85, duration: 0.6 }}
+          >
+            Uma experiencia gastronomica unica em meio as montanhas de
+            Teresopolis
+          </motion.p>
+        </div>
+
+        {/* Breadcrumbs and scroll indicator removed per design request */}
+      </section>
+
+      {/* ============================================================ */}
+      {/* 2. APRESENTAÇÃO — A Alma do Restaurante                     */}
+      {/* ============================================================ */}
+      <section className="py-20 md:py-28 bg-cream">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Text */}
             <FadeInUp>
               <p className="section-eyebrow">Restaurante</p>
               <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
@@ -89,10 +171,20 @@ export default function GastronomyPage() {
                 </a>
               </div>
             </FadeInUp>
+
+            {/* Image with parallax */}
             <FadeInUp delay={0.1}>
-              <div className="overflow-hidden">
+              <div className="hidden lg:block">
+                <ParallaxImage
+                  src="https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG"
+                  alt="Restaurante Art Cucina"
+                  className="h-[500px]"
+                  speed={0.1}
+                />
+              </div>
+              <div className="lg:hidden overflow-hidden">
                 <img
-                  src="https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg"
+                  src="https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG"
                   alt="Restaurante Art Cucina"
                   className="w-full h-[420px] object-cover"
                 />
@@ -102,19 +194,22 @@ export default function GastronomyPage() {
         </div>
       </section>
 
-      {/* Highlights */}
-      <section className="py-16 bg-white/50">
+      {/* ============================================================ */}
+      {/* 3. DESTAQUES GASTRONÔMICOS                                   */}
+      {/* ============================================================ */}
+      <section className="py-20 bg-white/50">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <FadeInUp className="text-center mb-14">
             <p className="section-eyebrow">Nossos Destaques</p>
             <h2 className="section-title">experiencia gastronomica</h2>
+            <div className="w-16 h-px bg-accent mx-auto mt-6" />
           </FadeInUp>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((item, i) => (
               <FadeInUp key={item.title} delay={i * 0.08}>
                 <div className="bg-white p-8 text-center h-full">
-                  <div className="w-14 h-14 bg-primary/10 flex items-center justify-center mx-auto mb-5 text-primary">
+                  <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-5 text-primary">
                     {item.icon}
                   </div>
                   <h3 className="font-display text-xl text-text-primary mb-3">
@@ -130,88 +225,241 @@ export default function GastronomyPage() {
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="py-16">
-        <div className="max-w-5xl mx-auto px-4 md:px-8">
-          <FadeInUp className="text-center mb-10">
-            <h2 className="section-title">um sabor da serra</h2>
-          </FadeInUp>
+      {/* ============================================================ */}
+      {/* 4. VÍDEO IMERSIVO — "Um Sabor da Serra"                     */}
+      {/* ============================================================ */}
+      <section className="relative bg-black">
+        <FadeInUp>
+          <div className="relative w-full aspect-video overflow-hidden">
+            <VideoLazy
+              lazySrc="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
+              autoPlay
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white/30">
+                um sabor da serra
+              </h2>
+            </div>
+            <img
+              src="/logo-artcucina.png"
+              alt="Art Cucina"
+              className="absolute bottom-4 right-4 h-10 lg:h-14 opacity-50 pointer-events-none"
+            />
+          </div>
+        </FadeInUp>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 5. O AMBIENTE — Split com vídeo vertical                     */}
+      {/* ============================================================ */}
+      <section className="bg-cream">
+        <div className="grid lg:grid-cols-2">
+          {/* Vídeo vertical */}
           <FadeInUp>
-            <div className="relative overflow-hidden bg-black aspect-video">
+            <div className="relative overflow-hidden h-[460px] sm:h-[560px] lg:h-[700px]">
               <VideoLazy
-                lazySrc="https://greenland.b-cdn.net/WhatsApp%20Video%202026-02-26%20at%2010.55.57.mp4"
+                lazySrc="https://greenland.b-cdn.net/vertical%20artcucina.mp4"
                 autoPlay
                 loop
                 playsInline
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover object-center scale-[1.9]"
               />
             </div>
           </FadeInUp>
-        </div>
-      </section>
 
-      {/* Gallery */}
-      <section className="py-16 bg-white/50">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <FadeInUp className="text-center mb-10">
-            <h2 className="section-title">galeria</h2>
-          </FadeInUp>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {gallery.map((img, i) => (
-              <FadeInUp key={i} delay={i * 0.05}>
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={img}
-                    alt={`Art Cucina - Foto ${i + 1}`}
-                    loading="lazy"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
+          {/* Texto */}
+          <div className="flex items-center">
+            <div className="px-6 md:px-12 lg:px-20 py-16 lg:py-24 max-w-xl mx-auto lg:mx-0">
+              <FadeInUp delay={0.1}>
+                <p className="section-eyebrow">O Ambiente</p>
+                <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
+                  onde cada detalhe importa
+                </h2>
+                <p className="text-text-medium font-body leading-relaxed mb-8">
+                  Um espaco pensado para envolver todos os sentidos. Iluminacao
+                  acolhedora, musica suave e uma atmosfera que transforma cada
+                  refeicao em um momento especial. O Art Cucina e o cenario
+                  perfeito para celebrar a vida.
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    {
+                      icon: <Lamp size={18} />,
+                      text: 'Ambiente romantico e acolhedor',
+                    },
+                    {
+                      icon: <Mountain size={18} />,
+                      text: 'Vista para a serra fluminense',
+                    },
+                    {
+                      icon: <Music size={18} />,
+                      text: 'Musica ao vivo nas sextas e sabados',
+                    },
+                  ].map((item) => (
+                    <li
+                      key={item.text}
+                      className="flex items-center gap-3 text-text-primary font-body text-sm"
+                    >
+                      <span className="text-primary-medium">{item.icon}</span>
+                      {item.text}
+                    </li>
+                  ))}
+                </ul>
               </FadeInUp>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Hours + CTA */}
-      <section className="bg-primary py-16">
+      {/* ============================================================ */}
+      {/* 6. GALERIA — Mosaico Assimétrico                            */}
+      {/* ============================================================ */}
+      <section className="py-20 bg-white/50">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <FadeInUp className="text-center mb-12">
+            <h2 className="section-title">galeria</h2>
+            <div className="w-16 h-px bg-accent mx-auto mt-6" />
+          </FadeInUp>
+
+          <div className="space-y-3 md:space-y-4">
+            {/* Top row: hero + 4 side images */}
+            <div className="grid lg:grid-cols-12 gap-3 md:gap-4">
+              <FadeInUp className="lg:col-span-7">
+                <div className="group relative h-[250px] sm:h-[350px] lg:h-[500px] overflow-hidden">
+                  <img
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </FadeInUp>
+
+              <div className="lg:col-span-5 grid grid-cols-2 gap-3 md:gap-4 auto-rows-[120px] sm:auto-rows-[168px] lg:auto-rows-[242px]">
+                {sideImages.map((img, i) => (
+                  <FadeInUp key={img.src} delay={i * 0.05}>
+                    <div className="group relative h-full overflow-hidden">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  </FadeInUp>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom row */}
+            {bottomImages.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                {bottomImages.map((img, i) => (
+                  <FadeInUp key={img.src} delay={0.1 + i * 0.05}>
+                    <div className="group relative h-[220px] sm:h-[260px] overflow-hidden">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  </FadeInUp>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 7. HORÁRIOS — Seção Escura Elegante                         */}
+      {/* ============================================================ */}
+      <section className="bg-primary py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <FadeInUp>
-            <h2 className="font-display text-3xl md:text-4xl text-white mb-8">
+            <h2 className="font-display text-3xl md:text-4xl text-white mb-10">
               horarios
             </h2>
-            <div className="grid sm:grid-cols-2 gap-6 mb-10 max-w-lg mx-auto">
-              <div className="bg-white/10 p-6">
-                <p className="font-body uppercase text-xs tracking-wider text-white/60 mb-2">
+            <div className="grid sm:grid-cols-2 gap-6 mb-8 max-w-lg mx-auto">
+              <div className="bg-white/10 p-8">
+                <p className="font-body uppercase text-xs tracking-[0.2em] text-white/50 mb-3">
                   Cafe da Manha
                 </p>
-                <p className="font-display text-xl text-white">
+                <p className="font-display text-2xl text-white mb-1">
                   7h30 as 10h00
                 </p>
-                <p className="text-white/60 text-sm font-body mt-1">
+                <p className="text-white/50 text-sm font-body">
                   Incluso na estadia
                 </p>
               </div>
-              <div className="bg-white/10 p-6">
-                <p className="font-body uppercase text-xs tracking-wider text-white/60 mb-2">
+              <div className="bg-white/10 p-8">
+                <p className="font-body uppercase text-xs tracking-[0.2em] text-white/50 mb-3">
                   Jantar Especial
                 </p>
-                <p className="font-display text-xl text-white">
+                <p className="font-display text-2xl text-white mb-1">
                   19h00 as 22h00
                 </p>
-                <p className="text-white/60 text-sm font-body mt-1">
+                <p className="text-white/50 text-sm font-body">
                   Sextas e sabados
                 </p>
               </div>
             </div>
-            <a
-              href="https://reservas.artgreenpousada.com.br/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-reserve inline-block"
-            >
-              Reservar Agora
-            </a>
+            <div className="w-16 h-px bg-accent mx-auto my-8" />
+            <p className="text-white/50 text-sm font-body max-w-md mx-auto">
+              O jantar esta disponivel para hospedes e visitantes mediante
+              reserva.
+            </p>
+          </FadeInUp>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 8. CTA IMERSIVO FINAL                                       */}
+      {/* ============================================================ */}
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <img
+          src="https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 text-center px-6 py-20">
+          <FadeInUp>
+            <img
+              src="/logo-artcucina.png"
+              alt="Art Cucina"
+              className="h-14 md:h-20 mx-auto mb-8 opacity-80"
+            />
+            <h2 className="font-display text-4xl md:text-5xl text-white mb-5">
+              reserve sua experiencia gastronomica
+            </h2>
+            <p className="text-white/60 font-body mb-10 max-w-xl mx-auto leading-relaxed">
+              Cafe da manha incluso na estadia. Jantar especial toda sexta e
+              sabado. Venha viver uma experiencia unica na serra.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://reservas.artgreenpousada.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-reserve"
+              >
+                Reservar Agora
+              </a>
+              <a
+                href="https://wa.me/5521969688419"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline"
+              >
+                Falar Conosco
+              </a>
+            </div>
           </FadeInUp>
         </div>
       </section>

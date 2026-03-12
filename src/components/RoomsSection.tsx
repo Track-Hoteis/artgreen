@@ -6,11 +6,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import FadeInUp from '@/components/animations/FadeInUp';
 import { rooms } from '@/data/rooms';
 
-type RoomMedia = {
-  imageUrl: string;
-  price: number;
-};
-
 type CarouselRoom = {
   id: number;
   slug: string;
@@ -19,29 +14,6 @@ type CarouselRoom = {
   amenities: string;
   imageUrl: string;
   price: number;
-};
-
-const roomMediaById: Record<number, RoomMedia> = {
-  1: {
-    price: 489,
-    imageUrl: '/acomodacoes/suíte standard.jpeg',
-  },
-  2: {
-    price: 569,
-    imageUrl: '/acomodacoes/superior (pula Pula).jpeg',
-  },
-  3: {
-    price: 649,
-    imageUrl: '/acomodacoes/Loft Árvore.jpeg',
-  },
-  4: {
-    price: 729,
-    imageUrl: '/acomodacoes/Chalé Árvore.jpeg',
-  },
-  5: {
-    price: 839,
-    imageUrl: '/acomodacoes/casa.jpeg',
-  },
 };
 
 function getCardsPerView(width: number): 1 | 2 | 3 {
@@ -70,18 +42,15 @@ export default function RoomsSection() {
   }, []);
 
   const carouselRooms = useMemo<CarouselRoom[]>(() => {
-    return rooms.map((room) => {
-      const media = roomMediaById[room.id] ?? roomMediaById[1];
-      return {
-        id: room.id,
-        slug: room.slug,
-        name: room.name,
-        description: room.description,
-        amenities: room.amenities,
-        imageUrl: media.imageUrl,
-        price: media.price,
-      };
-    });
+    return rooms.map((room) => ({
+      id: room.id,
+      slug: room.slug,
+      name: room.name,
+      description: room.description,
+      amenities: room.amenities,
+      imageUrl: room.images[0],
+      price: room.price,
+    }));
   }, []);
 
   const loopedRooms = useMemo<CarouselRoom[]>(() => {
@@ -191,7 +160,7 @@ export default function RoomsSection() {
                         <span className="inline-flex border border-white/60 text-white text-sm font-medium px-3 py-1.5 mb-4">
                           {brlFormatter.format(room.price)} / noite
                         </span>
-                        <h3 className="font-display text-white text-3xl leading-tight mb-3">
+                        <h3 className="font-display text-white text-[24px] leading-tight mb-3">
                           {room.name}
                         </h3>
                         <p className="text-white/85 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mb-4">

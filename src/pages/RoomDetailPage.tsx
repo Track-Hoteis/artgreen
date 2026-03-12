@@ -34,16 +34,7 @@ const iconMap: Record<string, React.ReactNode> = {
   home: <Home size={20} />,
 };
 
-const galleryImages = [
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-05.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-27.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/IMG_6358.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG',
-];
+
 
 export default function RoomDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -271,7 +262,7 @@ export default function RoomDetailPage() {
       {/* Full-width image gallery */}
       <section>
         <div className="flex">
-          {galleryImages.map((src, i) => (
+          {room.images.map((src, i) => (
             <button
               key={i}
               onClick={() => setLightboxIndex(i)}
@@ -279,7 +270,7 @@ export default function RoomDetailPage() {
             >
               <img
                 src={src}
-                alt={`Galeria Art Green - Foto ${i + 1}`}
+                alt={`${room.name} - Foto ${i + 1}`}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -306,7 +297,7 @@ export default function RoomDetailPage() {
             onClick={(e) => {
               e.stopPropagation();
               setLightboxIndex((prev) =>
-                prev === null ? null : prev === 0 ? galleryImages.length - 1 : prev - 1
+                prev === null ? null : prev === 0 ? room.images.length - 1 : prev - 1
               );
             }}
             className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
@@ -318,7 +309,7 @@ export default function RoomDetailPage() {
             onClick={(e) => {
               e.stopPropagation();
               setLightboxIndex((prev) =>
-                prev === null ? null : prev === galleryImages.length - 1 ? 0 : prev + 1
+                prev === null ? null : prev === room.images.length - 1 ? 0 : prev + 1
               );
             }}
             className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
@@ -327,8 +318,8 @@ export default function RoomDetailPage() {
             <ChevronRight size={24} />
           </button>
           <img
-            src={galleryImages[lightboxIndex]}
-            alt={`Galeria Art Green - Foto ${lightboxIndex + 1}`}
+            src={room.images[lightboxIndex]}
+            alt={`${room.name} - Foto ${lightboxIndex + 1}`}
             className="max-w-[90vw] max-h-[85vh] object-contain"
             onClick={(e) => e.stopPropagation()}
           />
