@@ -42,28 +42,28 @@ const highlights = [
 
 const gallery = [
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG',
-    alt: 'Prato Art Cucina',
+    src: '/experiencias/venha.webp',
+    alt: 'Restaurante Art Cucina',
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg',
-    alt: 'Ambiente do restaurante',
+    src: '/experiencias/ar-livre.webp',
+    alt: 'Area ao ar livre',
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg',
-    alt: 'Detalhes da mesa',
+    src: '/experiencias/ciclovia.webp',
+    alt: 'Ciclovia',
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
-    alt: 'Ambiente externo',
+    src: '/experiencias/fazendinha.webp',
+    alt: 'Fazendinha',
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg',
-    alt: 'Vista do restaurante',
+    src: '/experiencias/salao.webp',
+    alt: 'Salao de jogos',
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/IMG_6358.jpg',
-    alt: 'Espaco ao ar livre',
+    src: '/experiencias/vinhos.webp',
+    alt: 'Degustacao de vinhos',
   },
 ];
 
@@ -174,7 +174,7 @@ export default function GastronomyPage() {
             <FadeInUp delay={0.1}>
               <div className="hidden lg:block">
                 <ParallaxImage
-                  src="https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG"
+                  src="/experiencias/venha.webp"
                   alt="Restaurante Art Cucina"
                   className="h-[500px]"
                   speed={0.1}
@@ -182,7 +182,7 @@ export default function GastronomyPage() {
               </div>
               <div className="lg:hidden overflow-hidden">
                 <img
-                  src="https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG"
+                  src="/experiencias/venha.webp"
                   alt="Restaurante Art Cucina"
                   className="w-full h-[420px] object-cover"
                 />

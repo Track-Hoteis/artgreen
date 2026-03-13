@@ -27,8 +27,7 @@ export const experiences: Experience[] = [
     icon: 'fish',
     title: 'Areas ao ar livre',
     description: 'Momentos tranquilos e divertidos em familia.',
-    image:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/IMG_6358.jpg',
+    image: '/experiencias/ar-livre.webp',
     category: 'Natureza',
     longDescription:
       'Espacos amplos cercados pela natureza da serra, perfeitos para caminhadas leves, brincadeiras e momentos de contemplacao.',
@@ -61,8 +60,7 @@ export const experiences: Experience[] = [
     icon: 'bike',
     title: 'Ciclovia & Bikes',
     description: 'Pedale ao redor de toda a area de lazer.',
-    image:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg',
+    image: '/experiencias/ciclovia.webp',
     category: 'Aventura',
     longDescription:
       'Bikes disponiveis para toda a familia. Pedale pela ciclovia que contorna a area de lazer e aproveite o ar puro da serra.',
@@ -72,8 +70,7 @@ export const experiences: Experience[] = [
     icon: 'gamepad2',
     title: 'Salao de Jogos',
     description: 'Toto, ping pong e sinuca.',
-    image:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
+    image: '/experiencias/salao.webp',
     category: 'Diversao',
     longDescription:
       'Um espaco completo para momentos de descontracao com a familia e amigos. Toto, ping pong e sinuca disponiveis o dia inteiro.',
@@ -83,8 +80,7 @@ export const experiences: Experience[] = [
     icon: 'pawprint',
     title: 'Fazendinha',
     description: 'Interaja com os animais da nossa fazendinha.',
-    image:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-05.jpg',
+    image: '/experiencias/fazendinha.webp',
     category: 'Natureza',
     longDescription:
       'Um espaco encantador para aproximar criancas e adultos dos animais, com atividades leves e contato direto com a natureza. A fazendinha da Art Green e o lugar perfeito para momentos em familia.',
@@ -94,8 +90,7 @@ export const experiences: Experience[] = [
     icon: 'wine',
     title: 'Degustacao de Vinhos',
     description: 'Experiencias gastronomicas com nosso sommelier.',
-    image:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG',
+    image: '/experiencias/vinhos.webp',
     category: 'Gastronomia',
     detail: 'Com nosso sommelier',
     longDescription:

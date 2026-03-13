@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const WORD_HEIGHT = 72; // px - height of each word slot
+const WORD_HEIGHT_MOBILE = 52; // px
 
 const sections = [
   {
@@ -29,10 +30,9 @@ const sections = [
   },
 ];
 
-const WORD_HEIGHT_MOBILE = 52; // px
-const DESKTOP_SEGMENT_VH = 13;
-const MOBILE_SEGMENT_VH = 13;
-const LAST_SLIDE_HOLD_VH = 80;
+const COOLDOWN_MS = 700;
+const WHEEL_THRESHOLD = 50;
+const TOUCH_THRESHOLD = 40;
 
 export default function ImmersiveScrollSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -40,35 +40,214 @@ export default function ImmersiveScrollSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const mobileSectionRef = useRef<HTMLDivElement>(null);
 
-  // Scroll-based index detection (shared for both desktop and mobile)
-  useEffect(() => {
-    const handleScroll = () => {
-      const desktopSegment = window.innerHeight * (DESKTOP_SEGMENT_VH / 100);
-      const mobileSegment = window.innerHeight * (MOBILE_SEGMENT_VH / 100);
+  const activeIndexRef = useRef(0);
+  const isLockedRef = useRef(false);
+  const cooldownRef = useRef(false);
+  const deltaAccRef = useRef(0);
+  const touchStartYRef = useRef(0);
+  const exitingRef = useRef(false);
 
-      // Desktop
-      const desktop = sectionRef.current;
-      if (desktop && desktop.offsetParent !== null) {
-        const scrolled = -desktop.getBoundingClientRect().top;
-        const idx = Math.min(sections.length - 1, Math.max(0, Math.floor(scrolled / desktopSegment)));
-        setActiveIndex(idx);
+  useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
+
+  const goToIndex = useCallback((idx: number) => {
+    if (idx < 0 || idx >= sections.length) return;
+    activeIndexRef.current = idx;
+    setActiveIndex(idx);
+    cooldownRef.current = true;
+    setTimeout(() => {
+      cooldownRef.current = false;
+    }, COOLDOWN_MS);
+  }, []);
+
+  // Get the active section ref (desktop or mobile)
+  const getActiveSection = useCallback(() => {
+    if (sectionRef.current && sectionRef.current.offsetParent !== null) {
+      return sectionRef.current;
+    }
+    return mobileSectionRef.current;
+  }, []);
+
+  // Exit section: scroll programmatically past the section
+  const exitSectionDown = useCallback(() => {
+    const section = getActiveSection();
+    if (!section) return;
+    exitingRef.current = true;
+    isLockedRef.current = false;
+    const sectionEnd = section.offsetTop + section.offsetHeight;
+    window.scrollTo({
+      top: sectionEnd - window.innerHeight + 2,
+      behavior: 'smooth',
+    });
+    setTimeout(() => {
+      exitingRef.current = false;
+    }, 1200);
+  }, [getActiveSection]);
+
+  const exitSectionUp = useCallback(() => {
+    const section = getActiveSection();
+    if (!section) return;
+    exitingRef.current = true;
+    isLockedRef.current = false;
+    window.scrollTo({
+      top: section.offsetTop - 2,
+      behavior: 'smooth',
+    });
+    setTimeout(() => {
+      exitingRef.current = false;
+    }, 1200);
+  }, [getActiveSection]);
+
+  // Detect when section is in sticky position
+  useEffect(() => {
+    const checkLock = () => {
+      if (exitingRef.current) return;
+
+      const section = getActiveSection();
+      if (!section) {
+        isLockedRef.current = false;
         return;
       }
 
-      // Mobile
-      const mobile = mobileSectionRef.current;
-      if (mobile) {
-        const scrolled = -mobile.getBoundingClientRect().top;
-        setActiveIndex(
-          Math.min(sections.length - 1, Math.max(0, Math.floor(scrolled / mobileSegment)))
-        );
+      const rect = section.getBoundingClientRect();
+
+      // Section top is at or above viewport top, and section bottom is below viewport bottom
+      if (rect.top <= 5 && rect.bottom - window.innerHeight > 5) {
+        if (!isLockedRef.current) {
+          isLockedRef.current = true;
+          deltaAccRef.current = 0;
+
+          // If entering from bottom (scrolling up), start at last tab
+          // If entering from top (scrolling down), start at first tab
+          // We detect by checking if activeIndex was already set
+        }
+      } else {
+        isLockedRef.current = false;
+      }
+    };
+
+    window.addEventListener('scroll', checkLock, { passive: true });
+    checkLock();
+    return () => window.removeEventListener('scroll', checkLock);
+  }, [getActiveSection]);
+
+  // Wheel event handler — ratchet behavior
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!isLockedRef.current || exitingRef.current) return;
+
+      const idx = activeIndexRef.current;
+
+      // At first tab scrolling up — exit section upward
+      if (idx === 0 && e.deltaY < 0) {
+        deltaAccRef.current = 0;
+        exitSectionUp();
+        return;
+      }
+
+      // At last tab scrolling down — exit section downward
+      if (idx === sections.length - 1 && e.deltaY > 0) {
+        deltaAccRef.current = 0;
+        exitSectionDown();
+        return;
+      }
+
+      // Prevent default scroll — we handle tab changes
+      e.preventDefault();
+
+      if (cooldownRef.current) return;
+
+      deltaAccRef.current += e.deltaY;
+
+      if (Math.abs(deltaAccRef.current) >= WHEEL_THRESHOLD) {
+        if (deltaAccRef.current > 0) {
+          goToIndex(idx + 1);
+        } else {
+          goToIndex(idx - 1);
+        }
+        deltaAccRef.current = 0;
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, [goToIndex, exitSectionDown, exitSectionUp]);
+
+  // Touch event handlers — mobile ratchet behavior
+  useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartYRef.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isLockedRef.current || exitingRef.current) return;
+
+      const idx = activeIndexRef.current;
+      const deltaY = touchStartYRef.current - e.touches[0].clientY;
+
+      // Allow natural scroll at boundaries
+      if (idx === 0 && deltaY < -10) return;
+      if (idx === sections.length - 1 && deltaY > 10) return;
+
+      e.preventDefault();
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!isLockedRef.current || exitingRef.current) return;
+      if (cooldownRef.current) return;
+
+      const idx = activeIndexRef.current;
+      const deltaY = touchStartYRef.current - e.changedTouches[0].clientY;
+
+      if (idx === 0 && deltaY < -TOUCH_THRESHOLD) {
+        exitSectionUp();
+        return;
+      }
+
+      if (idx === sections.length - 1 && deltaY > TOUCH_THRESHOLD) {
+        exitSectionDown();
+        return;
+      }
+
+      if (deltaY > TOUCH_THRESHOLD) {
+        goToIndex(idx + 1);
+      } else if (deltaY < -TOUCH_THRESHOLD) {
+        goToIndex(idx - 1);
+      }
+    };
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [goToIndex, exitSectionDown, exitSectionUp]);
+
+  // Reset index when section is fully out of viewport
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = getActiveSection();
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      // Section is fully below viewport — reset to first
+      if (rect.top > window.innerHeight + 100) {
+        activeIndexRef.current = 0;
+        setActiveIndex(0);
+      }
+      // Section is fully above viewport — set to last (for re-entry from bottom)
+      if (rect.bottom < -100) {
+        activeIndexRef.current = sections.length - 1;
+        setActiveIndex(sections.length - 1);
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [getActiveSection]);
 
   // Preload images
   useEffect(() => {
@@ -78,7 +257,7 @@ export default function ImmersiveScrollSection() {
     });
   }, []);
 
-  // Trigger after first paint so the first active image animates from 1.2 -> 1.
+  // Trigger zoom animation after first paint
   useEffect(() => {
     const timeout = window.setTimeout(() => setZoomStarted(true), 40);
     return () => window.clearTimeout(timeout);
@@ -90,9 +269,7 @@ export default function ImmersiveScrollSection() {
       <div
         className="hidden lg:block"
         ref={sectionRef}
-        style={{
-          height: `${(sections.length - 1) * DESKTOP_SEGMENT_VH + LAST_SLIDE_HOLD_VH + 50}vh`,
-        }}
+        style={{ height: '400vh' }}
       >
         <div className="sticky top-0 h-dvh flex">
           {/* Left column */}
@@ -109,7 +286,8 @@ export default function ImmersiveScrollSection() {
                   Pensado para
                 </p>
 
-                <div className="relative">
+                {/* Word slot — one word at a time, sliding up/down */}
+                <div className="relative" style={{ height: WORD_HEIGHT }}>
                   <div
                     className="flex flex-col"
                     style={{
@@ -120,7 +298,8 @@ export default function ImmersiveScrollSection() {
                     {sections.map((s, i) => (
                       <span
                         key={s.id}
-                        className="font-display italic text-5xl xl:text-6xl block"
+                        onClick={() => goToIndex(i)}
+                        className="font-display italic text-5xl xl:text-6xl block cursor-pointer select-none"
                         style={{
                           color: '#9A8B55',
                           height: WORD_HEIGHT,
@@ -141,7 +320,8 @@ export default function ImmersiveScrollSection() {
                 {sections.map((s, i) => (
                   <div
                     key={s.id}
-                    className="h-[2px] rounded-full"
+                    onClick={() => goToIndex(i)}
+                    className="h-[2px] rounded-full cursor-pointer"
                     style={{
                       width: i === activeIndex ? 24 : 8,
                       backgroundColor: i === activeIndex ? '#9A8B55' : '#D1C9B5',
@@ -177,13 +357,11 @@ export default function ImmersiveScrollSection() {
         </div>
       </div>
 
-      {/* Mobile layout — same sticky+crossfade pattern */}
+      {/* Mobile layout — slot animation (one word at a time) */}
       <div
         className="lg:hidden"
         ref={mobileSectionRef}
-        style={{
-          height: `${(sections.length - 1) * MOBILE_SEGMENT_VH + LAST_SLIDE_HOLD_VH + 50}vh`,
-        }}
+        style={{ height: '400vh' }}
       >
         <div className="sticky top-0 h-dvh relative overflow-hidden">
           {/* Stacked images with crossfade */}
@@ -205,7 +383,7 @@ export default function ImmersiveScrollSection() {
           })}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
-          {/* Text overlay */}
+          {/* Text overlay — one word at a time (slot) */}
           <div className="absolute bottom-16 left-0 right-0 text-center px-6">
             <p
               className="font-body uppercase text-xs tracking-[0.3em] mb-3"
@@ -214,7 +392,6 @@ export default function ImmersiveScrollSection() {
               Pensado para
             </p>
 
-            {/* Animated word slot */}
             <div
               className="overflow-hidden relative mx-auto"
               style={{ height: WORD_HEIGHT_MOBILE }}

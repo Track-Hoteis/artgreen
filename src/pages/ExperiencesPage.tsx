@@ -340,11 +340,12 @@ export default function ExperiencesPage() {
 
           <div className="relative h-[50vh] lg:h-[700px] overflow-hidden">
             <VideoLazy
-              lazySrc="https://greenland.b-cdn.net/hero.mp4"
+              lazySrc="https://greenland.b-cdn.net/vertical%20artcucina.mp4"
+              startAtSeconds={6}
               autoPlay
               loop
               playsInline
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover object-center scale-[1.9]"
             />
           </div>
         </div>
@@ -463,7 +464,7 @@ export default function ExperiencesPage() {
       {/* ============================================================ */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         <img
-          src="https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg"
+          src="/experiencias/venha.webp"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />

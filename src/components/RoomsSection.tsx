@@ -136,7 +136,7 @@ export default function RoomsSection() {
 
           <div className="overflow-hidden">
             <div
-              className={`flex ${isTransitionEnabled ? 'transition-transform duration-500 ease-in-out' : ''}`}
+              className={`flex rooms-track ${isTransitionEnabled ? 'transition-transform duration-500 ease-in-out' : ''}`}
               style={{ transform: `translateX(-${(currentSlide * 100) / cardsPerView}%)` }}
             >
               {loopedRooms.map((room, roomIndex) => (

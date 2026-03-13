@@ -9,7 +9,7 @@ import { packages } from '@/data/packages';
 function getCardsPerView(width: number): 1 | 2 | 3 {
   if (width >= 1200) return 3;
   if (width >= 768) return 2;
-  return 2;
+  return 1;
 }
 
 export default function PackagesSection() {
@@ -151,7 +151,7 @@ export default function PackagesSection() {
                       <motion.div
                         whileHover={{ scale: 1.01 }}
                         transition={{ duration: 0.3 }}
-                        className="group relative block h-[336px] md:h-[384px] lg:h-[432px] overflow-hidden bg-black"
+                        className="group relative block h-[480px] md:h-[384px] lg:h-[432px] overflow-hidden bg-black"
                       >
                         <img
                           src={pkg.imageUrl}

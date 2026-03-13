@@ -377,6 +377,10 @@
     justify-content: flex-start !important;
   }
 
+  .mobile-center-content section .rooms-track {
+    justify-content: flex-start !important;
+  }
+
   .mobile-center-content section .items-start {
     align-items: center !important;
   }
