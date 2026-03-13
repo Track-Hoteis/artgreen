@@ -95,7 +95,7 @@ export default function HeroSection() {
             <p className="inline-flex items-center border border-white/20 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white/75 mb-8">
               Teresopolis, RJ · Serra Fluminense
             </p>
-            <h1 className="font-display text-white text-5xl md:text-6xl lg:text-7xl leading-[1.05]">
+            <h1 className="font-display text-white text-[2.05rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05]">
               Descubra Seu Refugio
               <br />
               <span className="text-[#D5E5D1]">na Serra</span>
@@ -103,7 +103,7 @@ export default function HeroSection() {
           </FadeInUp>
 
           <FadeInUp delay={0.1} className="lg:pt-12 lg:pl-8">
-            <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-lg mb-9">
+            <p className="text-white/80 text-sm md:text-lg leading-relaxed max-w-lg mb-9">
               Sofisticacao, natureza e silencio na medida certa para voce viver
               dias de descanso profundo. Um destino exclusivo para casais,
               familias e experiencias memoraveis na montanha.
