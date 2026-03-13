@@ -17,6 +17,7 @@ export interface Room {
   rules: string[];
   petsAllowed: boolean;
   petFee?: string;
+  hidden?: boolean;
 }
 
 export const rooms: Room[] = [
