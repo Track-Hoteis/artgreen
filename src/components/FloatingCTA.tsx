@@ -1,13 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { CalendarDays, X } from 'lucide-react';
 
 import { BookingFormContent } from '@/components/HeroSection';
 
+const RESERVE_HOST = 'reservas.artgreenpousada.com.br';
+const MD_BREAKPOINT = 768;
+
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
 
+  /* Show floating button after scrolling past hero */
   useEffect(() => {
     const hero = document.getElementById('inicio');
     if (!hero) {
@@ -23,6 +27,33 @@ export default function FloatingCTA() {
     observer.observe(hero);
     return () => observer.disconnect();
   }, []);
+
+  /* On mobile, intercept ALL reservation links and open the modal instead */
+  const interceptReserveLinks = useCallback(
+    (e: MouseEvent) => {
+      if (window.innerWidth >= MD_BREAKPOINT) return;
+
+      const anchor = (e.target as HTMLElement).closest?.('a[href]') as HTMLAnchorElement | null;
+      if (!anchor) return;
+
+      try {
+        const url = new URL(anchor.href);
+        if (url.hostname === RESERVE_HOST) {
+          e.preventDefault();
+          e.stopPropagation();
+          setOpen(true);
+        }
+      } catch {
+        // ignore invalid URLs
+      }
+    },
+    [],
+  );
+
+  useEffect(() => {
+    document.addEventListener('click', interceptReserveLinks, true);
+    return () => document.removeEventListener('click', interceptReserveLinks, true);
+  }, [interceptReserveLinks]);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>

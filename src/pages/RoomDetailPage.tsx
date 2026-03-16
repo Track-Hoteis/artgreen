@@ -70,15 +70,14 @@ export default function RoomDetailPage() {
       <section className="pt-16 md:pt-24 pb-8 md:pb-10">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-[1fr_460px] gap-6 lg:gap-7 items-start">
-            {/* Left column - Gallery */}
-            <div>
-              {/* Image Gallery */}
-              <div>
-                <div className="relative overflow-hidden bg-black aspect-[29/14]">
+            {/* Left column - Gallery (stretches to match booking form height) */}
+            <div className="lg:self-stretch flex flex-col">
+              <div className="flex flex-col flex-1">
+                <div className="relative overflow-hidden bg-black flex-1 min-h-[260px]">
                   <img
                     src={room.images[currentImage]}
                     alt={`${room.name} - Foto ${currentImage + 1}`}
-                    className="w-full h-full object-cover transition-opacity duration-500"
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
                   />
                   <button
                     onClick={prevImage}
