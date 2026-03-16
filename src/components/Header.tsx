@@ -113,11 +113,13 @@ export default function Header() {
           <SheetContent>
             <div className="mt-10 flex h-full flex-col">
               <div className="mb-10">
-                <img
-                  src="/logo.png"
-                  alt="Art Green"
-                  className="h-12 w-auto object-contain"
-                />
+                <Link to="/" onClick={() => setOpen(false)}>
+                  <img
+                    src="/logo.png"
+                    alt="Art Green"
+                    className="h-12 w-auto object-contain"
+                  />
+                </Link>
               </div>
 
               <nav className="flex flex-col gap-5">
