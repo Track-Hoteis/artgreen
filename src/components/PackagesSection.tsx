@@ -158,12 +158,18 @@ export default function PackagesSection() {
                           alt={pkg.title}
                           loading="lazy"
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          style={{
-                            objectPosition: pkg.id === 1 ? 'center bottom' : 'center top',
-                          }}
                         />
 
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+
+                        <div className="absolute inset-0 flex flex-col justify-end p-6">
+                          <span className="text-xs uppercase tracking-widest font-medium text-white bg-primary px-3 py-1 rounded-full w-fit mb-3">
+                            {pkg.tag}
+                          </span>
+                          <h3 className="text-xl font-bold text-white mb-2">{pkg.title}</h3>
+                          <p className="text-sm text-white/90 mb-3">{pkg.description}</p>
+                          <span className="text-xs text-white/80">{pkg.dates}</span>
+                        </div>
 
                         <div className="absolute inset-0 flex items-end justify-center pb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-white bg-black/75 px-4 py-2.5 hover:bg-primary transition-colors duration-300 backdrop-blur-sm">
