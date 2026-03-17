@@ -151,7 +151,7 @@ export default function PackagesSection() {
                       <motion.div
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.3 }}
-                        className="group relative overflow-hidden bg-black w-full h-[302px] sm:h-[346px] md:h-[410px]"
+                        className="group relative overflow-hidden bg-black w-full h-[410px] sm:h-[346px] md:h-[410px]"
                       >
                         <img
                           src={pkg.imageUrl}
