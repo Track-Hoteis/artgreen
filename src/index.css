@@ -310,6 +310,96 @@
   .fade-in-up {
     animation: fadeInUp 0.7s ease forwards;
   }
+
+  /* ── Date Range Picker (react-day-picker) ── */
+  .booking-calendar {
+    background: #374E38;
+    padding: 1.25rem;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .booking-calendar .rdp-root {
+    --rdp-accent-color: rgba(255, 255, 255, 0.3);
+    --rdp-accent-background-color: transparent;
+    --rdp-today-color: rgba(255, 255, 255, 0.8);
+    --rdp-day-height: 40px;
+    --rdp-day-width: 40px;
+    --rdp-day_button-height: 38px;
+    --rdp-day_button-width: 38px;
+    --rdp-day_button-border-radius: 0;
+    --rdp-day_button-border: 2px solid transparent;
+    --rdp-selected-border: 2px solid transparent;
+    --rdp-outside-opacity: 0.3;
+    --rdp-disabled-opacity: 0.25;
+    color: #fff;
+  }
+
+  .booking-calendar .rdp-month_caption {
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .booking-calendar .rdp-weekday {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .booking-calendar .rdp-day {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .booking-calendar .rdp-day:hover .rdp-day_button {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .booking-calendar .rdp-today .rdp-day_button {
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 0;
+  }
+
+  .booking-calendar .rdp-disabled {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .booking-calendar .rdp-button_next,
+  .booking-calendar .rdp-button_previous {
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+  }
+
+  .booking-calendar .rdp-button_next:hover,
+  .booking-calendar .rdp-button_previous:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .booking-calendar .rdp-chevron {
+    fill: currentColor;
+  }
+
+  /* Manual range selection styles */
+  .booking-calendar .booking-range-start .rdp-day_button {
+    background: #fff;
+    color: #374E38;
+    font-weight: 700;
+  }
+
+  .booking-calendar .booking-range-end .rdp-day_button {
+    background: #B99B48;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .booking-calendar .booking-range-middle .rdp-day_button {
+    background: rgba(185, 155, 72, 0.2);
+    color: #fff;
+  }
 }
 
 @keyframes fadeInUp {
