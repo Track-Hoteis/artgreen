@@ -149,32 +149,24 @@ export default function PackagesSection() {
                   <FadeInUp delay={(index % packages.length) * 0.04}>
                     <Link to={`/pacotes/${pkg.slug}`}>
                       <motion.div
-                        whileHover={{ scale: 1.01 }}
+                        whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.3 }}
-                        className="group relative block h-[480px] md:h-[384px] lg:h-[432px] overflow-hidden bg-black"
+                        className="group relative overflow-hidden bg-black w-full h-[302px] sm:h-[346px] md:h-[410px]"
                       >
                         <img
                           src={pkg.imageUrl}
                           alt={pkg.title}
                           loading="lazy"
-                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          style={{
+                            objectPosition: pkg.id === 1 ? 'center bottom' : 'center top',
+                          }}
                         />
 
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                        <div className="absolute left-4 top-4">
-                          <span className="inline-flex text-[11px] uppercase tracking-[0.2em] font-medium text-white/90 bg-black/40 px-3 py-1.5 backdrop-blur-sm">
-                            {pkg.tag}
-                          </span>
-                        </div>
-
-                        <div className="absolute left-4 right-4 bottom-4">
-                          <h3 className="font-display text-white text-2xl md:text-[2rem] leading-tight mb-1">
-                            {pkg.title}
-                          </h3>
-                          <p className="text-white/85 text-sm mb-3">{pkg.description}</p>
-
-                          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-white bg-black/65 px-4 py-2 group-hover:bg-primary transition-colors duration-300">
+                        <div className="absolute inset-0 flex items-end justify-center pb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-white bg-black/75 px-4 py-2.5 hover:bg-primary transition-colors duration-300 backdrop-blur-sm">
                             Ver Detalhes
                             <ArrowUpRight size={14} />
                           </span>
