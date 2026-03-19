@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { ptBR } from 'date-fns/locale';
-import { startOfDay, isBefore, isAfter, isSameDay, eachDayOfInterval } from 'date-fns';
+import { startOfDay, isAfter, isSameDay, eachDayOfInterval } from 'date-fns';
 import * as Popover from '@radix-ui/react-popover';
 import { CalendarDays } from 'lucide-react';
 

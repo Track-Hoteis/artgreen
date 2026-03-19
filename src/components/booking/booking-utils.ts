@@ -1,5 +1,4 @@
 import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
 
 export const BASE_URL =
   'https://reservas.artgreenpousada.com.br/hotels/HOTEL_OMNI_19674';
