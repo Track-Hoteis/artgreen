@@ -2,38 +2,38 @@ import FadeInUp from '@/components/animations/FadeInUp';
 
 const mosaicImages = [
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg',
-    alt: 'Um ganso branco proximo a agua',
+    src: '/fazendinha (1).jpeg',
+    alt: 'Fazendinha imagem 1',
     featured: true,
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-27.jpg',
-    alt: 'Homem ao lado de um cavalo',
+    src: '/fazendinha (2).jpeg',
+    alt: 'Fazendinha imagem 2',
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
-    alt: 'Cabra no campo gramado',
+    src: '/fazendinha (3).jpeg',
+    alt: 'Fazendinha imagem 3',
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg',
-    alt: 'Passaro amarelo na gaiola',
+    src: '/fazendinha (4).jpeg',
+    alt: 'Fazendinha imagem 4',
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG',
-    alt: 'Vista da area de lazer',
+    src: '/fazendinha (5).jpeg',
+    alt: 'Fazendinha imagem 5',
     featured: true,
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-05.jpg',
-    alt: 'Mulher montada a cavalo',
+    src: '/fazendinha (6).jpeg',
+    alt: 'Fazendinha imagem 6',
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/IMG_6358.jpg',
-    alt: 'Cavalos no campo gramado',
+    src: '/fazendinha (7).jpeg',
+    alt: 'Fazendinha imagem 7',
   },
   {
-    src: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg',
-    alt: 'Animais na fazendinha',
+    src: '/fazendinha (8).jpeg',
+    alt: 'Fazendinha imagem 8',
   },
 ];
 
@@ -70,10 +70,10 @@ export default function FazendinhaSection() {
     <section id="fazendinha" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4">
         <FadeInUp className="text-center max-w-2xl mx-auto mb-12">
-          <p className="section-eyebrow">Diversao para toda a familia</p>
+          <p className="section-eyebrow">Diversão para toda a família</p>
           <h2 className="section-title">Nossa Fazendinha</h2>
           <p className="section-subtitle mx-auto">
-            Um espaco encantador para aproximar criancas e adultos dos animais,
+            Um espaço encantador para aproximar crianças e adultos dos animais,
             com atividades leves e contato direto com a natureza.
           </p>
         </FadeInUp>

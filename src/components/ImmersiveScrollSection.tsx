@@ -7,26 +7,26 @@ const sections = [
   {
     id: 'relaxar',
     word: 'relaxar',
-    image: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg',
+    image: '/relaxar.webp',
     alt: 'Momento de relaxamento na pousada',
   },
   {
     id: 'sentir',
     word: 'sentir',
-    image: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg',
-    alt: 'Experiencias sensoriais na natureza',
+    image: '/sentir.webp',
+    alt: 'Experiências sensoriais na natureza',
   },
   {
     id: 'desconectar',
     word: 'desconectar',
-    image: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
+    image: '/desconectar.webp',
     alt: 'Desconexao e tranquilidade',
   },
   {
     id: 'desacelerar',
     word: 'desacelerar',
-    image: 'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-27.jpg',
-    alt: 'Momentos de desaceleracao',
+    image: '/desacelerar.webp',
+    alt: 'Momentos de desaceleração',
   },
 ];
 

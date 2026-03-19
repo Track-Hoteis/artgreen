@@ -3,7 +3,7 @@ import VideoLazy from '@/components/VideoLazy';
 
 export default function VideoTransition() {
   return (
-    <section aria-label="Video de transicao" className="hidden md:block bg-cream">
+    <section aria-label="Vídeo de transição" className="hidden md:block bg-cream">
       <FadeInUp>
         <div className="relative w-full h-[60dvh] overflow-hidden">
           <VideoLazy

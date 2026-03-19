@@ -9,49 +9,49 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    text: 'A pousada superou nossas expectativas. O ambiente e o atendimento tornaram nossa viagem inesquecivel.',
+    text: 'A pousada superou nossas expectativas. O ambiente e o atendimento tornaram nossa viagem inesquecível.',
     name: 'Mariana Souza',
-    role: 'Hospede',
+    role: 'Hóspede',
   },
   {
-    text: 'A reserva foi simples e a experiencia foi impecavel. Voltaremos com certeza na proxima temporada.',
+    text: 'A reserva foi simples e a experiência foi impecável. Voltaremos com certeza na próxima temporada.',
     name: 'Carlos Mendes',
-    role: 'Hospede',
+    role: 'Hóspede',
   },
   {
-    text: 'Estrutura excelente para descansar em familia, com contato com a natureza e muito conforto.',
+    text: 'Estrutura excelente para descansar em família, com contato com a natureza e muito conforto.',
     name: 'Fernanda Lima',
-    role: 'Hospede',
+    role: 'Hóspede',
   },
   {
-    text: 'Paisagem linda, quartos confortaveis e gastronomia de alto nivel. Experiencia completa na serra.',
+    text: 'Paisagem linda, quartos confortáveis e gastronomia de alto nível. Experiência completa na serra.',
     name: 'Rafael Duarte',
-    role: 'Hospede',
+    role: 'Hóspede',
   },
   {
-    text: 'Atendimento atencioso do inicio ao fim. Nos sentimos acolhidos em todos os detalhes da estadia.',
+    text: 'Atendimento atencioso do início ao fim. Nos sentimos acolhidos em todos os detalhes da estadia.',
     name: 'Juliana Rocha',
-    role: 'Hospede',
+    role: 'Hóspede',
   },
   {
     text: 'Ideal para desacelerar e aproveitar momentos especiais. Ambiente tranquilo e muito bem cuidado.',
     name: 'Bruno Almeida',
-    role: 'Hospede',
+    role: 'Hóspede',
   },
   {
-    text: 'A fazendinha e as areas externas encantaram toda a familia. Tudo muito bonito e organizado.',
+    text: 'A fazendinha e as áreas externas encantaram toda a família. Tudo muito bonito e organizado.',
     name: 'Patricia Nunes',
-    role: 'Hospede',
+    role: 'Hóspede',
   },
   {
-    text: 'Cada espaco da pousada transmite cuidado e qualidade. Foi uma viagem perfeita para descansar.',
+    text: 'Cada espaço da pousada transmite cuidado e qualidade. Foi uma viagem perfeita para descansar.',
     name: 'Camila Martins',
-    role: 'Hospede',
+    role: 'Hóspede',
   },
   {
-    text: 'Excelente custo-beneficio para quem busca conforto, natureza e um atendimento realmente diferenciado.',
+    text: 'Excelente custo-benefício para quem busca conforto, natureza e um atendimento realmente diferenciado.',
     name: 'Eduardo Silva',
-    role: 'Hospede',
+    role: 'Hóspede',
   },
 ];
 
@@ -152,10 +152,10 @@ export default function TestimonialV2() {
             id="testimonials-heading"
             className="mt-6 font-display text-4xl font-extrabold tracking-tight text-text-primary"
           >
-            O que nossos hospedes dizem
+            O que nossos hóspedes dizem
           </h2>
           <p className="mt-5 max-w-md text-base leading-relaxed text-text-medium md:text-lg">
-            Historias reais de quem viveu dias especiais no Art Green.
+            Histórias reais de quem viveu dias especiais no Art Green.
           </p>
         </div>
 

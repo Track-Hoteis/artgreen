@@ -5,8 +5,8 @@ import FadeInUp from '@/components/animations/FadeInUp';
 
 const quickLinks = [
   { label: 'A Pousada', to: '/' },
-  { label: 'Acomodacoes', to: '/acomodacoes' },
-  { label: 'Experiencias', to: '/experiencias' },
+  { label: 'Acomodações', to: '/acomodacoes' },
+  { label: 'Experiências', to: '/experiencias' },
   { label: 'Pacotes', to: '/pacotes' },
   { label: 'Gastronomia', to: '/gastronomia' },
   { label: 'Contato', to: '/contato' },
@@ -33,8 +33,8 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              Um refugio acolhedor em meio a natureza da serra fluminense,
-              com conforto, lazer e experiencias inesqueciveis.
+              Um refúgio acolhedor em meio à natureza da serra fluminense,
+              com conforto, lazer e experiências inesquecíveis.
             </p>
             <div className="flex gap-3">
               <a
@@ -59,7 +59,7 @@ export default function Footer() {
           </FadeInUp>
 
           <FadeInUp delay={0.05}>
-            <h4 className="font-display text-xl mb-4">Links Rapidos</h4>
+            <h4 className="font-display text-xl mb-4">Links Rápidos</h4>
             <nav className="flex flex-col gap-2.5">
               {quickLinks.map((link) => (
                 <Link
@@ -77,9 +77,9 @@ export default function Footer() {
             <h4 className="font-display text-xl mb-4">Contato</h4>
             <div className="space-y-3 text-sm text-white/70">
               <p>
-                Greenland, Estrada Rincao do Vovo, s/n
+                Greenland, Estrada Rincão do Vovô, s/n
                 <br />
-                Prata, Teresopolis - RJ
+                Prata, Teresópolis - RJ
               </p>
               <p>
                 <a href="tel:+552127480222" className="hover:text-white transition-colors">

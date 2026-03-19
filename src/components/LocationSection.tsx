@@ -4,8 +4,8 @@ import FadeInUp from '@/components/animations/FadeInUp';
 
 const distances = [
   '500 m do Parque Municipal',
-  '12 km do centro de Teresopolis',
-  '105 km do Aeroporto do Galeao',
+  '12 km do centro de Teresópolis',
+  '105 km do Aeroporto do Galeão',
 ];
 
 export default function LocationSection() {
@@ -21,7 +21,7 @@ export default function LocationSection() {
               <div className="flex items-start gap-3 mb-5">
                 <MapPin size={18} className="text-primary mt-1 flex-shrink-0" />
                 <p className="text-text-medium text-sm leading-relaxed">
-                  Greenland, Estrada Rincao do Vovo, s/n - Prata, Teresopolis -
+                  Greenland, Estrada Rincão do Vovô, s/n - Prata, Teresópolis -
                   RJ, CEP 25980-010
                 </p>
               </div>
@@ -64,8 +64,8 @@ export default function LocationSection() {
           <FadeInUp delay={0.1}>
             <div className="overflow-hidden shadow-lg aspect-[4/3]">
               <iframe
-                title="Localizacao Pousada Art Green"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.123!2d-43.0889!3d-22.4112!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDI0JzQwLjMiUyA0M8KwMDUnMjAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+                title="Localização Pousada Art Green"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.216!2d-42.9850354!3d-22.3400328!2m3!1f0!2f0!3f0!3m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x984d2c0b8bd131:0xb114155348e42261!2sGreenland!5e0!3m2!1spt-BR!2sbr!4v1710757200000"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

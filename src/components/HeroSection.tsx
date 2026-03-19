@@ -17,10 +17,10 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start pb-14 lg:pb-16">
           <FadeInUp>
             <p className="inline-flex items-center border border-white/20 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white/75 mb-8">
-              Teresopolis, RJ · Serra Fluminense
+              Teresópolis, RJ · Serra Fluminense
             </p>
             <h1 className="font-display text-white text-[2.05rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05]">
-              Descubra Seu Refugio
+              Descubra Seu Refúgio
               <br />
               <span className="text-[#D5E5D1]">na Serra</span>
             </h1>
@@ -28,9 +28,9 @@ export default function HeroSection() {
 
           <FadeInUp delay={0.1} className="lg:pt-12 lg:pl-8">
             <p className="text-white/80 text-sm md:text-lg leading-relaxed max-w-lg mb-9">
-              Sofisticacao, natureza e silencio na medida certa para voce viver
+              Sofisticação, natureza e silêncio na medida certa para você viver
               dias de descanso profundo. Um destino exclusivo para casais,
-              familias e experiencias memoraveis na montanha.
+              famílias e experiências memoráveis na montanha.
             </p>
             <a
               href="https://reservas.artgreenpousada.com.br/"

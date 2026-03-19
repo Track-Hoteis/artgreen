@@ -170,7 +170,7 @@ export default function ExperiencesPage() {
       {/* ============================================================ */}
       <section className="relative h-dvh overflow-hidden">
         <motion.img
-          src="https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg"
+          src="/experiencias/experiencias.webp"
           alt="Experiências Art Green"
           initial={{ scale: 1.2 }}
           animate={{ scale: 1 }}
@@ -206,8 +206,8 @@ export default function ExperiencesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
           >
-            Atividades inclusas na estadia para toda a familia. Cada momento na
-            Art Green e pensado para criar memorias especiais.
+            Atividades inclusas na estadia para toda a família. Cada momento na
+            Art Green é pensado para criar memórias especiais.
           </motion.p>
         </div>
 
@@ -222,13 +222,13 @@ export default function ExperiencesPage() {
           <FadeInUp>
             <p className="section-eyebrow">Tudo incluso na sua estadia</p>
             <h2 className="section-title">
-              cada detalhe pensado para criar memorias
+              cada detalhe pensado para criar memórias
             </h2>
             <div className="w-16 h-px bg-accent mx-auto my-6" />
             <p className="text-text-medium font-body leading-relaxed">
-              Da piscina ao passeio a cavalo, da musica ao vivo a degustacao de
-              vinhos — cada experiencia foi desenhada para que voce e sua familia
-              vivam momentos inesqueciveis na serra.
+              Da piscina ao passeio a cavalo, da música ao vivo a degustação de
+              vinhos — cada experiência foi desenhada para que você e sua família
+              vivam momentos inesquecíveis na serra.
             </p>
           </FadeInUp>
         </div>
@@ -435,8 +435,8 @@ export default function ExperiencesPage() {
           <FadeInUp>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
               {[
-                'Interacao com animais da fazenda',
-                'Area segura para criancas',
+                'Interação com animais da fazenda',
+                'Área segura para crianças',
                 'Incluso na estadia',
               ].map((text) => (
                 <span
@@ -477,8 +477,8 @@ export default function ExperiencesPage() {
               venha viver tudo isso
             </h2>
             <p className="text-white/70 font-body mb-10 max-w-xl mx-auto leading-relaxed">
-              Todas as experiencias estao inclusas na sua reserva. Venha viver
-              momentos inesqueciveis na serra.
+              Todas as experiências estão inclusas na sua reserva. Venha viver
+              momentos inesquecíveis na serra.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a

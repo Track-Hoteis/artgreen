@@ -16,27 +16,27 @@ import VideoLazy from '@/components/VideoLazy';
 const highlights = [
   {
     icon: <UtensilsCrossed size={28} />,
-    title: 'Culinaria Italiana Artesanal',
+    title: 'Culinária Italiana Artesanal',
     description:
-      'Pratos preparados com ingredientes frescos e tecnica refinada, celebrando a tradicao italiana.',
+      'Pratos preparados com ingredientes frescos e técnica refinada, celebrando a tradição italiana.',
   },
   {
     icon: <Coffee size={28} />,
-    title: 'Cafe da Manha Incluso',
+    title: 'Café da Manhã Incluso',
     description:
-      'Um cafe da manha completo e acolhedor para comecar o dia com energia e sabor.',
+      'Um café da manhã completo e acolhedor para começar o dia com energia e sabor.',
   },
   {
     icon: <CalendarDays size={28} />,
     title: 'Jantar Especial',
     description:
-      'Toda sexta e sabado, um jantar especial preparado com carinho pelo nosso chef.',
+      'Toda sexta e sábado, um jantar especial preparado com carinho pelo nosso chef.',
   },
   {
     icon: <Wine size={28} />,
-    title: 'Degustacao de Vinhos',
+    title: 'Degustação de Vinhos',
     description:
-      'Experiencias gastronomicas com nosso sommelier, harmonizando vinhos e queijos selecionados.',
+      'Experiências gastronômicas com nosso sommelier, harmonizando vinhos e queijos selecionados.',
   },
 ];
 
@@ -63,7 +63,7 @@ const gallery = [
   },
   {
     src: '/experiencias/vinhos.webp',
-    alt: 'Degustacao de vinhos',
+    alt: 'Degustação de vinhos',
   },
 ];
 
@@ -120,8 +120,8 @@ export default function GastronomyPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85, duration: 0.6 }}
           >
-            Uma experiencia gastronomica unica em meio as montanhas de
-            Teresopolis
+            Uma experiência gastronômica única em meio às montanhas de
+            Teresópolis
           </motion.p>
         </div>
 
@@ -141,14 +141,14 @@ export default function GastronomyPage() {
                 art cucina
               </h2>
               <p className="text-text-medium font-body leading-relaxed mb-6">
-                No Art Cucina, cada prato celebra ingredientes frescos, tecnica e
+                No Art Cucina, cada prato celebra ingredientes frescos, técnica e
                 afeto. Um convite para desacelerar e saborear momentos especiais
-                em um cenario acolhedor da serra fluminense.
+                em um cenário acolhedor da serra fluminense.
               </p>
               <p className="text-text-medium font-body leading-relaxed mb-8">
-                Nosso restaurante combina a tradicao da culinaria italiana com o
-                frescor dos ingredientes locais, criando uma experiencia
-                gastronomica unica em meio as montanhas de Teresopolis.
+                Nosso restaurante combina a tradição da culinária italiana com o
+                frescor dos ingredientes locais, criando uma experiência
+                gastronômica única em meio às montanhas de Teresópolis.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -199,7 +199,7 @@ export default function GastronomyPage() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <FadeInUp className="text-center mb-14">
             <p className="section-eyebrow">Nossos Destaques</p>
-            <h2 className="section-title">experiencia gastronomica</h2>
+            <h2 className="section-title">experiência gastronômica</h2>
             <div className="w-16 h-px bg-accent mx-auto mt-6" />
           </FadeInUp>
 
@@ -278,9 +278,9 @@ export default function GastronomyPage() {
                   onde cada detalhe importa
                 </h2>
                 <p className="text-text-medium font-body leading-relaxed mb-8">
-                  Um espaco pensado para envolver todos os sentidos. Iluminacao
-                  acolhedora, musica suave e uma atmosfera que transforma cada
-                  refeicao em um momento especial. O Art Cucina e o cenario
+                  Um espaço pensado para envolver todos os sentidos. Iluminação
+                  acolhedora, música suave e uma atmosfera que transforma cada
+                  refeição em um momento especial. O Art Cucina é o cenário
                   perfeito para celebrar a vida.
                 </p>
                 <ul className="space-y-4">
@@ -385,7 +385,7 @@ export default function GastronomyPage() {
             <div className="grid sm:grid-cols-2 gap-6 mb-8 max-w-lg mx-auto">
               <div className="bg-white/10 p-8">
                 <p className="font-body uppercase text-xs tracking-[0.2em] text-white/50 mb-3">
-                  Cafe da Manha
+                  Café da Manhã
                 </p>
                 <p className="font-display text-2xl text-white mb-1">
                   7h30 as 10h00
@@ -402,13 +402,13 @@ export default function GastronomyPage() {
                   19h00 as 22h00
                 </p>
                 <p className="text-white/50 text-sm font-body">
-                  Sextas e sabados
+                  Sextas e sábados
                 </p>
               </div>
             </div>
             <div className="w-16 h-px bg-accent mx-auto my-8" />
             <p className="text-white/50 text-sm font-body max-w-md mx-auto">
-              O jantar esta disponivel para hospedes e visitantes mediante
+              O jantar está disponível para hóspedes e visitantes mediante
               reserva.
             </p>
           </FadeInUp>
@@ -434,11 +434,11 @@ export default function GastronomyPage() {
               className="h-14 md:h-20 mx-auto mb-8 opacity-80"
             />
             <h2 className="font-display text-4xl md:text-5xl text-white mb-5">
-              reserve sua experiencia gastronomica
+              reserve sua experiência gastronômica
             </h2>
             <p className="text-white/60 font-body mb-10 max-w-xl mx-auto leading-relaxed">
-              Cafe da manha incluso na estadia. Jantar especial toda sexta e
-              sabado. Venha viver uma experiencia unica na serra.
+              Café da manhã incluso na estadia. Jantar especial toda sexta e
+              sábado. Venha viver uma experiência única na serra.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a

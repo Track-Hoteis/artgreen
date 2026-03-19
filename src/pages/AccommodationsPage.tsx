@@ -29,11 +29,11 @@ export default function AccommodationsPage() {
   return (
     <main className="bg-cream">
       <PageHero
-        title="nossas acomodacoes"
+        title="nossas acomodações"
         image="https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg"
         breadcrumbs={[
           { label: 'Home', to: '/' },
-          { label: 'Acomodacoes' },
+          { label: 'Acomodações' },
         ]}
       />
 
@@ -41,9 +41,9 @@ export default function AccommodationsPage() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <FadeInUp className="text-center mb-14">
             <p className="section-eyebrow">Conforto & Natureza</p>
-            <h2 className="section-title">escolha sua acomodacao</h2>
-            <p className="text-text-medium max-w-2xl mx-auto mt-4">
-              Cada acomodacao foi pensada para oferecer o maximo de conforto em
+            <h2 className="section-title">escolha sua acomodação</h2>
+            <p className="text-text-medium max-w-2xl mx-auto mt-4 font-body">
+              Cada acomodação foi pensada para oferecer o máximo de conforto em
               meio a natureza da serra fluminense.
             </p>
           </FadeInUp>

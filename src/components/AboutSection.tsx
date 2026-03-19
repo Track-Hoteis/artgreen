@@ -5,15 +5,13 @@ import FadeInUp from '@/components/animations/FadeInUp';
 
 const highlights = [
   'Atividades inclusas na estadia',
-  'Experiencias para toda a familia',
+  'Experiências para toda a família',
 ];
 
 const carouselImages = [
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-27.jpg',
+  '/IMG_4357.JPG.webp',
+  '/IMG_4358.JPG.webp',
+  '/IMG_4359.JPG.webp',
 ];
 
 function PlayIcon() {
@@ -93,9 +91,9 @@ export default function AboutSection() {
             </h2>
 
             <p className="text-text-medium leading-relaxed mb-8 max-w-xl">
-              Situada em Teresopolis, dentro do complexo Greenland, a Art Green
+              Situada em Teresópolis, dentro do condomínio Greenland, a Art Green
               oferece estrutura completa para descansar com conforto, respirar
-              ar puro e viver momentos memoraveis entre montanhas, lagos e
+              ar puro e viver momentos memoráveis entre montanhas, lagos e
               gastronomia afetiva.
             </p>
 
@@ -158,7 +156,7 @@ export default function AboutSection() {
                   6k+
                 </p>
                 <p className="text-[10px] uppercase tracking-[0.16em] text-white/80 mt-1.5 px-2">
-                  Hospedes satisfeitos
+                  Hóspedes satisfeitos
                 </p>
               </div>
             </div>

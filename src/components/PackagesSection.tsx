@@ -92,7 +92,7 @@ export default function PackagesSection() {
           <p className="section-eyebrow">Pacotes e Informativos</p>
           <h2 className="section-title">Ofertas Especiais</h2>
           <p className="section-subtitle mx-auto">
-            Confira nossos pacotes exclusivos para viver experiencias
+            Confira nossos pacotes exclusivos para viver experiências
             inesqueciveis na serra.
           </p>
         </FadeInUp>

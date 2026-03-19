@@ -2,10 +2,12 @@ import FadeInUp from '@/components/animations/FadeInUp';
 import VideoLazy from '@/components/VideoLazy';
 
 const highlights = [
-  'Culinaria italiana artesanal',
-  'Cafe da manha incluso',
-  'Jantar especial as sextas e sabados',
-  'Degustacao de vinhos e queijos',
+  'Culinária italiana artesanal',
+  'Café da manhã incluso',
+  'Opção de pensão completa',
+  'Jantar especial às sextas e sábados',
+  'Degustação de vinhos e queijos (evento sazonal de inverno, incluso na pensão completa)',
+  'Música ao vivo sábado (almoço e jantar)',
 ];
 
 export default function GastronomySection() {
@@ -30,12 +32,12 @@ export default function GastronomySection() {
           <FadeInUp delay={0.1}>
             <p className="section-eyebrow">Restaurante Art Cucina</p>
             <h2 className="section-title text-2xl md:text-3xl lg:text-4xl">
-              Experiencia gastronomica em ambiente romantico
+              Experiência gastronômica em ambiente romântico
             </h2>
             <p className="text-text-medium leading-relaxed mb-6">
-              No Art Cucina, cada prato celebra ingredientes frescos, tecnica e
+              No Art Cucina, cada prato celebra ingredientes frescos, técnica e
               afeto. Um convite para desacelerar e saborear momentos especiais
-              em um cenario acolhedor da serra fluminense.
+              em um cenário acolhedor da serra fluminense.
             </p>
 
             <ul className="space-y-2 mb-8">
@@ -47,7 +49,7 @@ export default function GastronomySection() {
             </ul>
 
             <a href="#experiencias" className="btn-primary">
-              Ver Experiencia
+              Ver Experiência
             </a>
           </FadeInUp>
         </div>

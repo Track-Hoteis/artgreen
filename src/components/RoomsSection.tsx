@@ -113,8 +113,8 @@ export default function RoomsSection() {
     <section id="acomodacoes" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4">
         <FadeInUp className="text-center mb-10 md:mb-12">
-          <p className="section-eyebrow">Nossas Acomodacoes</p>
-          <h2 className="section-title">Quartos e Suites</h2>
+          <p className="section-eyebrow">Nossas Acomodações</p>
+          <h2 className="section-title">Suítes</h2>
         </FadeInUp>
 
         <div className="relative">
@@ -128,7 +128,7 @@ export default function RoomsSection() {
 
           <button
             onClick={() => setCurrentSlide((prev) => prev + 1)}
-            aria-label="Proximo slide"
+            aria-label="Próximo slide"
             className="absolute right-2 md:-right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/95 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
           >
             <ChevronRight size={20} />

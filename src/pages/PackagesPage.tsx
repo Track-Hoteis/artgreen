@@ -23,9 +23,9 @@ export default function PackagesPage() {
             <p className="section-eyebrow">Pacotes Especiais</p>
             <h2 className="section-title">ofertas exclusivas</h2>
             <p className="text-text-medium max-w-2xl mx-auto mt-4 font-body">
-              Confira nossos pacotes sazonais e viva experiencias inesqueciveis
+              Confira nossos pacotes sazonais e viva experiências inesquecíveis
               na serra fluminense. Cada pacote foi pensado para oferecer momentos
-              unicos de descanso, lazer e gastronomia.
+              únicos de descanso, lazer e gastronomia.
             </p>
           </FadeInUp>
 
@@ -40,7 +40,7 @@ export default function PackagesPage() {
                     <img
                       src={pkg.imageUrl}
                       alt={pkg.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                     <span className="absolute top-4 left-4 inline-flex text-[11px] uppercase tracking-[0.2em] font-medium text-white/90 bg-black/40 px-3 py-1.5 backdrop-blur-sm font-body">
@@ -79,11 +79,11 @@ export default function PackagesPage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <FadeInUp>
             <h2 className="font-display text-3xl md:text-4xl text-white mb-4">
-              nao encontrou o pacote ideal?
+              não encontrou o pacote ideal?
             </h2>
             <p className="text-white/70 font-body mb-8 max-w-xl mx-auto">
               Entre em contato conosco e montamos um pacote personalizado para
-              voce e sua familia.
+              você e sua família.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

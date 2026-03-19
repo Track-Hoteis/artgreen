@@ -30,10 +30,10 @@ export default function ChildrenSelector({
 
   const countLabel =
     childrenCount === 0
-      ? '0 Criancas'
+      ? '0 Crianças'
       : childrenCount === 1
-        ? '1 Crianca'
-        : `${childrenCount} Criancas`;
+        ? '1 Criança'
+        : `${childrenCount} Crianças`;
 
   return (
     <div className="flex flex-col">
@@ -43,7 +43,7 @@ export default function ChildrenSelector({
         }`}
       >
         <Baby size={isLight ? 14 : 13} />
-        Criancas
+        Crianças
       </span>
 
       <Popover.Root open={open} onOpenChange={setOpen}>
@@ -62,7 +62,7 @@ export default function ChildrenSelector({
             {/* Number of children */}
             <div className="mb-4">
               <label className="block text-[11px] uppercase tracking-[0.2em] text-white/60 mb-2">
-                N° de Criancas
+                N° de Crianças
               </label>
               <div className="relative">
                 <select

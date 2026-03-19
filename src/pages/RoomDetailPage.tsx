@@ -131,7 +131,7 @@ export default function RoomDetailPage() {
           <FadeInUp>
             <div className="mb-14 text-center">
               <h2 className="font-display text-3xl text-text-primary mb-4">
-                sobre a acomodacao
+                sobre a acomodação
               </h2>
               <p className="text-text-medium font-body leading-relaxed">
                 {room.fullDescription}

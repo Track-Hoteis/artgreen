@@ -179,7 +179,7 @@ export default function ContactPage() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Localizacao Pousada Art Green"
+                  title="Localização Pousada Art Green"
                 />
               </div>
             </FadeInUp>
@@ -224,7 +224,7 @@ export default function ContactPage() {
             </h2>
             <p className="text-white/70 font-body mb-8 max-w-xl mx-auto">
               Estamos prontos para recebe-lo. Reserve agora e viva a
-              experiencia Art Green.
+              experiência Art Green.
             </p>
             <a
               href="https://reservas.artgreenpousada.com.br/"

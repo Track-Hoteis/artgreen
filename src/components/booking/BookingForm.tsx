@@ -79,7 +79,7 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
           <div className="flex flex-col">
             <label className="text-xs font-semibold text-text-medium uppercase tracking-wide mb-2 flex items-center gap-1.5">
               <Users size={14} />
-              Hospedes
+              Hóspedes
             </label>
             <select
               value={adults}
@@ -88,7 +88,7 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
             >
               {[1, 2, 3, 4, 5, 6].map((n) => (
                 <option key={n} value={n}>
-                  {n} {n === 1 ? 'hospede' : 'hospedes'}
+                  {n} {n === 1 ? 'hóspede' : 'hóspedes'}
                 </option>
               ))}
             </select>
@@ -126,7 +126,7 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
             <div className="flex flex-col">
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-2 flex items-center gap-1.5">
                 <Users size={13} />
-                Hospedes
+                Hóspedes
               </span>
               <select
                 value={adults}

@@ -64,7 +64,7 @@ export default function PackageDetailPage() {
                   <img
                     src={pkg.imageUrl}
                     alt={pkg.title}
-                    className="w-full h-[300px] md:h-[420px] object-cover"
+                    className="w-full h-[300px] md:h-[420px] object-cover object-center"
                   />
                 </div>
               </FadeInUp>
