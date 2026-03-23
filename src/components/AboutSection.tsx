@@ -56,19 +56,19 @@ export default function AboutSection() {
 
       {/* ── Decorative floating pines ── */}
       <img
-        src="/pinheiro.png"
+        src="/pinheiro.webp"
         alt=""
         aria-hidden="true"
         className="absolute top-8 left-4 lg:left-10 w-12 sm:w-14 md:w-16 opacity-25 bounce-animate pointer-events-none select-none"
       />
       <img
-        src="/pinheiro.png"
+        src="/pinheiro.webp"
         alt=""
         aria-hidden="true"
         className="absolute bottom-20 left-1/2 -translate-x-1/2 lg:left-[42%] lg:translate-x-0 w-10 sm:w-12 md:w-14 opacity-20 bounce-animate3 pointer-events-none select-none"
       />
       <img
-        src="/pinheiro.png"
+        src="/pinheiro.webp"
         alt=""
         aria-hidden="true"
         className="absolute bottom-8 left-6 lg:left-16 w-11 sm:w-12 md:w-14 opacity-20 bounce-animate2 pointer-events-none select-none"

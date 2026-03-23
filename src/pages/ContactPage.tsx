@@ -2,6 +2,7 @@ import { MapPin, Phone, Mail, MessageCircle, Navigation } from 'lucide-react';
 
 import PageHero from '@/components/PageHero';
 import FadeInUp from '@/components/animations/FadeInUp';
+import { SEO } from '@/components/SEO';
 
 const distances = [
   { label: 'Parque Municipal de Teresopolis', distance: '500m' },
@@ -12,6 +13,11 @@ const distances = [
 export default function ContactPage() {
   return (
     <main className="bg-cream">
+      <SEO
+        title="Contato"
+        description="Entre em contato com a Pousada Art Green em Teresópolis. Telefone, e-mail, localização e como chegar."
+        url="/contato"
+      />
       <PageHero
         title="contato"
         image="https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg"

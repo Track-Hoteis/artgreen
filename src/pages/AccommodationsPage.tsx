@@ -12,6 +12,7 @@ import {
 
 import PageHero from '@/components/PageHero';
 import FadeInUp from '@/components/animations/FadeInUp';
+import { SEO } from '@/components/SEO';
 import { rooms } from '@/data/rooms';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -28,6 +29,11 @@ const iconMap: Record<string, React.ReactNode> = {
 export default function AccommodationsPage() {
   return (
     <main className="bg-cream">
+      <SEO
+        title="Acomodações"
+        description="Conheça nossos chalés, lofts na árvore e suítes em Teresópolis. Hospedagem com conforto e natureza na serra fluminense."
+        url="/acomodacoes"
+      />
       <PageHero
         title="nossas acomodações"
         image="https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_acomodacoes_ft-06.jpg"

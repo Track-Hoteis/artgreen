@@ -12,6 +12,7 @@ import {
 import FadeInUp from '@/components/animations/FadeInUp';
 import ParallaxImage from '@/components/animations/ParallaxImage';
 import VideoLazy from '@/components/VideoLazy';
+import { SEO } from '@/components/SEO';
 
 const highlights = [
   {
@@ -74,6 +75,11 @@ export default function GastronomyPage() {
 
   return (
     <main className="bg-cream">
+      <SEO
+        title="Gastronomia"
+        description="Culinária italiana artesanal, café da manhã incluso e jantares especiais na Pousada Art Green em Teresópolis."
+        url="/gastronomia"
+      />
       {/* ============================================================ */}
       {/* 1. HERO CINEMATOGRÁFICO — Vídeo 100vh                       */}
       {/* ============================================================ */}
@@ -99,7 +105,7 @@ export default function GastronomyPage() {
         {/* Central content — Logo + subtitle */}
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6">
           <motion.img
-            src="/logo-artcucina.png"
+            src="/logo-artcucina.webp"
             alt="Art Cucina"
             className="h-20 md:h-28 lg:h-32 mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -243,7 +249,7 @@ export default function GastronomyPage() {
               </h2>
             </div>
             <img
-              src="/logo-artcucina.png"
+              src="/logo-artcucina.webp"
               alt="Art Cucina"
               className="absolute bottom-4 right-4 h-10 lg:h-14 opacity-50 pointer-events-none"
             />
@@ -429,7 +435,7 @@ export default function GastronomyPage() {
         <div className="relative z-10 text-center px-6 py-20">
           <FadeInUp>
             <img
-              src="/logo-artcucina.png"
+              src="/logo-artcucina.webp"
               alt="Art Cucina"
               className="h-14 md:h-20 mx-auto mb-8 opacity-80"
             />

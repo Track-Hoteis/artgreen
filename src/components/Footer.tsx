@@ -27,7 +27,7 @@ export default function Footer() {
           <FadeInUp>
             <div className="mb-4">
               <img
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Art Green"
                 className="h-12 w-auto object-contain"
               />

@@ -17,6 +17,7 @@ import {
 
 import PageHero from '@/components/PageHero';
 import FadeInUp from '@/components/animations/FadeInUp';
+import { SEO } from '@/components/SEO';
 import { packages } from '@/data/packages';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -41,8 +42,18 @@ export default function PackageDetailPage() {
 
   const otherPackages = packages.filter((p) => p.id !== pkg.id);
 
+  const seoDescription = pkg.description.length > 160
+    ? pkg.description.slice(0, 157) + '...'
+    : pkg.description;
+
   return (
     <main className="bg-cream">
+      <SEO
+        title={pkg.title}
+        description={seoDescription}
+        image={pkg.imageUrl}
+        url={`/pacotes/${pkg.slug}`}
+      />
       <PageHero
         title={pkg.title}
         image={pkg.imageUrl}

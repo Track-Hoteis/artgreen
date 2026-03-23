@@ -14,7 +14,7 @@ export default function VideoTransition() {
             className="w-full h-full object-cover object-top"
           />
           <img
-            src="/logo-artcucina.png"
+            src="/logo-artcucina.webp"
             alt="Art Cucina"
             className="absolute bottom-4 right-4 h-12 lg:h-16 opacity-60 pointer-events-none"
           />

@@ -21,6 +21,7 @@ import {
 import PageHero from '@/components/PageHero';
 import FadeInUp from '@/components/animations/FadeInUp';
 import { BookingFormContent } from '@/components/HeroSection';
+import { SEO } from '@/components/SEO';
 import { rooms } from '@/data/rooms';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -46,6 +47,10 @@ export default function RoomDetailPage() {
 
   const relatedRooms = rooms.filter((r) => !r.hidden && r.id !== room.id).slice(0, 3);
 
+  const seoDescription = room.description.length > 160
+    ? room.description.slice(0, 157) + '...'
+    : room.description;
+
   const prevImage = () =>
     setCurrentImage((prev) =>
       prev === 0 ? room.images.length - 1 : prev - 1
@@ -57,6 +62,12 @@ export default function RoomDetailPage() {
 
   return (
     <main className="bg-cream">
+      <SEO
+        title={room.name}
+        description={seoDescription}
+        image={room.images[0]}
+        url={`/acomodacoes/${room.slug}`}
+      />
       <PageHero
         title={room.name}
         image={room.images[0]}

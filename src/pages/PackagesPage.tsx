@@ -3,11 +3,17 @@ import { CalendarDays, ArrowRight } from 'lucide-react';
 
 import PageHero from '@/components/PageHero';
 import FadeInUp from '@/components/animations/FadeInUp';
+import { SEO } from '@/components/SEO';
 import { packages } from '@/data/packages';
 
 export default function PackagesPage() {
   return (
     <main className="bg-cream">
+      <SEO
+        title="Pacotes & Ofertas"
+        description="Confira pacotes especiais e ofertas exclusivas na Pousada Art Green em Teresópolis. Experiências únicas na serra fluminense."
+        url="/pacotes"
+      />
       <PageHero
         title="pacotes & ofertas"
         image="https://lirp.cdn-website.com/8406003a/dms3rep/multi/opt/Banner+site+%2832%29-1920w.png"

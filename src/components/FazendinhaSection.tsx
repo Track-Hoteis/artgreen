@@ -2,37 +2,37 @@ import FadeInUp from '@/components/animations/FadeInUp';
 
 const mosaicImages = [
   {
-    src: '/fazendinha (1).jpeg',
+    src: '/fazendinha (1).webp',
     alt: 'Fazendinha imagem 1',
     featured: true,
   },
   {
-    src: '/fazendinha (2).jpeg',
+    src: '/fazendinha (2).webp',
     alt: 'Fazendinha imagem 2',
   },
   {
-    src: '/fazendinha (3).jpeg',
+    src: '/fazendinha (3).webp',
     alt: 'Fazendinha imagem 3',
   },
   {
-    src: '/fazendinha (4).jpeg',
+    src: '/fazendinha (4).webp',
     alt: 'Fazendinha imagem 4',
   },
   {
-    src: '/fazendinha (5).jpeg',
+    src: '/fazendinha (5).webp',
     alt: 'Fazendinha imagem 5',
     featured: true,
   },
   {
-    src: '/fazendinha (6).jpeg',
+    src: '/fazendinha (6).webp',
     alt: 'Fazendinha imagem 6',
   },
   {
-    src: '/fazendinha (7).jpeg',
+    src: '/fazendinha (7).webp',
     alt: 'Fazendinha imagem 7',
   },
   {
-    src: '/fazendinha (8).jpeg',
+    src: '/fazendinha (8).webp',
     alt: 'Fazendinha imagem 8',
   },
 ];

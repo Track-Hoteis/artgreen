@@ -14,6 +14,7 @@ import {
 import FadeInUp from '@/components/animations/FadeInUp';
 import ParallaxImage from '@/components/animations/ParallaxImage';
 import VideoLazy from '@/components/VideoLazy';
+import { SEO } from '@/components/SEO';
 import { experiences } from '@/data/experiences';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -165,6 +166,11 @@ export default function ExperiencesPage() {
 
   return (
     <main className="bg-cream">
+      <SEO
+        title="Experiências"
+        description="Viva experiências únicas em Teresópolis: piscinas, passeios a cavalo, trilhas, música ao vivo e muito mais na Pousada Art Green."
+        url="/experiencias"
+      />
       {/* ============================================================ */}
       {/* 1. HERO CINEMATOGRÁFICO                                      */}
       {/* ============================================================ */}

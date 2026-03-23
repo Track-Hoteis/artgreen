@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+
+User-agent: Googlebot-Image
+Allow: /acomodacoes/
+Allow: /experiencias/
+Allow: /servicos/
+
+Sitemap: https://artgreenteresopolis.com.br/sitemap.xml

@@ -68,7 +68,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-10">
         <Link to="/" className="justify-self-start" aria-label="Art Green">
           <img
-            src="/logo.png"
+            src="/logo.webp"
             alt="Art Green"
             className="h-11 md:h-12 w-auto object-contain"
           />
@@ -115,7 +115,7 @@ export default function Header() {
               <div className="mb-10">
                 <Link to="/" onClick={() => setOpen(false)}>
                   <img
-                    src="/logo.png"
+                    src="/logo.webp"
                     alt="Art Green"
                     className="h-12 w-auto object-contain"
                   />
