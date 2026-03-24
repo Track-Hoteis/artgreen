@@ -4,7 +4,8 @@
 
 @font-face {
   font-family: "Luxerie Display Std";
-  src: url("/fonts/luxerie/Luxerie%20Display.ttf") format("truetype");
+  src: url("/fonts/luxerie/Luxerie%20Display.woff2") format("woff2"),
+       url("/fonts/luxerie/Luxerie%20Display.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -12,7 +13,8 @@
 
 @font-face {
   font-family: "Luxerie Display Std";
-  src: url("/fonts/luxerie/Luxerie%20Display.ttf") format("truetype");
+  src: url("/fonts/luxerie/Luxerie%20Display.woff2") format("woff2"),
+       url("/fonts/luxerie/Luxerie%20Display.ttf") format("truetype");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -20,7 +22,8 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+  src: url("/fonts/Montserrat/Montserrat-Regular.woff2") format("woff2"),
+       url("/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -28,7 +31,8 @@
 
 @font-face {
   font-family: "High Spirited";
-  src: url("/fonts/High%20Spirited/High%20Spirited.ttf") format("truetype");
+  src: url("/fonts/High%20Spirited/High%20Spirited.woff2") format("woff2"),
+       url("/fonts/High%20Spirited/High%20Spirited.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -129,9 +133,10 @@
   }
 
   .btn-reserve {
-    @apply inline-flex items-center justify-center bg-accent text-white font-medium
+    @apply inline-flex items-center justify-center text-white font-medium
            px-7 py-3.5 transition-all duration-500 uppercase tracking-wider
            text-sm font-body;
+    background-color: #8B7535;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -152,7 +157,7 @@
     left: 0;
   }
   .btn-reserve:hover {
-    color: #B99B48;
+    color: #8B7535;
   }
 
   .service-card {

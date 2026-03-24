@@ -186,18 +186,20 @@ export default function PackagesSection() {
           </div>
         </div>
 
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-0 mt-8">
           {packages.map((pkg, index) => (
             <button
               key={pkg.id}
               onClick={() => setCurrentSlide(cardsPerView + index)}
               aria-label={`Ir para slide ${index + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
+              className="relative flex items-center justify-center min-w-[44px] min-h-[44px]"
+            >
+              <span className={`block h-2.5 rounded-full transition-all duration-300 ${
                 index === logicalSlide
                   ? 'w-6 bg-primary'
                   : 'w-2.5 bg-primary/30 hover:bg-primary/50'
-              }`}
-            />
+              }`} />
+            </button>
           ))}
         </div>
       </div>

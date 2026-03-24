@@ -70,6 +70,8 @@ export default function Header() {
           <img
             src="/logo.webp"
             alt="Art Green"
+            width={152}
+            height={48}
             className="h-11 md:h-12 w-auto object-contain"
           />
         </Link>
@@ -117,6 +119,8 @@ export default function Header() {
                   <img
                     src="/logo.webp"
                     alt="Art Green"
+                    width={152}
+                    height={48}
                     className="h-12 w-auto object-contain"
                   />
                 </Link>

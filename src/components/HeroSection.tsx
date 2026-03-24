@@ -16,7 +16,7 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start pb-14 lg:pb-16">
           <FadeInUp>
-            <p className="inline-flex items-center border border-white/20 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white/75 mb-8">
+            <p className="inline-flex items-center border border-white/20 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white/90 mb-8">
               Teresópolis, RJ · Serra Fluminense
             </p>
             <h1 className="font-display text-white text-[2.05rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05]">

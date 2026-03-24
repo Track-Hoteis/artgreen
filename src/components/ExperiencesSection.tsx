@@ -191,8 +191,9 @@ export default function ExperiencesSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="service-media-card__button mt-auto"
+                        aria-label={`Reservar ${card.title}`}
                       >
-                        Saiba mais
+                        Reservar
                       </a>
                     </div>
                   </motion.article>
@@ -202,18 +203,20 @@ export default function ExperiencesSection() {
           </div>
         </div>
 
-        <div className="flex justify-center gap-1.5 mt-8 flex-wrap">
+        <div className="flex justify-center gap-0 mt-8 flex-wrap">
           {items.map((item, index) => (
             <button
               key={item.id}
               onClick={() => setCurrentSlide(cardsPerView + index)}
               aria-label={`Ir para ${item.title}`}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
+              className="relative flex items-center justify-center min-w-[44px] min-h-[44px]"
+            >
+              <span className={`block h-2.5 rounded-full transition-all duration-300 ${
                 index === logicalSlide
                   ? 'w-6 bg-primary'
                   : 'w-2.5 bg-primary/30 hover:bg-primary/50'
-              }`}
-            />
+              }`} />
+            </button>
           ))}
         </div>
       </div>

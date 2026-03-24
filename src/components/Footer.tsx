@@ -29,6 +29,8 @@ export default function Footer() {
               <img
                 src="/logo.webp"
                 alt="Art Green"
+                width={152}
+                height={48}
                 className="h-12 w-auto object-contain"
               />
             </div>
@@ -42,24 +44,24 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 bg-white/10 flex items-center justify-center hover:bg-primary-medium transition-colors"
+                className="w-11 h-11 bg-white/10 flex items-center justify-center hover:bg-primary-medium transition-colors"
               >
-                <Instagram size={16} />
+                <Instagram size={18} />
               </a>
               <a
                 href="https://wa.me/5521969688419"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="w-9 h-9 bg-white/10 flex items-center justify-center hover:bg-primary-medium transition-colors"
+                className="w-11 h-11 bg-white/10 flex items-center justify-center hover:bg-primary-medium transition-colors"
               >
-                <MessageCircle size={16} />
+                <MessageCircle size={18} />
               </a>
             </div>
           </FadeInUp>
 
           <FadeInUp delay={0.05}>
-            <h4 className="font-display text-xl mb-4">Links Rápidos</h4>
+            <h3 className="font-display text-xl mb-4">Links Rápidos</h3>
             <nav className="flex flex-col gap-2.5">
               {quickLinks.map((link) => (
                 <Link
@@ -74,7 +76,7 @@ export default function Footer() {
           </FadeInUp>
 
           <FadeInUp delay={0.1}>
-            <h4 className="font-display text-xl mb-4">Contato</h4>
+            <h3 className="font-display text-xl mb-4">Contato</h3>
             <div className="space-y-3 text-sm text-white/70">
               <p>
                 Greenland, Estrada Rincão do Vovô, s/n
@@ -108,7 +110,7 @@ export default function Footer() {
           </FadeInUp>
 
           <FadeInUp delay={0.15}>
-            <h4 className="font-display text-xl mb-4">Galeria</h4>
+            <h3 className="font-display text-xl mb-4">Galeria</h3>
             <div className="grid grid-cols-2 gap-2">
               {gallery.map((image) => (
                 <div key={image} className="aspect-square overflow-hidden">
@@ -116,6 +118,8 @@ export default function Footer() {
                     src={image}
                     alt="Galeria Art Green"
                     loading="lazy"
+                    width={200}
+                    height={200}
                     className="w-full h-full object-cover"
                   />
                 </div>

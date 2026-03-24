@@ -110,7 +110,7 @@ export default function AboutSection() {
             </div>
 
             <a href="#acomodacoes" className="btn-primary">
-              Saiba Mais{' '}
+              Ver Acomodações{' '}
               <svg
                 width="14"
                 height="14"

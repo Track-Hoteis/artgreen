@@ -9,7 +9,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = 'Art Green Teresópolis';
-const BASE_URL = 'https://artgreenteresopolis.com.br';
+const BASE_URL = 'https://www.artgreenpousada.com.br';
 const DEFAULT_IMAGE = 'https://lirp.cdn-website.com/8406003a/dms3rep/multi/opt/4F3A8835-1920w.JPG';
 
 export function SEO({ title, description, image, url, type = 'website' }: SEOProps) {

@@ -53,5 +53,9 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 300px 0px
     return () => observer.disconnect();
   }, [lazyRootMargin, lazySrc, startAtSeconds]);
 
-  return <video ref={ref} {...props} />;
+  return (
+    <video ref={ref} {...props}>
+      <track kind="captions" default />
+    </video>
+  );
 }
