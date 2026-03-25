@@ -26,6 +26,9 @@ export default defineConfig({
           if (id.includes('node_modules/@radix-ui')) {
             return 'ui';
           }
+          if (id.includes('node_modules/lucide-react')) {
+            return 'icons';
+          }
         },
       },
     },

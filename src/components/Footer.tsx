@@ -13,10 +13,10 @@ const quickLinks = [
 ];
 
 const gallery = [
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-25.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/IMG_6358.jpg',
-  'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg',
+  '/galeria/galeria-1.webp',
+  '/galeria/galeria-2.webp',
+  '/galeria/galeria-3.webp',
+  '/galeria/galeria-4.webp',
 ];
 
 export default function Footer() {
