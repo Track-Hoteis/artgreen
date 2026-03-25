@@ -109,20 +109,20 @@ export default function DateRangePicker({
 
   return (
     <div className="flex flex-col">
-      <span
+      <label
         className={`text-xs font-semibold uppercase tracking-wide mb-2 flex items-center gap-1.5 ${
           isLight ? 'text-text-medium' : 'text-white/60 tracking-[0.2em] text-[11px]'
         }`}
       >
         <CalendarDays size={isLight ? 14 : 13} />
         Check-in / Check-out
-      </span>
+      </label>
 
       <Popover.Root open={open} onOpenChange={handleOpenChange}>
         <Popover.Trigger asChild>
           <button type="button" className={triggerClass}>
             <CalendarDays size={14} className="shrink-0 opacity-60" />
-            <span className={!from ? 'opacity-50' : ''}>
+            <span className={!from ? 'opacity-70' : ''}>
               {formatDateRange(from, to)}
             </span>
           </button>

@@ -51,6 +51,7 @@ export default function AboutSection() {
         src="/background.webp"
         alt=""
         aria-hidden="true"
+        fetchPriority="high"
         className="absolute inset-0 w-full h-full object-cover opacity-5 pointer-events-none select-none"
       />
 

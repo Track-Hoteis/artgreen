@@ -299,9 +299,10 @@ export default function ImmersiveScrollSection() {
                       <span
                         key={s.id}
                         onClick={() => goToIndex(i)}
+                        aria-hidden={i !== activeIndex ? true : undefined}
                         className="font-display italic text-5xl xl:text-6xl block cursor-pointer select-none"
                         style={{
-                          color: '#9A8B55',
+                          color: '#746528',
                           height: WORD_HEIGHT,
                           lineHeight: `${WORD_HEIGHT}px`,
                           opacity: i === activeIndex ? 1 : 0.3,
@@ -324,7 +325,7 @@ export default function ImmersiveScrollSection() {
                     className="h-[2px] rounded-full cursor-pointer"
                     style={{
                       width: i === activeIndex ? 24 : 8,
-                      backgroundColor: i === activeIndex ? '#9A8B55' : '#D1C9B5',
+                      backgroundColor: i === activeIndex ? '#746528' : '#D1C9B5',
                       transition: 'all 500ms ease-out',
                     }}
                   />
@@ -363,7 +364,7 @@ export default function ImmersiveScrollSection() {
         ref={mobileSectionRef}
         style={{ height: '400vh' }}
       >
-        <div className="sticky top-0 h-dvh relative overflow-hidden">
+        <div className="sticky top-0 h-dvh relative overflow-hidden bg-black">
           {/* Stacked images with crossfade */}
           {sections.map((s, i) => {
             const isActive = i === activeIndex;

@@ -136,7 +136,7 @@
     @apply inline-flex items-center justify-center text-white font-medium
            px-7 py-3.5 transition-all duration-500 uppercase tracking-wider
            text-sm font-body;
-    background-color: #8B7535;
+    background-color: #B99B48;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -157,7 +157,7 @@
     left: 0;
   }
   .btn-reserve:hover {
-    color: #8B7535;
+    color: #B99B48;
   }
 
   .service-card {

@@ -37,18 +37,19 @@ export default function ChildrenSelector({
 
   return (
     <div className="flex flex-col">
-      <span
+      <label
+        htmlFor={isLight ? 'children-light' : 'children-dark'}
         className={`text-xs font-semibold uppercase tracking-wide mb-2 flex items-center gap-1.5 ${
           isLight ? 'text-text-medium' : 'text-white/60 tracking-[0.2em] text-[11px]'
         }`}
       >
         <Baby size={isLight ? 14 : 13} />
         Crianças
-      </span>
+      </label>
 
       <Popover.Root open={open} onOpenChange={setOpen}>
         <Popover.Trigger asChild>
-          <button type="button" className={triggerClass}>
+          <button type="button" id={isLight ? 'children-light' : 'children-dark'} className={triggerClass}>
             {countLabel}
           </button>
         </Popover.Trigger>

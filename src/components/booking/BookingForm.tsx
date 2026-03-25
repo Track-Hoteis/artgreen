@@ -60,9 +60,9 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
   return (
     <>
       {showTitle && (
-        <h3 className="font-display text-3xl text-white text-center mb-8">
+        <h2 className="font-display text-3xl text-white text-center mb-8">
           Reserva
-        </h3>
+        </h2>
       )}
 
       {isLight ? (
@@ -77,11 +77,12 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
 
           {/* Adults */}
           <div className="flex flex-col">
-            <label className="text-xs font-semibold text-text-medium uppercase tracking-wide mb-2 flex items-center gap-1.5">
+            <label htmlFor="guests-light" className="text-xs font-semibold text-text-medium uppercase tracking-wide mb-2 flex items-center gap-1.5">
               <Users size={14} />
               Hóspedes
             </label>
             <select
+              id="guests-light"
               value={adults}
               onChange={(e) => setAdults(Number(e.target.value))}
               className={selectClass}
@@ -124,11 +125,12 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
           <div className="grid grid-cols-2 gap-3 items-end">
             {/* Adults */}
             <div className="flex flex-col">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-2 flex items-center gap-1.5">
+              <label htmlFor="guests-dark" className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-2 flex items-center gap-1.5">
                 <Users size={13} />
                 Hóspedes
-              </span>
+              </label>
               <select
+                id="guests-dark"
                 value={adults}
                 onChange={(e) => setAdults(Number(e.target.value))}
                 className={selectClass}
