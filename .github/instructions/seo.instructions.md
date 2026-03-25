@@ -1,9 +1,9 @@
 ---
-description: "SEO rules for React TSX components. Use when: editing JSX/TSX files, creating components with images, headings, links, or page-level components. Enforces alt text, heading hierarchy, semantic HTML, canonical URLs, and Open Graph compliance."
+description: "SEO and accessibility rules for React TSX components. Use when: editing JSX/TSX files, creating components with images, headings, links, forms, buttons, videos, or page-level components. Enforces alt text, heading hierarchy, semantic HTML, canonical URLs, Open Graph compliance, form accessibility, touch targets, color contrast, and video captions."
 applyTo: "**/*.tsx"
 ---
 
-# SEO Rules for TSX Components
+# SEO & Accessibility Rules for TSX Components
 
 ## Images
 
@@ -11,7 +11,8 @@ applyTo: "**/*.tsx"
 - Decorative images: use `alt=""` with `role="presentation"`
 - Include `loading="lazy"` and `decoding="async"` for below-the-fold images
 - Include `width` and `height` attributes or `aspect-ratio` via CSS to prevent CLS
-- Hero/above-the-fold images: use `loading="eager"` and `fetchPriority="high"`
+- Hero/above-the-fold images: use `loading="eager"` and `fetchPriority="high"` (camelCase in React)
+- Serve images at display dimensions — never serve larger than rendered size
 
 ## Headings
 
@@ -28,6 +29,26 @@ applyTo: "**/*.tsx"
 - Use `<section>` with `aria-label` for thematic groupings
 - Use `<aside>` for secondary content (booking widget, sidebar)
 - Use `<figure>` + `<figcaption>` for images with captions
+
+## Forms & Interactive Elements
+
+- Every `<select>`, `<input>`, `<textarea>` MUST have a `<label>` with `htmlFor` matching the element's `id` — never use `<span>` as a label
+- Visually hidden labels: use `sr-only` class, never omit the label
+- Buttons and interactive touch targets MUST be at least 44×44px for mobile accessibility
+- Descriptive button text: never "Clique aqui" alone — use specific action text like "Reservar agora" or "Ver acomodações"
+
+## Video & Media
+
+- Every `<video>` MUST include a `<track kind="captions">` element for accessibility
+- Videos below the fold: use lazy loading or intersection observer to defer load
+- Include `poster` attribute on videos for LCP and CLS prevention
+
+## Accessibility (A11y)
+
+- Color contrast: text must meet WCAG AA ratio (4.5:1 for normal text, 3:1 for large text)
+- Use `aria-hidden="true"` on purely decorative or visually inactive elements
+- Carousel/slider inactive items: mark with `aria-hidden` and `tabIndex={-1}`
+- Focus indicators: never remove `outline` without providing a visible alternative
 
 ## Meta Tags (pages using SEO component)
 
