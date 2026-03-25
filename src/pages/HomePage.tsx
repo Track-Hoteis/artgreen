@@ -1,15 +1,17 @@
+import { lazy, Suspense } from 'react';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
-import VideoTransition from '@/components/VideoTransition';
-import GastronomySection from '@/components/GastronomySection';
-import RoomsSection from '@/components/RoomsSection';
-import ImmersiveScrollSection from '@/components/ImmersiveScrollSection';
-import ExperiencesSection from '@/components/ExperiencesSection';
-import PackagesSection from '@/components/PackagesSection';
-import FazendinhaSection from '@/components/FazendinhaSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import LocationSection from '@/components/LocationSection';
 import { SEO } from '@/components/SEO';
+
+const VideoTransition = lazy(() => import('@/components/VideoTransition'));
+const GastronomySection = lazy(() => import('@/components/GastronomySection'));
+const RoomsSection = lazy(() => import('@/components/RoomsSection'));
+const ImmersiveScrollSection = lazy(() => import('@/components/ImmersiveScrollSection'));
+const ExperiencesSection = lazy(() => import('@/components/ExperiencesSection'));
+const PackagesSection = lazy(() => import('@/components/PackagesSection'));
+const FazendinhaSection = lazy(() => import('@/components/FazendinhaSection'));
+const TestimonialsSection = lazy(() => import('@/components/TestimonialsSection'));
+const LocationSection = lazy(() => import('@/components/LocationSection'));
 
 export default function HomePage() {
   return (
@@ -21,15 +23,17 @@ export default function HomePage() {
       />
       <HeroSection />
       <AboutSection />
-      <VideoTransition />
-      <GastronomySection />
-      <RoomsSection />
-      <ImmersiveScrollSection />
-      <ExperiencesSection />
-      <PackagesSection />
-      <FazendinhaSection />
-      <TestimonialsSection />
-      <LocationSection />
+      <Suspense fallback={<div className="min-h-screen" />}>
+        <VideoTransition />
+        <GastronomySection />
+        <RoomsSection />
+        <ImmersiveScrollSection />
+        <ExperiencesSection />
+        <PackagesSection />
+        <FazendinhaSection />
+        <TestimonialsSection />
+        <LocationSection />
+      </Suspense>
     </main>
   );
 }
