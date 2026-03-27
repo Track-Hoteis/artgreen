@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Users, Search } from 'lucide-react';
+import { Users, Search, Tag } from 'lucide-react';
 
 import DateRangePicker from './DateRangePicker';
 import ChildrenSelector from './ChildrenSelector';
@@ -16,6 +16,7 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
   const [adults, setAdults] = useState(2);
   const [childrenCount, setChildrenCount] = useState(0);
   const [childrenAges, setChildrenAges] = useState<number[]>([]);
+  const [promoCode, setPromoCode] = useState('');
 
   function handleDateSelect(range: { from?: Date; to?: Date }) {
     setFrom(range.from);
@@ -47,6 +48,7 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
       dateToStr(to),
       adults,
       childrenAges,
+      promoCode || undefined,
     );
     window.open(url, '_blank', 'noopener,noreferrer');
   }
@@ -67,7 +69,7 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
 
       {isLight ? (
         /* ── Light variant: horizontal grid ── */
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
           <DateRangePicker
             from={from}
             to={to}
@@ -102,6 +104,22 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
             onChildAgeChange={handleChildAge}
             variant="light"
           />
+
+          {/* Cupom */}
+          <div className="flex flex-col">
+            <label htmlFor="promo-light" className="text-xs font-semibold text-text-medium uppercase tracking-wide mb-2 flex items-center gap-1.5">
+              <Tag size={14} />
+              Cupom
+            </label>
+            <input
+              id="promo-light"
+              type="text"
+              value={promoCode}
+              onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
+              placeholder="Código do cupom"
+              className="border border-gray-200 px-4 py-3 text-sm text-dark bg-white focus:outline-none focus:ring-2 focus:ring-primary/40 transition w-full"
+            />
+          </div>
 
           <button
             onClick={handleSearch}
@@ -149,6 +167,22 @@ export default function BookingForm({ variant, showTitle }: BookingFormProps) {
               onChildrenCountChange={handleChildrenCountChange}
               onChildAgeChange={handleChildAge}
               variant="dark"
+            />
+          </div>
+
+          {/* Cupom */}
+          <div className="flex flex-col">
+            <label htmlFor="promo-dark" className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-2 flex items-center gap-1.5">
+              <Tag size={13} />
+              Cupom
+            </label>
+            <input
+              id="promo-dark"
+              type="text"
+              value={promoCode}
+              onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
+              placeholder="Código do cupom"
+              className="border border-white/20 px-4 py-3 text-sm text-white bg-transparent focus:outline-none focus:border-white transition w-full placeholder:text-white/40"
             />
           </div>
 

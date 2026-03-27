@@ -20,10 +20,11 @@ export function buildBookingUrl(
   checkOut: string,
   adults: number,
   childrenAges: number[],
+  promoCode?: string,
 ) {
   let roomCode = `a${adults}`;
-  for (const age of childrenAges) {
-    roomCode += `c${age}`;
+  if (childrenAges.length > 0) {
+    roomCode += `c${childrenAges.join(',')}`;
   }
 
   const params = new URLSearchParams();
@@ -36,10 +37,14 @@ export function buildBookingUrl(
     params.set(key, value);
   }
   params.set('endDate', checkOut);
+  if (promoCode) {
+    params.set('promoCode', promoCode);
+  }
   params.set('startDate', checkIn);
   params.append('rooms[]', roomCode);
 
-  return `${BASE_URL}#${params.toString()}`;
+  const qs = params.toString().replace(/%5B/gi, '[').replace(/%5D/gi, ']');
+  return `${BASE_URL}#${qs}`;
 }
 
 export function todayStr() {
