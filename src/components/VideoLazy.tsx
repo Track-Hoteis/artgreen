@@ -8,7 +8,7 @@ type Props = React.VideoHTMLAttributes<HTMLVideoElement> & {
   startAtSeconds?: number;
 };
 
-export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 300px 0px', startAtSeconds, ...props }: Props) {
+export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px', startAtSeconds, ...props }: Props) {
   const ref = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -16,11 +16,30 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 300px 0px
     if (!el) return;
 
     el.muted = true;
+    el.defaultMuted = true;
+    el.setAttribute('muted', '');
+    el.setAttribute('playsinline', '');
+    el.preload = 'metadata';
+
+    const playWhenReady = () => {
+      if (el.readyState >= 2) {
+        el.play().catch(() => {});
+        return;
+      }
+
+      const onCanPlay = () => {
+        el.play().catch(() => {});
+      };
+
+      el.addEventListener('canplay', onCanPlay, { once: true });
+    };
+
     const observer = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             if (!el.src) {
+              el.preload = 'auto';
               el.src = lazySrc;
               try {
                 el.load();
@@ -41,12 +60,12 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 300px 0px
               }
             }
 
-            el.play().catch(() => {});
+            playWhenReady();
             obs.disconnect();
           }
         });
       },
-      { threshold: 0.25, rootMargin: lazyRootMargin }
+      { threshold: 0.01, rootMargin: lazyRootMargin }
     );
 
     observer.observe(el);
@@ -54,7 +73,7 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 300px 0px
   }, [lazyRootMargin, lazySrc, startAtSeconds]);
 
   return (
-    <video ref={ref} {...props}>
+    <video ref={ref} muted playsInline preload="metadata" {...props}>
       <track kind="captions" default />
     </video>
   );
