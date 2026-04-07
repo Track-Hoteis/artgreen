@@ -4,9 +4,11 @@ import { CalendarDays, ArrowRight } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import FadeInUp from '@/components/animations/FadeInUp';
 import { SEO } from '@/components/SEO';
-import { packages } from '@/data/packages';
+import { getActivePackages } from '@/data/packages';
 
 export default function PackagesPage() {
+  const activePackages = getActivePackages();
+
   return (
     <main className="bg-cream">
       <SEO
@@ -36,7 +38,7 @@ export default function PackagesPage() {
           </FadeInUp>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {packages.map((pkg, i) => (
+            {activePackages.map((pkg, i) => (
               <FadeInUp key={pkg.id} delay={i * 0.08}>
                 <Link
                   to={`/pacotes/${pkg.slug}`}
@@ -76,6 +78,14 @@ export default function PackagesPage() {
                 </Link>
               </FadeInUp>
             ))}
+
+            {activePackages.length === 0 && (
+              <FadeInUp>
+                <p className="text-text-medium text-center col-span-full font-body">
+                  No momento, nao ha pacotes sazonais ativos.
+                </p>
+              </FadeInUp>
+            )}
           </div>
         </div>
       </section>

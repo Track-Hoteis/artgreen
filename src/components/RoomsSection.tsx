@@ -13,7 +13,6 @@ type CarouselRoom = {
   description: string;
   amenities: string;
   imageUrl: string;
-  price: number;
 };
 
 function getCardsPerView(width: number): 1 | 2 | 3 {
@@ -21,12 +20,6 @@ function getCardsPerView(width: number): 1 | 2 | 3 {
   if (width >= 768) return 2;
   return 1;
 }
-
-const brlFormatter = new Intl.NumberFormat('pt-BR', {
-  style: 'currency',
-  currency: 'BRL',
-  maximumFractionDigits: 0,
-});
 
 export default function RoomsSection() {
   const [currentSlide, setCurrentSlide] = useState(1);
@@ -51,7 +44,6 @@ export default function RoomsSection() {
       description: room.description,
       amenities: room.amenities,
       imageUrl: room.images[0],
-      price: room.price,
     }));
   }, []);
 
@@ -160,17 +152,14 @@ export default function RoomsSection() {
                         className="w-full h-full object-cover"
                       />
 
-                      <div className="absolute inset-x-0 bottom-0 h-[28%] bg-[rgba(82,97,78,0.95)] backdrop-blur-sm px-6 py-5 transition-all duration-500 group-hover:h-[90%]">
-                        <span className="inline-flex border border-white/60 text-white text-sm font-medium px-3 py-1.5 mb-4">
-                          {brlFormatter.format(room.price)} / noite
-                        </span>
+                      <div className="absolute inset-x-0 bottom-0 h-[20%] bg-[rgba(82,97,78,0.95)] backdrop-blur-sm px-6 py-3 transition-all duration-500 group-hover:h-[90%]">
                         <h3 className="font-display text-white text-[24px] leading-tight mb-3">
                           {room.name}
                         </h3>
-                        <p className="text-white/85 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mb-4">
+                        <p className="text-white/85 text-sm leading-relaxed opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-24 transition-all duration-300 delay-100 mb-0 group-hover:mb-4">
                           {room.description}
                         </p>
-                        <p className="text-white/80 text-xs uppercase tracking-[0.12em] opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150">
+                        <p className="text-white/80 text-xs uppercase tracking-[0.12em] opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-16 transition-all duration-300 delay-150">
                           {room.amenities}
                         </p>
                       </div>

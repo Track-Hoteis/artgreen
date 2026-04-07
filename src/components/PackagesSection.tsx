@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import FadeInUp from '@/components/animations/FadeInUp';
-import { packages } from '@/data/packages';
+import { getActivePackages } from '@/data/packages';
 
 function getCardsPerView(width: number): 1 | 2 | 3 {
   if (width >= 1200) return 3;
@@ -13,6 +13,7 @@ function getCardsPerView(width: number): 1 | 2 | 3 {
 }
 
 export default function PackagesSection() {
+  const activePackages = useMemo(() => getActivePackages(), []);
   const [cardsPerView, setCardsPerView] = useState<1 | 2 | 3>(() =>
     typeof window === 'undefined' ? 1 : getCardsPerView(window.innerWidth),
   );
@@ -28,13 +29,13 @@ export default function PackagesSection() {
   }, []);
 
   const loopedPackages = useMemo(() => {
-    if (!packages.length) return [];
+    if (!activePackages.length) return [];
 
-    const head = packages.slice(0, cardsPerView);
-    const tail = packages.slice(-cardsPerView);
+    const head = activePackages.slice(0, cardsPerView);
+    const tail = activePackages.slice(-cardsPerView);
 
-    return [...tail, ...packages, ...head];
-  }, [cardsPerView]);
+    return [...tail, ...activePackages, ...head];
+  }, [activePackages, cardsPerView]);
 
   useEffect(() => {
     setIsTransitionEnabled(false);
@@ -48,7 +49,9 @@ export default function PackagesSection() {
   }, [cardsPerView]);
 
   useEffect(() => {
-    const maxRealIndex = cardsPerView + packages.length - 1;
+    if (!activePackages.length) return;
+
+    const maxRealIndex = cardsPerView + activePackages.length - 1;
     const minRealIndex = cardsPerView;
     const isAfterTailClone = currentSlide > maxRealIndex;
     const isBeforeHeadClone = currentSlide < minRealIndex;
@@ -58,8 +61,8 @@ export default function PackagesSection() {
     const timer = window.setTimeout(() => {
       setIsTransitionEnabled(false);
       setCurrentSlide((prev) => {
-        if (prev > maxRealIndex) return prev - packages.length;
-        if (prev < minRealIndex) return prev + packages.length;
+        if (prev > maxRealIndex) return prev - activePackages.length;
+        if (prev < minRealIndex) return prev + activePackages.length;
         return prev;
       });
 
@@ -69,7 +72,7 @@ export default function PackagesSection() {
     }, 500);
 
     return () => window.clearTimeout(timer);
-  }, [cardsPerView, currentSlide]);
+  }, [activePackages.length, cardsPerView, currentSlide]);
 
   useEffect(() => {
     if (isPaused) return;
@@ -82,8 +85,13 @@ export default function PackagesSection() {
   }, [isPaused]);
 
   const logicalSlide =
-    ((currentSlide - cardsPerView) % packages.length + packages.length) % packages.length;
+    activePackages.length === 0
+      ? 0
+      : ((currentSlide - cardsPerView) % activePackages.length + activePackages.length) %
+        activePackages.length;
   const cardWidth = `${100 / cardsPerView}%`;
+
+  if (!activePackages.length) return null;
 
   return (
     <section id="pacotes" className="py-20 md:py-28 bg-cream">
@@ -146,7 +154,7 @@ export default function PackagesSection() {
                   className="flex-shrink-0 px-3"
                   style={{ width: cardWidth }}
                 >
-                  <FadeInUp delay={(index % packages.length) * 0.04}>
+                  <FadeInUp delay={(index % activePackages.length) * 0.04}>
                     <Link to={`/pacotes/${pkg.slug}`}>
                       <motion.div
                         whileHover={{ scale: 1.02 }}
@@ -187,7 +195,7 @@ export default function PackagesSection() {
         </div>
 
         <div className="flex justify-center gap-0 mt-8">
-          {packages.map((pkg, index) => (
+          {activePackages.map((pkg, index) => (
             <button
               key={pkg.id}
               onClick={() => setCurrentSlide(cardsPerView + index)}

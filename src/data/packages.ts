@@ -8,6 +8,8 @@ export interface Package {
   dates: string;
   imageUrl: string;
   href: string;
+  startDate?: string;
+  endDate?: string;
   includes: string[];
   highlights: { icon: string; label: string }[];
 }
@@ -47,6 +49,8 @@ export const packages: Package[] = [
     fullDescription:
       'Celebre a Páscoa em família na serra fluminense. O pacote inclui hospedagem com pensão completa, atividades temáticas para crianças e adultos, caça aos ovos na fazendinha, oficina de chocolates e programação especial de lazer. Uma Páscoa inesquecível em contato com a natureza.',
     dates: '02 a 05 de Abril de 2026',
+    startDate: '2026-04-02',
+    endDate: '2026-04-05',
     imageUrl: '/Pacotes/Título.webp',
     href: 'https://reservas.artgreenpousada.com.br/hotels/HOTEL_OMNI_19674#adults=2&children=0&clientId=19b9aba4-a5a9-4f9b-bb84-a5ff66a6b4ae&clientName=Motor%20Niara&contentType=property&destinationCountry=BR&destinationName=Pousada%20Art%20Green&enablePromoCode=true&endDate=2026-04-05&hotelIds[]=HOTEL_OMNI_19674&personName=&propertyId=793cabb9-2843-4bc6-8afd-d8cbd4df535d&rooms[]=a2&startDate=2026-04-02',
     includes: [
@@ -73,6 +77,8 @@ export const packages: Package[] = [
     fullDescription:
       'Aproveite o feriado de Tiradentes para desacelerar na serra fluminense. Dias de descanso com acesso completo às áreas de lazer, piscinas, fazendinha, lago de pesca e muito mais. O pacote inclui hospedagem com café da manhã e programação especial de atividades ao ar livre.',
     dates: '19 a 21 de Abril de 2026',
+    startDate: '2026-04-19',
+    endDate: '2026-04-21',
     imageUrl: '/Pacotes/Título (1).webp',
     href: 'https://reservas.artgreenpousada.com.br/hotels/HOTEL_OMNI_19674?locate=pt-BR&currencyId=16&destinationName=&mysite=ob&startDate=2026-04-19&endDate=2026-04-21&adults=1&children=0&ag=&childrenAges=&promoCode=',
     includes: [
@@ -100,6 +106,8 @@ export const packages: Package[] = [
     fullDescription:
       'Descanse de verdade no feriado do Dia do Trabalhador. Três dias na serra com todo o conforto e lazer que a Art Green oferece. Piscinas, passeios a cavalo, fazendinha, lago de pesca e gastronomia afetiva no restaurante Art Cucina. O descanso que você merece.',
     dates: '01 a 03 de Maio de 2026',
+    startDate: '2026-05-01',
+    endDate: '2026-05-03',
     imageUrl: '/Pacotes/Título (2).webp',
     href: 'https://reservas.artgreenpousada.com.br/hotels/HOTEL_OMNI_19674?locate=pt-BR&currencyId=16&destinationName=&mysite=ob&startDate=2026-05-01&endDate=2026-05-03&adults=2&children=0&ag=&childrenAges=&promoCode=',
     includes: [
@@ -117,3 +125,25 @@ export const packages: Package[] = [
     ],
   },
 ];
+
+function parseDateOnly(value?: string): number | null {
+  if (!value) return null;
+  const date = new Date(`${value}T00:00:00`);
+  return Number.isNaN(date.getTime()) ? null : date.getTime();
+}
+
+export function isPackageActive(pkg: Package, referenceDate = new Date()): boolean {
+  const current = new Date(referenceDate);
+  current.setHours(0, 0, 0, 0);
+
+  const start = parseDateOnly(pkg.startDate);
+  const end = parseDateOnly(pkg.endDate);
+
+  if (start !== null && current.getTime() < start) return false;
+  if (end !== null && current.getTime() > end) return false;
+  return true;
+}
+
+export function getActivePackages(referenceDate = new Date()): Package[] {
+  return packages.filter((pkg) => isPackageActive(pkg, referenceDate));
+}
