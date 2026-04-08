@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import FadeInUp from '@/components/animations/FadeInUp';
-import { getActivePackages } from '@/data/packages';
+import { packages } from '@/data/packages';
 
 function getCardsPerView(width: number): 1 | 2 | 3 {
   if (width >= 1200) return 3;
@@ -13,7 +13,7 @@ function getCardsPerView(width: number): 1 | 2 | 3 {
 }
 
 export default function PackagesSection() {
-  const activePackages = useMemo(() => getActivePackages(), []);
+  const activePackages = packages;
   const [cardsPerView, setCardsPerView] = useState<1 | 2 | 3>(() =>
     typeof window === 'undefined' ? 1 : getCardsPerView(window.innerWidth),
   );

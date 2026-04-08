@@ -33,7 +33,7 @@ export const rooms: Room[] = [
       'Suíte quádrupla com varanda e vista para as montanhas. Possui dois ambientes: 1 quarto com cama de casal queen e 1 quarto com 2 camas de solteiro + 1 cama extra. A acomodação conta com ar-condicionado, banheiro privativo com chuveiro e varanda.',
     capacity: 'Até 5 pessoas',
     size: '38m²',
-    price: 569,
+    price: 1242,
     amenities: 'Cama Queen | 2 Solteiro + Extra | Ar-condicionado | Varanda',
     features: [
       { icon: 'bed', label: 'Queen + 2 Solteiro' },
@@ -72,7 +72,7 @@ export const rooms: Room[] = [
       'Suíte confortável com varanda e vista para as montanhas. A unidade conta com cama de casal queen e uma cama de solteiro, além de closet, ar-condicionado, frigobar e banheiro privativo com chuveiro.',
     capacity: 'Até 3 pessoas',
     size: '30m²',
-    price: 569,
+    price: 1242,
     amenities: 'Cama Queen | 1 Solteiro | Ar-condicionado | Frigobar',
     features: [
       { icon: 'bed', label: 'Queen + Solteiro' },
@@ -109,7 +109,7 @@ export const rooms: Room[] = [
       'Suíte confortável com varanda e vista para as montanhas. A unidade conta com cama de casal queen e uma cama de solteiro, além de ar-condicionado, frigobar e banheiro privativo com chuveiro.',
     capacity: 'Até 3 pessoas',
     size: '30m²',
-    price: 569,
+    price: 1242,
     amenities: 'Cama Queen | 1 Solteiro | Ar-condicionado | Frigobar',
     features: [
       { icon: 'bed', label: 'Queen + Solteiro' },
@@ -146,7 +146,7 @@ export const rooms: Room[] = [
       'Suíte espaçosa com varanda e vista para as montanhas. Possui 1 cama de casal queen, 2 camas de solteiro e 1 cama extra, além de ar-condicionado, frigobar e banheiro privativo. O diferencial da suíte é a lareira, ideal para dias mais frios.',
     capacity: 'Até 5 pessoas',
     size: '40m²',
-    price: 619,
+    price: 1242,
     amenities: 'Cama Queen | 2 Solteiro + Extra | Lareira | Frigobar',
     features: [
       { icon: 'bed', label: 'Queen + 2 Solteiro' },
@@ -186,7 +186,7 @@ export const rooms: Room[] = [
       'Suíte simples e funcional, localizada no térreo, próxima à piscina e à portaria. A acomodação possui dois ambientes: 1 quarto com cama de casal queen e 1 quarto com 2 camas de solteiro + 1 cama extra. Conta com banheiro privativo, frigobar e ar-condicionado em apenas um dos ambientes.',
     capacity: 'Até 5 pessoas',
     size: '35m²',
-    price: 489,
+    price: 1069,
     amenities: 'Cama Queen | 2 Solteiro + Extra | Frigobar | Piscina próxima',
     features: [
       { icon: 'bed', label: 'Queen + 2 Solteiro' },
@@ -223,7 +223,7 @@ export const rooms: Room[] = [
       'Suíte com vista para as montanhas e fácil acesso ao térreo e às piscinas. A acomodação possui 1 cama king, 2 camas de solteiro e possibilidade de 1 cama auxiliar, além de banheiro privativo e hidromassagem. Conta com 1 televisão e 1 ar-condicionado.',
     capacity: 'Até 5 pessoas',
     size: '35m²',
-    price: 699,
+    price: 1642,
     amenities: 'Cama King | 2 Solteiro | Hidromassagem | TV',
     features: [
       { icon: 'bed', label: 'King + 2 Solteiro' },
@@ -263,7 +263,7 @@ export const rooms: Room[] = [
       'Suíte com vista para as montanhas e acesso próximo ao térreo e às piscinas. A unidade possui 1 cama king, 2 camas de solteiro e possibilidade de 1 cama auxiliar, além de banheiro privativo. Conta com 1 televisão e 1 ar-condicionado.',
     capacity: 'Até 5 pessoas',
     size: '32m²',
-    price: 649,
+    price: 1501,
     amenities: 'Cama King | 2 Solteiro | TV | Ar-condicionado',
     features: [
       { icon: 'bed', label: 'King + 2 Solteiro' },
@@ -302,7 +302,7 @@ export const rooms: Room[] = [
       'A casa possui dois quartos, banheiro social e sala integrada à cozinha. A cozinha é equipada com geladeira, fogão, micro-ondas e utensílios básicos. Conta com duas camas queen, com possibilidade de cama extra em um dos quartos. Apenas um dos quartos possui ar-condicionado.',
     capacity: 'Até 5 pessoas',
     size: '50m²',
-    price: 839,
+    price: 1609,
     amenities: '2 Camas Queen | Cozinha equipada | Sala integrada',
     features: [
       { icon: 'bed', label: '2 Queen' },
@@ -342,7 +342,7 @@ export const rooms: Room[] = [
       'Suíte com vista privilegiada para as montanhas. A unidade possui 1 cama king, 2 camas de solteiro e possibilidade de 1 cama auxiliar, além de banheiro privativo. Conta com 1 televisão e 1 ar-condicionado.',
     capacity: 'Até 5 pessoas',
     size: '32m²',
-    price: 649,
+    price: 1555,
     amenities: 'Cama King | 2 Solteiro | TV | Ar-condicionado',
     features: [
       { icon: 'bed', label: 'King + 2 Solteiro' },
@@ -383,7 +383,7 @@ export const rooms: Room[] = [
       'Chalé aconchegante integrado à natureza. No mezanino fica 1 cama de casal queen. No térreo, a sala possui sofá, televisão e 1 cama de solteiro. A cozinha é integrada e equipada com pia, frigobar e cafeteira. Conta ainda com banheiro privativo, ar-condicionado e deck externo com mesa e cadeiras. O estacionamento fica ao lado da acomodação.',
     capacity: 'Até 3 pessoas',
     size: '40m²',
-    price: 729,
+    price: 1501,
     amenities: 'Cama Queen | Mezanino | Cozinha integrada | Deck externo',
     features: [
       { icon: 'bed', label: 'Queen + Solteiro' },
@@ -414,7 +414,7 @@ export const rooms: Room[] = [
   {
     id: 11,
     slug: 'suite-beija-flor',
-    name: 'Suíte Beija-Flor',
+    name: 'Suíte Superior – Beija-Flor',
     tag: 'Conforto',
     tagColor: 'bg-primary',
     description:
@@ -424,7 +424,7 @@ export const rooms: Room[] = [
     hidden: true,
     capacity: 'Até 4 pessoas',
     size: '30m²',
-    price: 569,
+    price: 1242,
     amenities: 'Vista natureza | Banheiro privativo',
     features: [
       { icon: 'bed', label: 'Cama casal' },
@@ -462,7 +462,7 @@ export const rooms: Room[] = [
     hidden: true,
     capacity: 'Até 4 pessoas',
     size: '30m²',
-    price: 569,
+    price: 1242,
     amenities: 'Vista natureza | Banheiro privativo',
     features: [
       { icon: 'bed', label: 'Cama casal' },
@@ -497,7 +497,7 @@ export const rooms: Room[] = [
       'Suíte ideal para casais que buscam conforto e privacidade. Possui deck com vista e hidromassagem externa privativa. A acomodação conta com cama de casal, TV, ar-condicionado e banheiro privativo.',
     capacity: 'Até 4 pessoas',
     size: '40m²',
-    price: 729,
+    price: 1825,
     amenities: 'Chalé | Vista serra',
     features: [
       { icon: 'bed', label: 'Cama casal' },
@@ -536,7 +536,7 @@ export const rooms: Room[] = [
       'Chalé estilo loft com cama king e colchão massageador. Possui lareira, área gourmet e hidromassagem para até 6 pessoas. A acomodação conta com TV, ar-condicionado e banheiro privativo.',
     capacity: 'Até 4 pessoas',
     size: '40m²',
-    price: 729,
+    price: 1825,
     amenities: 'Chalé | Vista serra',
     features: [
       { icon: 'bed', label: 'Cama casal' },
@@ -577,7 +577,7 @@ export const rooms: Room[] = [
       'Chalé estilo loft com 2 suítes king, hidromassagem para até 4 pessoas e cozinha integrada. A acomodação conta com TV, ar-condicionado e banheiros privativos.',
     capacity: 'Até 4 pessoas',
     size: '40m²',
-    price: 729,
+    price: 1825,
     amenities: 'Chalé | Vista serra',
     features: [
       { icon: 'bed', label: 'Cama casal' },
@@ -612,7 +612,7 @@ export const rooms: Room[] = [
       'Chalé estilo loft para até 3 pessoas com cama king e sofá-cama. Não comporta cama extra. A acomodação conta com TV, ar-condicionado e banheiro privativo.',
     capacity: 'Até 3 pessoas',
     size: '40m²',
-    price: 729,
+    price: 1642,
     amenities: 'Chalé | Vista serra',
     features: [
       { icon: 'bed', label: 'Cama casal' },
@@ -647,7 +647,7 @@ export const rooms: Room[] = [
       'Chalé com lareira, hidromassagem privativa, amplo deck e vista para o pôr do sol. A acomodação conta com TV, ar-condicionado e banheiro privativo.',
     capacity: 'Até 4 pessoas',
     size: '40m²',
-    price: 729,
+    price: 1642,
     amenities: 'Chalé | Vista serra',
     features: [
       { icon: 'bed', label: 'Cama casal' },

@@ -40,7 +40,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://instagram.com/pousadaartgreen"
+                href="https://www.instagram.com/artgreenpousada/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -79,7 +79,7 @@ export default function Footer() {
             <h3 className="font-display text-xl mb-4">Contato</h3>
             <div className="space-y-3 text-sm text-white/70">
               <p>
-                Greenland, Estrada Rincão do Vovô, s/n
+                Estrada Rincão do Vovô, s/n
                 <br />
                 Prata, Teresópolis - RJ
               </p>

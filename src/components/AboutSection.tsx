@@ -92,7 +92,7 @@ export default function AboutSection() {
             </h2>
 
             <p className="text-text-medium leading-relaxed mb-8 max-w-xl">
-              Situada em Teresópolis, dentro do condomínio Greenland, a Art Green
+              Situada em Teresópolis, a Art Green
               oferece estrutura completa para descansar com conforto, respirar
               ar puro e viver momentos memoráveis entre montanhas, lagos e
               gastronomia afetiva.

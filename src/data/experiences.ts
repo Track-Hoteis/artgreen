@@ -7,6 +7,8 @@ export interface Experience {
   category?: string;
   detail?: string;
   longDescription?: string;
+  tariffs?: Array<{ label: string; included: boolean }>;
+  seasonBadge?: string;
 }
 
 export const experiences: Experience[] = [
@@ -93,7 +95,11 @@ export const experiences: Experience[] = [
     category: 'Gastronomia',
     detail: 'Incluso na pensão completa',
     longDescription:
-      'Experiências sensoriais completas com harmonização de vinhos e queijos selecionados, guiadas pelo nosso sommelier. Evento Sazonal de Inverno.',
+      'Experiências sensoriais completas com harmonização de vinhos e queijos selecionados, guiadas pelo nosso sommelier.',
+    tariffs: [
+      { label: 'Tarifa Café da Manhã - Paga a Parte', included: true },
+    ],
+    seasonBadge: 'Evento Sazonal de Inverno',
   },
   {
     id: 9,
@@ -194,5 +200,19 @@ export const experiences: Experience[] = [
     category: 'Lazer',
     longDescription:
       'Cabanas reservadas para descanso e contemplação da natureza em total privacidade.',
+  },
+  {
+    id: 19,
+    icon: 'champagne',
+    title: 'Bolhas & Fiori',
+    description: 'Experiência sensorial e harmonizada com espumantes e canapés e queijos selecionados com nosso sommelier.',
+    image: '/Pacotes/IMG_4347.JPG.webp',
+    category: 'Gastronomia',
+    longDescription:
+      'Experiência sensorial e harmonizada com espumantes e canapés e queijos selecionados com nosso sommelier.',
+    tariffs: [
+      { label: 'Tarifa Café da Manhã - Paga a Parte', included: true },
+    ],
+    seasonBadge: 'Evento Sazonal de Inverno',
   },
 ];

@@ -4,6 +4,7 @@ import AboutSection from '@/components/AboutSection';
 import { SEO } from '@/components/SEO';
 
 const VideoTransition = lazy(() => import('@/components/VideoTransition'));
+const FoodGallerySection = lazy(() => import('@/components/FoodGallerySection'));
 const GastronomySection = lazy(() => import('@/components/GastronomySection'));
 const RoomsSection = lazy(() => import('@/components/RoomsSection'));
 const ImmersiveScrollSection = lazy(() => import('@/components/ImmersiveScrollSection'));
@@ -25,6 +26,7 @@ export default function HomePage() {
       <AboutSection />
       <Suspense fallback={<div className="min-h-screen" />}>
         <VideoTransition />
+        <FoodGallerySection />
         <GastronomySection />
         <RoomsSection />
         <ImmersiveScrollSection />

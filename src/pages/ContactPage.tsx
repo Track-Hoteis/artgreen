@@ -45,9 +45,9 @@ export default function ContactPage() {
                   endereco
                 </h3>
                 <p className="text-text-medium text-sm font-body leading-relaxed">
-                  Greenland, Estrada Rincao do Vovo, s/n
+                  Estrada Rincão do Vovô, s/n
                   <br />
-                  Prata, Teresopolis - RJ
+                  Prata, Teresópolis - RJ
                   <br />
                   CEP 25980-010
                 </p>

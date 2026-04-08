@@ -9,6 +9,8 @@ import {
   Wine,
   TreePine,
   Check,
+  Snowflake,
+  GlassWater,
 } from 'lucide-react';
 
 import FadeInUp from '@/components/animations/FadeInUp';
@@ -26,6 +28,7 @@ const iconMap: Record<string, React.ReactNode> = {
   fish: <Fish size={28} />,
   pawprint: <PawPrint size={28} />,
   wine: <Wine size={28} />,
+  champagne: <GlassWater size={28} />,
 };
 
 const iconMapSmall: Record<string, React.ReactNode> = {
@@ -37,23 +40,48 @@ const iconMapSmall: Record<string, React.ReactNode> = {
   fish: <Fish size={20} />,
   pawprint: <PawPrint size={20} />,
   wine: <Wine size={20} />,
+  champagne: <GlassWater size={20} />,
 };
 
 /* ------------------------------------------------------------------ */
 /*  Helper: Full-Bleed Sticky Section (Pattern A)                     */
 /* ------------------------------------------------------------------ */
 function FullBleedExperience({ exp }: { exp: (typeof experiences)[number] }) {
+  // Slideshow images for "Passeio a Cavalo"
+  const horseTrekImages = ['/IMG_4662.webp', '/IMG_4661.webp', '/IMG_4660.webp'];
+  const isHorseTrek = exp.title === 'Passeio a Cavalo';
+  const images = isHorseTrek ? horseTrekImages : [exp.image];
+
   return (
     <section className="relative h-dvh overflow-hidden">
-      <motion.img
-        src={exp.image}
-        alt={exp.title}
-        initial={{ scale: 1.2 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 10, ease: 'easeOut' }}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      {isHorseTrek ? (
+        // 3-column grid for horse trek images
+        <div className="flex h-full">
+          {images.map((img, idx) => (
+            <motion.img
+              key={idx}
+              src={img}
+              alt={`${exp.title} - ${idx + 1}`}
+              initial={{ scale: 1.1 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 10, ease: 'easeOut' }}
+              className="w-1/3 h-full object-cover"
+            />
+          ))}
+        </div>
+      ) : (
+        // Single image for other experiences
+        <motion.img
+          src={exp.image}
+          alt={exp.title}
+          initial={{ scale: 1.2 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 10, ease: 'easeOut' }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
       <motion.div
         className="absolute bottom-16 left-8 md:left-16 max-w-lg z-10"
@@ -115,16 +143,44 @@ function SplitExperience({
               <p className="text-text-medium font-body leading-relaxed mb-4">
                 {exp.longDescription || exp.description}
               </p>
+              {exp.seasonBadge && (
+                <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs font-body font-medium mb-3">
+                  <Snowflake size={14} />
+                  {exp.seasonBadge}
+                </div>
+              )}
               {exp.detail && (
                 <p className="font-body italic text-accent text-sm">
                   {exp.detail}
                 </p>
               )}
-              <div className="mt-6">
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-body text-primary-medium">
-                  <Check size={14} /> Incluso na estadia
-                </span>
-              </div>
+              {exp.tariffs && exp.tariffs.length > 0 && (
+                <div className="mt-6 space-y-2">
+                  <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-body text-primary-medium mb-3">
+                    <Check size={14} /> Incluso na Estadia Pensão Completa
+                  </div>
+                  {exp.tariffs.map((tariff, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-2 text-sm font-body text-text-medium"
+                    >
+                      {tariff.included ? (
+                        <Check size={16} className="text-accent" />
+                      ) : (
+                        <span className="w-4 h-4 border border-text-light rounded-sm" />
+                      )}
+                      <span>{tariff.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {!exp.tariffs && (
+                <div className="mt-6">
+                  <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-body text-primary-medium">
+                    <Check size={14} /> Incluso na estadia
+                  </span>
+                </div>
+              )}
             </FadeInUp>
           </div>
         </div>
@@ -163,6 +219,7 @@ export default function ExperiencesPage() {
   const jogos = experiences.find((e) => e.id === 6)!;
   const fazendinha = experiences.find((e) => e.id === 7)!;
   const vinhos = experiences.find((e) => e.id === 8)!;
+  const bolhas = experiences.find((e) => e.id === 19)!;
 
   return (
     <main className="bg-cream">
@@ -246,6 +303,17 @@ export default function ExperiencesPage() {
       <FullBleedExperience exp={piscinas} />
 
       {/* ============================================================ */}
+      {/* EVENTOS SAZONAIS DE INVERNO                                   */}
+      {/* ============================================================ */}
+      <section className="bg-white">
+        <SplitExperience exp={vinhos} reversed />
+      </section>
+
+      <section className="bg-cream">
+        <SplitExperience exp={bolhas} />
+      </section>
+
+      {/* ============================================================ */}
       {/* 4. ÁREAS AO AR LIVRE + CICLOVIA — Pattern C (Offset Cards)   */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-cream">
@@ -281,7 +349,7 @@ export default function ExperiencesPage() {
 
             {/* Card 2 — Ciclovia (offset) */}
             <FadeInUp delay={0.15}>
-              <div className="group relative h-[60vh] lg:h-[600px] lg:mt-20 overflow-hidden">
+              <div className="group relative h-[60vh] lg:h-[600px] overflow-hidden">
                 <img
                   src={bikes.image}
                   alt={bikes.title}
@@ -413,11 +481,11 @@ export default function ExperiencesPage() {
       {/* 8. FAZENDINHA — Enhanced                                     */}
       {/* ============================================================ */}
       {/* Full-bleed intro */}
-      <section className="relative h-[70vh] overflow-hidden">
+      <section className="relative h-dvh overflow-hidden">
         <img
           src={fazendinha.image}
           alt={fazendinha.title}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         <div className="absolute bottom-16 left-0 right-0 text-center z-10 px-6">
@@ -456,13 +524,6 @@ export default function ExperiencesPage() {
             </div>
           </FadeInUp>
         </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 9. DEGUSTAÇÃO DE VINHOS — Pattern B (Split Screen, reversed) */}
-      {/* ============================================================ */}
-      <section className="bg-white">
-        <SplitExperience exp={vinhos} reversed />
       </section>
 
       {/* ============================================================ */}

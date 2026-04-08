@@ -144,8 +144,13 @@ export default function RoomDetailPage() {
               <h2 className="font-display text-3xl text-text-primary mb-4">
                 sobre a acomodação
               </h2>
-              <p className="text-text-medium font-body leading-relaxed">
+              <p className="text-text-medium font-body leading-relaxed mb-6">
                 {room.fullDescription}
+              </p>
+              <p className="font-body text-2xl font-semibold text-primary">
+                <span className="text-sm font-normal text-text-medium uppercase tracking-wider">a partir de </span>
+                R$ {room.price.toLocaleString('pt-BR')}
+                <span className="text-sm font-normal text-text-medium"> /noite</span>
               </p>
             </div>
           </FadeInUp>
@@ -254,6 +259,9 @@ export default function RoomDetailPage() {
                       <h3 className="font-display text-white text-2xl leading-tight mb-3">
                         {r.name}
                       </h3>
+                      <p className="text-accent font-body text-sm font-semibold mb-2">
+                        a partir de R$ {r.price.toLocaleString('pt-BR')}<span className="text-white/60 font-normal"> /noite</span>
+                      </p>
                       <p className="text-white/85 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mb-4">
                         {r.description}
                       </p>

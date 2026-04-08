@@ -4,10 +4,10 @@ import { CalendarDays, ArrowRight } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import FadeInUp from '@/components/animations/FadeInUp';
 import { SEO } from '@/components/SEO';
-import { getActivePackages } from '@/data/packages';
+import { packages } from '@/data/packages';
 
 export default function PackagesPage() {
-  const activePackages = getActivePackages();
+  const activePackages = packages;
 
   return (
     <main className="bg-cream">

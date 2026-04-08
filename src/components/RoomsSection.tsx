@@ -13,6 +13,7 @@ type CarouselRoom = {
   description: string;
   amenities: string;
   imageUrl: string;
+  price: number;
 };
 
 function getCardsPerView(width: number): 1 | 2 | 3 {
@@ -44,6 +45,7 @@ export default function RoomsSection() {
       description: room.description,
       amenities: room.amenities,
       imageUrl: room.images[0],
+      price: room.price,
     }));
   }, []);
 
@@ -156,6 +158,9 @@ export default function RoomsSection() {
                         <h3 className="font-display text-white text-[24px] leading-tight mb-3">
                           {room.name}
                         </h3>
+                        <p className="text-accent font-body text-sm font-semibold mb-2">
+                          a partir de R$ {room.price.toLocaleString('pt-BR')}<span className="text-white/60 font-normal"> /noite</span>
+                        </p>
                         <p className="text-white/85 text-sm leading-relaxed opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-24 transition-all duration-300 delay-100 mb-0 group-hover:mb-4">
                           {room.description}
                         </p>

@@ -18,7 +18,7 @@ import {
 import PageHero from '@/components/PageHero';
 import FadeInUp from '@/components/animations/FadeInUp';
 import { SEO } from '@/components/SEO';
-import { getActivePackages } from '@/data/packages';
+import { packages } from '@/data/packages';
 
 const iconMap: Record<string, React.ReactNode> = {
   wine: <Wine size={22} />,
@@ -35,7 +35,7 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function PackageDetailPage() {
-  const activePackages = getActivePackages();
+  const activePackages = packages;
   const { slug } = useParams<{ slug: string }>();
   const pkg = activePackages.find((p) => p.slug === slug);
 

@@ -12,6 +12,7 @@ import {
 import FadeInUp from '@/components/animations/FadeInUp';
 import ParallaxImage from '@/components/animations/ParallaxImage';
 import VideoLazy from '@/components/VideoLazy';
+import FoodGallerySection from '@/components/FoodGallerySection';
 import { SEO } from '@/components/SEO';
 
 const highlights = [
@@ -43,28 +44,44 @@ const highlights = [
 
 const gallery = [
   {
-    src: '/experiencias/venha.webp',
-    alt: 'Restaurante Art Cucina',
+    src: '/gastronomia/IMG_4654.webp',
+    alt: 'Duo de violoncelo e violino em frente ao restaurante Art Cucina ao entardecer',
   },
   {
-    src: '/experiencias/ar-livre.webp',
-    alt: 'Area ao ar livre',
+    src: '/gastronomia/IMG_4649.webp',
+    alt: 'Hóspede escolhendo rótulos na adega de vinhos do Art Cucina',
   },
   {
-    src: '/experiencias/ciclovia.webp',
-    alt: 'Ciclovia',
+    src: '/gastronomia/IMG_4653.webp',
+    alt: 'Saxofonista tocando música ao vivo dentro do restaurante Art Cucina',
   },
   {
-    src: '/experiencias/fazendinha.webp',
-    alt: 'Fazendinha',
+    src: '/gastronomia/IMG_4655.webp',
+    alt: 'Drink vermelho autoral com coco ralado e alecrim',
   },
   {
-    src: '/experiencias/salao.webp',
-    alt: 'Salao de jogos',
+    src: '/gastronomia/IMG_4652.webp',
+    alt: 'Parmegiana gratinada com spaghetti e taça de vinho tinto',
   },
   {
-    src: '/experiencias/vinhos.webp',
-    alt: 'Degustação de vinhos',
+    src: '/gastronomia/IMG_4651.webp',
+    alt: 'Spaghetti com queijo parmesão ralado servido na pedra-sabão',
+  },
+  {
+    src: '/gastronomia/IMG_4650.webp',
+    alt: 'Creme gratinado em ramequim com taça de vinho tinto',
+  },
+  {
+    src: '/gastronomia/IMG_4648.webp',
+    alt: 'Silhueta de saxofonista tocando ao pôr do sol na serra',
+  },
+  {
+    src: '/gastronomia/IMG_4656.webp',
+    alt: 'Saxofonista animando os hóspedes durante o jantar no Art Cucina',
+  },
+  {
+    src: '/gastronomia/IMG_4657.webp',
+    alt: 'Violoncelista sorrindo durante apresentação musical no restaurante',
   },
 ];
 
@@ -229,6 +246,8 @@ export default function GastronomyPage() {
         </div>
       </section>
 
+      <FoodGallerySection />
+
       {/* ============================================================ */}
       {/* 4. VÍDEO IMERSIVO — "Um Sabor da Serra"                     */}
       {/* ============================================================ */}
@@ -358,9 +377,9 @@ export default function GastronomyPage() {
               </div>
             </div>
 
-            {/* Bottom row */}
+            {/* Bottom rows */}
             {bottomImages.length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                 {bottomImages.map((img, i) => (
                   <FadeInUp key={img.src} delay={0.1 + i * 0.05}>
                     <div className="group relative h-[220px] sm:h-[260px] overflow-hidden">
@@ -368,6 +387,7 @@ export default function GastronomyPage() {
                         src={img.src}
                         alt={img.alt}
                         loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
@@ -393,8 +413,8 @@ export default function GastronomyPage() {
                 <p className="font-body uppercase text-xs tracking-[0.2em] text-white/50 mb-3">
                   Café da Manhã
                 </p>
-                <p className="font-display text-2xl text-white mb-1">
-                  7h30 as 10h00
+                <p className="font-body font-semibold text-xl text-white mb-1">
+                  7h30 às 10h00
                 </p>
                 <p className="text-white/50 text-sm font-body">
                   Incluso na estadia
@@ -404,8 +424,8 @@ export default function GastronomyPage() {
                 <p className="font-body uppercase text-xs tracking-[0.2em] text-white/50 mb-3">
                   Jantar Especial
                 </p>
-                <p className="font-display text-2xl text-white mb-1">
-                  19h00 as 22h00
+                <p className="font-body font-semibold text-xl text-white mb-1">
+                  19h00 às 22h00
                 </p>
                 <p className="text-white/50 text-sm font-body">
                   Sextas e sábados
@@ -426,8 +446,9 @@ export default function GastronomyPage() {
       {/* ============================================================ */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         <img
-          src="https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG"
+          src="/gastronomia/IMG_4654.webp"
           alt=""
+          role="presentation"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/60" />

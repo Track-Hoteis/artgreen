@@ -80,6 +80,12 @@ export default function AccommodationsPage() {
                       {room.description}
                     </p>
 
+                    <p className="font-body text-lg font-semibold text-primary mb-4">
+                      <span className="text-xs font-normal text-text-medium uppercase tracking-wider">a partir de </span>
+                      R$ {room.price.toLocaleString('pt-BR')}
+                      <span className="text-xs font-normal text-text-medium"> /noite</span>
+                    </p>
+
                     <div className="flex items-center gap-4 text-text-medium text-xs font-body border-t border-gray-100 pt-4">
                       {room.features.map((f) => (
                         <span
