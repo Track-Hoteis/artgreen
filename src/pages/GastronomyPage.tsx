@@ -54,6 +54,7 @@ const gallery = [
   {
     src: '/gastronomia/IMG_4653.webp',
     alt: 'Saxofonista tocando música ao vivo dentro do restaurante Art Cucina',
+    objectPosition: 'top',
   },
   {
     src: '/gastronomia/IMG_4655.webp',
@@ -78,6 +79,7 @@ const gallery = [
   {
     src: '/gastronomia/IMG_4656.webp',
     alt: 'Saxofonista animando os hóspedes durante o jantar no Art Cucina',
+    objectPosition: 'top',
   },
   {
     src: '/gastronomia/IMG_4657.webp',
@@ -103,6 +105,7 @@ export default function GastronomyPage() {
       <section className="relative h-dvh overflow-hidden">
         <VideoLazy
           lazySrc="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
+          poster="https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG"
           autoPlay
           loop
           playsInline
@@ -159,6 +162,7 @@ export default function GastronomyPage() {
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Text */}
             <FadeInUp>
+              <img src="/logo-artcucina.webp" alt="Art Cucina" className="h-10 md:h-12 mb-4" />
               <p className="section-eyebrow">Restaurante</p>
               <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
                 art cucina
@@ -183,7 +187,7 @@ export default function GastronomyPage() {
                   Reservar Estadia
                 </a>
                 <a
-                  href="https://wa.me/5521969688419"
+                  href="https://wa.me/552127480222"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-outline-dark inline-block text-center"
@@ -251,11 +255,20 @@ export default function GastronomyPage() {
       {/* ============================================================ */}
       {/* 4. VÍDEO IMERSIVO — "Um Sabor da Serra"                     */}
       {/* ============================================================ */}
-      <section className="relative bg-black">
+      <section className="relative">
+        {/* Background dish image */}
+        <img
+          src="/gastronomia/IMG_4651.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40" />
         <FadeInUp>
           <div className="relative w-full aspect-video overflow-hidden">
             <VideoLazy
-              lazySrc="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
+              lazySrc="https://greenland.b-cdn.net/restaurante-transicao.mp4"
+              poster="/gastronomia/IMG_4652.webp"
               autoPlay
               loop
               playsInline
@@ -281,16 +294,45 @@ export default function GastronomyPage() {
       {/* ============================================================ */}
       <section className="bg-cream">
         <div className="grid lg:grid-cols-2">
-          {/* Vídeo vertical */}
+          {/* Fotos do ambiente */}
           <FadeInUp>
-            <div className="relative overflow-hidden h-[460px] sm:h-[560px] lg:h-[700px]">
-              <VideoLazy
-                lazySrc="https://greenland.b-cdn.net/vertical%20artcucina.mp4"
-                autoPlay
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover object-center scale-[1.9]"
-              />
+            <div className="grid grid-cols-2 gap-3 h-[460px] sm:h-[560px] lg:h-[700px]">
+              <div className="overflow-hidden">
+                <img
+                  src="/gastronomia/IMG_4644.webp"
+                  alt="Mesa posta elegante com taças de vinho no restaurante Art Cucina"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden">
+                <img
+                  src="/gastronomia/IMG_4650.webp"
+                  alt="Creme gratinado em ramequim com taça de vinho tinto"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden">
+                <img
+                  src="/gastronomia/IMG_4651.webp"
+                  alt="Spaghetti com queijo parmesão ralado servido na pedra-sabão"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden">
+                <img
+                  src="/gastronomia/IMG_4649.webp"
+                  alt="Hóspede escolhendo rótulos na adega de vinhos do Art Cucina"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </FadeInUp>
 
@@ -370,6 +412,7 @@ export default function GastronomyPage() {
                         alt={img.alt}
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        style={img.objectPosition ? { objectPosition: img.objectPosition } : undefined}
                       />
                     </div>
                   </FadeInUp>
@@ -389,12 +432,55 @@ export default function GastronomyPage() {
                         loading="lazy"
                         decoding="async"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        style={img.objectPosition ? { objectPosition: img.objectPosition } : undefined}
                       />
                     </div>
                   </FadeInUp>
                 ))}
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 6b. MÚSICA AO VIVO                                          */}
+      {/* ============================================================ */}
+      <section className="py-20 md:py-28 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <FadeInUp className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Music size={24} className="text-primary" />
+              <p className="section-eyebrow !mb-0">Sábados especiais</p>
+            </div>
+            <h2 className="section-title">música ao vivo</h2>
+            <p className="text-text-medium font-body leading-relaxed max-w-2xl mx-auto mt-4">
+              Aos sábados, o Art Cucina ganha trilha sonora ao vivo com
+              saxofone, violoncelo e violino, criando a atmosfera perfeita para
+              almoço e jantar.
+            </p>
+          </FadeInUp>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            {[
+              { src: '/gastronomia/IMG_4654.webp', alt: 'Duo de violoncelo e violino ao entardecer' },
+              { src: '/gastronomia/IMG_4653.webp', alt: 'Saxofonista tocando dentro do restaurante', objectPosition: 'top' },
+              { src: '/gastronomia/IMG_4656.webp', alt: 'Saxofonista animando o jantar', objectPosition: 'top' },
+              { src: '/gastronomia/IMG_4657.webp', alt: 'Violoncelista sorrindo durante apresentação' },
+            ].map((img, i) => (
+              <FadeInUp key={img.src} delay={i * 0.08}>
+                <div className="group relative h-[200px] sm:h-[280px] lg:h-[360px] overflow-hidden">
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={img.objectPosition ? { objectPosition: img.objectPosition } : undefined}
+                  />
+                </div>
+              </FadeInUp>
+            ))}
           </div>
         </div>
       </section>
@@ -477,7 +563,7 @@ export default function GastronomyPage() {
                 Reservar Agora
               </a>
               <a
-                href="https://wa.me/5521969688419"
+                href="https://wa.me/552127480222"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline"

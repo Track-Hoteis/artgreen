@@ -41,34 +41,6 @@ export const packages: Package[] = [
     ],
   },
   {
-    id: 2,
-    slug: 'pascoa-2026',
-    tag: 'Pacote de Páscoa',
-    title: 'Páscoa 2026',
-    description: '02 a 05 de abril',
-    fullDescription:
-      'Celebre a Páscoa em família na serra fluminense. O pacote inclui hospedagem com pensão completa, atividades temáticas para crianças e adultos, caça aos ovos na fazendinha, oficina de chocolates e programação especial de lazer. Uma Páscoa inesquecível em contato com a natureza.',
-    dates: '02 a 05 de Abril de 2026',
-    startDate: '2026-04-02',
-    endDate: '2026-04-05',
-    imageUrl: '/Pacotes/Título.webp',
-    href: 'https://reservas.artgreenpousada.com.br/hotels/HOTEL_OMNI_19674#adults=2&children=0&clientId=19b9aba4-a5a9-4f9b-bb84-a5ff66a6b4ae&clientName=Motor%20Niara&contentType=property&destinationCountry=BR&destinationName=Pousada%20Art%20Green&enablePromoCode=true&endDate=2026-04-05&hotelIds[]=HOTEL_OMNI_19674&personName=&propertyId=793cabb9-2843-4bc6-8afd-d8cbd4df535d&rooms[]=a2&startDate=2026-04-02',
-    includes: [
-      'Hospedagem com pensão completa',
-      'Café da manhã, almoço, jantar e café da tarde',
-      'Caça aos ovos na fazendinha',
-      'Oficina de chocolates',
-      'Programação de lazer completa',
-      'Música ao vivo',
-    ],
-    highlights: [
-      { icon: 'egg', label: 'Caça aos ovos' },
-      { icon: 'utensils', label: 'Pensão completa' },
-      { icon: 'baby', label: 'Programação kids' },
-      { icon: 'music', label: 'Música ao vivo' },
-    ],
-  },
-  {
     id: 3,
     slug: 'tiradentes-2026',
     tag: 'Feriado',
@@ -102,7 +74,7 @@ export const packages: Package[] = [
     slug: 'dia-do-trabalhador-2026',
     tag: 'Feriado',
     title: 'Dia do Trabalhador',
-    description: '01 a 03 de maio',
+    description: 'Três dias de descanso na serra',
     fullDescription:
       'Descanse de verdade no feriado do Dia do Trabalhador. Três dias na serra com todo o conforto e lazer que a Art Green oferece. Piscinas, passeios a cavalo, fazendinha, lago de pesca e gastronomia afetiva no restaurante Art Cucina. O descanso que você merece.',
     dates: '01 a 03 de Maio de 2026',

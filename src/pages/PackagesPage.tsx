@@ -111,7 +111,7 @@ export default function PackagesPage() {
                 Reservar Agora
               </a>
               <a
-                href="https://wa.me/5521969688419"
+                href="https://wa.me/552127480222"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline inline-block"

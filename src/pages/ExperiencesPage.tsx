@@ -11,6 +11,7 @@ import {
   Check,
   Snowflake,
   GlassWater,
+  Sun,
 } from 'lucide-react';
 
 import FadeInUp from '@/components/animations/FadeInUp';
@@ -55,27 +56,39 @@ function FullBleedExperience({ exp }: { exp: (typeof experiences)[number] }) {
   return (
     <section className="relative h-dvh overflow-hidden">
       {isHorseTrek ? (
-        // 3-column grid for horse trek images
-        <div className="flex h-full">
-          {images.map((img, idx) => (
-            <motion.img
-              key={idx}
-              src={img}
-              alt={`${exp.title} - ${idx + 1}`}
-              initial={{ scale: 1.1 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 10, ease: 'easeOut' }}
-              className="w-1/3 h-full object-cover"
-            />
-          ))}
-        </div>
+        <>
+          {/* Mobile: single center image */}
+          <motion.img
+            src={images[1]}
+            alt={exp.title}
+            initial={{ scale: 1.05 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 10, ease: 'easeOut' }}
+            className="md:hidden absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Desktop: 3-column grid */}
+          <div className="hidden md:flex h-full">
+            {images.map((img, idx) => (
+              <motion.img
+                key={idx}
+                src={img}
+                alt={`${exp.title} - ${idx + 1}`}
+                initial={{ scale: 1.05 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 10, ease: 'easeOut' }}
+                className="w-1/3 h-full object-cover"
+              />
+            ))}
+          </div>
+        </>
       ) : (
         // Single image for other experiences
         <motion.img
           src={exp.image}
           alt={exp.title}
-          initial={{ scale: 1.2 }}
+          initial={{ scale: 1.05 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 10, ease: 'easeOut' }}
@@ -144,8 +157,12 @@ function SplitExperience({
                 {exp.longDescription || exp.description}
               </p>
               {exp.seasonBadge && (
-                <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs font-body font-medium mb-3">
-                  <Snowflake size={14} />
+                <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-body font-medium mb-3 ${
+                  exp.seasonBadge.includes('Inverno')
+                    ? 'bg-blue-50 text-blue-700'
+                    : 'bg-amber-50 text-amber-700'
+                }`}>
+                  {exp.seasonBadge.includes('Inverno') ? <Snowflake size={14} /> : <Sun size={14} />}
                   {exp.seasonBadge}
                 </div>
               )}
@@ -235,7 +252,7 @@ export default function ExperiencesPage() {
         <motion.img
           src="/experiencias/experiencias.webp"
           alt="Experiências Art Green"
-          initial={{ scale: 1.2 }}
+          initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
           transition={{ duration: 10, ease: 'easeOut' }}
           className="absolute inset-0 w-full h-full object-cover"
@@ -557,7 +574,7 @@ export default function ExperiencesPage() {
                 Reservar Agora
               </a>
               <a
-                href="https://wa.me/5521969688419"
+                href="https://wa.me/552127480222"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline"

@@ -213,6 +213,6 @@ export const experiences: Experience[] = [
     tariffs: [
       { label: 'Tarifa Café da Manhã - Paga a Parte', included: true },
     ],
-    seasonBadge: 'Evento Sazonal de Inverno',
+    seasonBadge: 'Evento Sazonal de Primavera e Verão',
   },
 ];

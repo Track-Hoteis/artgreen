@@ -21,6 +21,7 @@ export default function GastronomySection() {
             <div className="relative overflow-hidden h-[460px] sm:h-[560px] lg:h-[620px]">
               <VideoLazy
                 lazySrc="https://greenland.b-cdn.net/vertical%20artcucina.mp4"
+                poster="/gastronomia/IMG_4655.webp"
                 autoPlay
                 loop
                 playsInline
@@ -30,6 +31,7 @@ export default function GastronomySection() {
           </FadeInUp>
 
           <FadeInUp delay={0.1}>
+            <img src="/logo-artcucina.webp" alt="Art Cucina" className="h-10 md:h-12 mb-4" />
             <p className="section-eyebrow">Restaurante Art Cucina</p>
             <h2 className="section-title text-2xl md:text-3xl lg:text-4xl">
               Experiência gastronômica em ambiente romântico

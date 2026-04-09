@@ -16,18 +16,6 @@ const sections = [
     image: '/sentir.webp',
     alt: 'Experiências sensoriais na natureza',
   },
-  {
-    id: 'desconectar',
-    word: 'desconectar',
-    image: '/desconectar.webp',
-    alt: 'Desconexao e tranquilidade',
-  },
-  {
-    id: 'desacelerar',
-    word: 'desacelerar',
-    image: '/desacelerar.webp',
-    alt: 'Momentos de desaceleração',
-  },
 ];
 
 const COOLDOWN_MS = 700;
@@ -269,7 +257,7 @@ export default function ImmersiveScrollSection() {
       <div
         className="hidden lg:block"
         ref={sectionRef}
-        style={{ height: '400vh' }}
+        style={{ height: '200vh' }}
       >
         <div className="sticky top-0 h-dvh flex">
           {/* Left column */}
@@ -362,7 +350,7 @@ export default function ImmersiveScrollSection() {
       <div
         className="lg:hidden"
         ref={mobileSectionRef}
-        style={{ height: '400vh' }}
+        style={{ height: '200vh' }}
       >
         <div className="sticky top-0 h-dvh relative overflow-hidden bg-black">
           {/* Stacked images with crossfade */}
@@ -385,7 +373,7 @@ export default function ImmersiveScrollSection() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
           {/* Text overlay — one word at a time (slot) */}
-          <div className="absolute bottom-16 left-0 right-0 text-center px-6">
+          <div className="absolute bottom-28 left-0 right-0 text-center px-6">
             <p
               className="font-body uppercase text-xs tracking-[0.3em] mb-3"
               style={{ color: 'rgba(255,255,255,0.7)' }}

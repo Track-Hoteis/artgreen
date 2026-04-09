@@ -65,7 +65,9 @@ export default function ContactPage() {
                 <div className="space-y-2 text-text-medium text-sm font-body">
                   <p>
                     <a
-                      href="tel:+552127480222"
+                      href="https://wa.me/552127480222"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="hover:text-primary transition-colors"
                     >
                       (21) 2748-0222
@@ -74,7 +76,7 @@ export default function ContactPage() {
                   <p className="flex items-center justify-center gap-1">
                     <MessageCircle size={14} />
                     <a
-                      href="https://wa.me/5521969688419"
+                      href="https://wa.me/552127480222"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-primary transition-colors"
@@ -119,7 +121,7 @@ export default function ContactPage() {
                   onSubmit={(e) => {
                     e.preventDefault();
                     window.open(
-                      'https://wa.me/5521969688419?text=Olá! Gostaria de mais informações sobre a Pousada Art Green.',
+                      'https://wa.me/552127480222?text=Olá! Gostaria de mais informações sobre a Pousada Art Green.',
                       '_blank'
                     );
                   }}
@@ -180,7 +182,7 @@ export default function ContactPage() {
             <FadeInUp delay={0.1}>
               <div className="bg-white p-2 h-full min-h-[400px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.5!2d-43.0889!3d-22.4112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDI0JzQwLjMiUyA0M8KwMDUnMjAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1!5m2!1spt-BR!2sbr"
+                  src="https://www.google.com/maps?q=Art+Green+Boutique+Hotel,+Teres%C3%B3polis+-+RJ&output=embed"
                   className="w-full h-full min-h-[400px] border-0"
                   allowFullScreen
                   loading="lazy"

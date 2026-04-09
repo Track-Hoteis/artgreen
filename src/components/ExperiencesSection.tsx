@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -32,8 +32,11 @@ function getCardsPerView(width: number): 1 | 2 | 3 | 4 {
 }
 
 export default function ExperiencesSection() {
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(() =>
+    typeof window === 'undefined' ? 1 : getCardsPerView(window.innerWidth),
+  );
   const [isTransitionEnabled, setIsTransitionEnabled] = useState(true);
+  const isResettingRef = useRef(false);
   const [cardsPerView, setCardsPerView] = useState<1 | 2 | 3 | 4>(() =>
     typeof window === 'undefined' ? 1 : getCardsPerView(window.innerWidth),
   );
@@ -71,6 +74,7 @@ export default function ExperiencesSection() {
 
     if (!isAfterTailClone && !isBeforeHeadClone) return;
 
+    isResettingRef.current = true;
     const timer = window.setTimeout(() => {
       setIsTransitionEnabled(false);
       setCurrentSlide((prev) => {
@@ -80,14 +84,24 @@ export default function ExperiencesSection() {
       });
       requestAnimationFrame(() => {
         setIsTransitionEnabled(true);
+        isResettingRef.current = false;
       });
     }, 500);
 
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(timer);
+      isResettingRef.current = false;
+    };
   }, [currentSlide, cardsPerView, items.length]);
 
-  const next = useCallback(() => setCurrentSlide((prev) => prev + 1), []);
-  const prev = useCallback(() => setCurrentSlide((prev) => prev - 1), []);
+  const next = useCallback(() => {
+    if (isResettingRef.current) return;
+    setCurrentSlide((prev) => prev + 1);
+  }, []);
+  const prev = useCallback(() => {
+    if (isResettingRef.current) return;
+    setCurrentSlide((prev) => prev - 1);
+  }, []);
 
   // Autoplay 5000ms
   useEffect(() => {
@@ -170,12 +184,15 @@ export default function ExperiencesSection() {
                     transition={{ duration: 0.3 }}
                     className="service-media-card group"
                   >
-                    <div
-                      className="h-[270px] bg-cover bg-center"
-                      style={{ backgroundImage: `url(${card.image})` }}
-                      role="img"
-                      aria-label={card.title}
-                    />
+                    <div className="h-[270px] overflow-hidden">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <div className="service-media-card__content px-6 py-6">
                       <p className="service-media-card__category text-xs uppercase tracking-[0.2em] font-medium mb-2">
                         {card.category}

@@ -59,6 +59,7 @@ export default function FoodGallerySection() {
     <section aria-label="Pratos e drinks do Art Cucina" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <FadeInUp className="text-center mb-14">
+          <img src="/logo-artcucina.webp" alt="Art Cucina" className="h-10 md:h-12 mb-4 mx-auto" />
           <p className="section-eyebrow">Nosso Menu</p>
           <h2 className="section-title">gastronomia exclusiva</h2>
           <p className="text-text-medium max-w-2xl mx-auto mt-4 font-body">

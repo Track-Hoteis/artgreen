@@ -38,15 +38,20 @@ export default function RoomsSection() {
   const carouselRooms = useMemo<CarouselRoom[]>(() => {
     return rooms
       .filter((r) => !r.hidden)
-      .map((room) => ({
-      id: room.id,
-      slug: room.slug,
-      name: room.name,
-      description: room.description,
-      amenities: room.amenities,
-      imageUrl: room.images[0],
-      price: room.price,
-    }));
+      .map((room) => {
+      const simplified = room.features.filter((f) =>
+        ['bed', 'users', 'leaf', 'home'].includes(f.icon),
+      ).slice(0, 3);
+      return {
+        id: room.id,
+        slug: room.slug,
+        name: room.name,
+        description: room.description,
+        amenities: simplified.map((f) => f.label).join(' | '),
+        imageUrl: room.images[0],
+        price: room.price,
+      };
+    });
   }, []);
 
   const loopedRooms = useMemo<CarouselRoom[]>(() => {

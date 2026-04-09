@@ -36,13 +36,15 @@ export default function LocationSection() {
 
               <div className="space-y-3 text-sm">
                 <a
-                  href="tel:+552127480222"
+                  href="https://wa.me/552127480222"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 text-text-primary hover:text-primary transition-colors"
                 >
-                  <Phone size={14} className="text-primary" /> (21) 2748-0222
+                  <MessageCircle size={14} className="text-primary" /> (21) 2748-0222
                 </a>
                 <a
-                  href="https://wa.me/5521969688419"
+                  href="https://wa.me/552127480222"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-text-primary hover:text-primary transition-colors"
@@ -65,7 +67,7 @@ export default function LocationSection() {
             <div className="overflow-hidden shadow-lg aspect-[4/3]">
               <iframe
                 title="Localização Pousada Art Green"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.216!2d-42.9850354!3d-22.3400328!2m3!1f0!2f0!3f0!3m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x984d2c0b8bd131:0xb114155348e42261!5e0!3m2!1spt-BR!2sbr!4v1710757200000"
+                src="https://www.google.com/maps?q=Art+Green+Boutique+Hotel,+Teres%C3%B3polis+-+RJ&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

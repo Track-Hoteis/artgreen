@@ -87,7 +87,10 @@ export default function AccommodationsPage() {
                     </p>
 
                     <div className="flex items-center gap-4 text-text-medium text-xs font-body border-t border-gray-100 pt-4">
-                      {room.features.map((f) => (
+                      {room.features
+                        .filter((f) => ['bed', 'users', 'leaf', 'home'].includes(f.icon))
+                        .slice(0, 3)
+                        .map((f) => (
                         <span
                           key={f.label}
                           className="flex items-center gap-1.5"

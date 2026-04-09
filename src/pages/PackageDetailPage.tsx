@@ -171,7 +171,7 @@ export default function PackageDetailPage() {
                   </a>
 
                   <a
-                    href="https://wa.me/5521969688419"
+                    href="https://wa.me/552127480222"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-outline-dark w-full text-center block mt-3"
