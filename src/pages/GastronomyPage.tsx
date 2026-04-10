@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
   UtensilsCrossed,
@@ -92,6 +93,33 @@ export default function GastronomyPage() {
   const sideImages = restImages.slice(0, 4);
   const bottomImages = restImages.slice(4);
 
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+
+  // Safari/iOS autoplay fallback: programmatic play after mount
+  useEffect(() => {
+    const el = heroVideoRef.current;
+    if (!el) return;
+    el.muted = true;
+    el.defaultMuted = true;
+    el.setAttribute('muted', '');
+    el.setAttribute('playsinline', '');
+    el.setAttribute('webkit-playsinline', '');
+
+    const tryPlay = () => {
+      try {
+        const p = el.play();
+        if (p !== undefined) p.catch(() => {});
+      } catch {}
+    };
+
+    if (el.readyState >= 3) {
+      tryPlay();
+    } else {
+      el.addEventListener('canplay', tryPlay, { once: true });
+      el.addEventListener('loadeddata', tryPlay, { once: true });
+    }
+  }, []);
+
   return (
     <main className="bg-cream">
       <SEO
@@ -104,14 +132,17 @@ export default function GastronomyPage() {
       {/* ============================================================ */}
       <section className="relative h-screen overflow-hidden bg-black">
         <video
+          ref={heroVideoRef}
           autoPlay
           muted
           loop
           playsInline
+          // @ts-expect-error webkit-playsinline is non-standard but needed for old iOS Safari
+          webkit-playsinline=""
           preload="auto"
-          src="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
           className="absolute inset-0 w-full h-full object-cover"
         >
+          <source src="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4" type="video/mp4" />
           <track kind="captions" default />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
