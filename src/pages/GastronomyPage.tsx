@@ -264,7 +264,7 @@ export default function GastronomyPage() {
         />
         <div className="absolute inset-0 bg-white/40" />
         <FadeInUp>
-          <div className="relative w-full aspect-video overflow-hidden">
+          <div className="relative w-full aspect-[9/16] md:aspect-video overflow-hidden">
             {/* Mobile: vertical video */}
             <VideoLazy
               lazySrc="https://greenland.b-cdn.net/restaurante-transicao.mp4"
@@ -302,7 +302,7 @@ export default function GastronomyPage() {
       <section className="bg-cream">
         <div className="grid lg:grid-cols-2">
           {/* Fotos do ambiente */}
-          <FadeInUp>
+          <FadeInUp className="order-2 lg:order-1">
             <div className="grid grid-cols-2 gap-3 h-[460px] sm:h-[560px] lg:h-[700px]">
               <div className="overflow-hidden">
                 <img
@@ -344,7 +344,7 @@ export default function GastronomyPage() {
           </FadeInUp>
 
           {/* Texto */}
-          <div className="flex items-center">
+          <div className="flex items-center order-1 lg:order-2">
             <div className="px-6 md:px-12 lg:px-20 py-16 lg:py-24 max-w-xl mx-auto lg:mx-0">
               <FadeInUp delay={0.1}>
                 <p className="section-eyebrow">O Ambiente</p>
