@@ -145,7 +145,6 @@ export default function VideoLazy({
         ref={ref}
         muted
         playsInline
-        // @ts-expect-error webkit-playsinline is non-standard but needed for old iOS
         webkit-playsinline=""
         preload="none"
         poster={poster}
