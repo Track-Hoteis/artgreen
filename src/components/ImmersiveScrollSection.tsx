@@ -259,7 +259,7 @@ export default function ImmersiveScrollSection() {
         ref={sectionRef}
         style={{ height: '200vh' }}
       >
-        <div className="sticky top-0 h-dvh flex">
+        <div className="sticky top-0 h-screen flex">
           {/* Left column */}
           <div
             className="w-1/2 flex items-center justify-center"
@@ -352,7 +352,7 @@ export default function ImmersiveScrollSection() {
         ref={mobileSectionRef}
         style={{ height: '200vh' }}
       >
-        <div className="sticky top-0 h-dvh relative overflow-hidden bg-black">
+        <div className="sticky top-0 h-screen relative overflow-hidden bg-black">
           {/* Stacked images with crossfade */}
           {sections.map((s, i) => {
             const isActive = i === activeIndex;

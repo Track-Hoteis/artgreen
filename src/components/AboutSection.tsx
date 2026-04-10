@@ -132,7 +132,7 @@ export default function AboutSection() {
 
           {/* ── Image column ── */}
           <FadeInUp delay={0.15}>
-            <div className="relative overflow-hidden shadow-lg h-[52dvh] sm:h-[60dvh] lg:h-[68dvh]">
+            <div className="relative overflow-hidden shadow-lg h-[52vh] sm:h-[60vh] lg:h-[68vh]">
               {carouselImages.map((src, i) => (
                 <img
                   key={src}

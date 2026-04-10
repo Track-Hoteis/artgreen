@@ -53,7 +53,7 @@ function FullBleedExperience({ exp }: { exp: (typeof experiences)[number] }) {
   const images = isHorseTrek ? horseTrekImages : [exp.image];
 
   return (
-    <section className="relative h-dvh overflow-hidden">
+    <section className="relative h-screen overflow-hidden">
       {isHorseTrek ? (
         <>
           {/* Mobile: single center image */}
@@ -247,7 +247,7 @@ export default function ExperiencesPage() {
       {/* ============================================================ */}
       {/* 1. HERO CINEMATOGRÁFICO                                      */}
       {/* ============================================================ */}
-      <section className="relative h-dvh overflow-hidden">
+      <section className="relative h-screen overflow-hidden">
         <motion.img
           src="/experiencias.jpeg"
           alt="Experiências Art Green"
@@ -523,7 +523,7 @@ export default function ExperiencesPage() {
       {/* 8. FAZENDINHA — Enhanced                                     */}
       {/* ============================================================ */}
       {/* Full-bleed intro */}
-      <section className="relative h-dvh overflow-hidden">
+      <section className="relative h-screen overflow-hidden">
         <img
           src={fazendinha.image}
           alt={fazendinha.title}

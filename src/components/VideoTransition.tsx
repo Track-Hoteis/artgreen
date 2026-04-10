@@ -5,7 +5,7 @@ export default function VideoTransition() {
   return (
     <section aria-label="Vídeo de transição" className="bg-cream">
       <FadeInUp>
-        <div className="relative w-full h-[40dvh] md:h-[60dvh] overflow-hidden">
+        <div className="relative w-full h-[40vh] md:h-[60vh] overflow-hidden">
           <VideoLazy
             lazySrc="https://greenland.b-cdn.net/transicao-desktop.mp4"
             lazyRootMargin="0px 0px 1200px 0px"
