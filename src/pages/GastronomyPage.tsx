@@ -124,7 +124,7 @@ export default function GastronomyPage() {
         {/* Central content — Logo + subtitle */}
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6">
           <motion.img
-            src="/logo-artcucina.webp"
+            src="/logo-artcucina-branca.png"
             alt="Art Cucina"
             className="h-20 md:h-28 lg:h-32 mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
