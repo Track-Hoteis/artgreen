@@ -19,7 +19,7 @@ export const experiences: Experience[] = [
     description:
       '3 piscinas: hidro aquecida, adulto/infantil com escorrega, piscina kids.',
     image:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-34.jpg',
+      '/servicos/piscinas.webp',
     category: 'Diversão aquática',
     longDescription:
       'Mergulhe em três piscinas pensadas para todos os momentos: a hidromassagem aquecida para relaxar, a piscina adulto e infantil com escorregador para a diversão em família, e a piscina kids para os pequenos aproveitarem com segurança.',

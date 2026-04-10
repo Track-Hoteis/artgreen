@@ -419,6 +419,10 @@
   }
 }
 
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -486,6 +490,10 @@
   }
 
   .mobile-center-content section .rooms-track {
+    justify-content: flex-start !important;
+  }
+
+  .mobile-center-content section .experiences-track {
     justify-content: flex-start !important;
   }
 

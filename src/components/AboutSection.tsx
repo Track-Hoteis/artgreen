@@ -78,8 +78,8 @@ export default function AboutSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* ── Text column ── */}
-          <FadeInUp>
-            <p className="section-eyebrow flex items-center gap-2">
+          <FadeInUp className="text-center lg:text-left">
+            <p className="section-eyebrow flex items-center justify-center lg:justify-start gap-2">
               <span className="text-primary-medium">→</span> Sobre a Pousada
             </p>
 

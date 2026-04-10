@@ -120,7 +120,7 @@ export default function ExperiencesSection() {
     <section id="experiencias" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-14 md:mb-16">
-          <FadeInUp className="lg:col-span-4">
+          <FadeInUp className="lg:col-span-4 text-center lg:text-left">
             <p className="section-eyebrow">Serviços</p>
             <h2 className="section-title leading-tight">
               Enriquecendo sua estadia com experiências exclusivas
@@ -168,17 +168,20 @@ export default function ExperiencesSection() {
             <ChevronRight size={20} />
           </button>
 
-          <div className="overflow-hidden">
+          <div style={{ clipPath: 'inset(0)' }}>
             <div
-              className={`flex ${isTransitionEnabled ? 'transition-transform duration-500 ease-in-out' : ''}`}
+              className={`experiences-track flex ${isTransitionEnabled ? 'transition-transform duration-500 ease-in-out' : ''}`}
               style={{ transform: `translateX(-${(currentSlide * 100) / cardsPerView}%)` }}
             >
-              {loopedItems.map((card, idx) => (
+              {loopedItems.map((card, idx) => {
+                const isNearby = Math.abs(idx - currentSlide) <= cardsPerView + 2;
+                return (
                 <div
                   key={`${card.id}-${idx}`}
                   className="flex-shrink-0 px-3"
                   style={{ width: cardWidth }}
                 >
+                  {isNearby ? (
                   <motion.article
                     whileHover={{ scale: 1.02, boxShadow: '0 14px 35px rgba(0,0,0,0.15)' }}
                     transition={{ duration: 0.3 }}
@@ -188,8 +191,8 @@ export default function ExperiencesSection() {
                       <img
                         src={card.image}
                         alt={card.title}
-                        loading="lazy"
-                        decoding="async"
+                        loading="eager"
+                        decoding="sync"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -214,24 +217,28 @@ export default function ExperiencesSection() {
                       </a>
                     </div>
                   </motion.article>
+                  ) : (
+                    <div className="service-media-card" style={{ minHeight: 512 }} aria-hidden />
+                  )}
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
 
-        <div className="flex justify-center gap-0 mt-8 flex-wrap">
+        <div className="flex justify-center mt-8 max-w-full overflow-x-auto px-2" style={{ scrollbarWidth: 'none' }}>
           {items.map((item, index) => (
             <button
               key={item.id}
               onClick={() => setCurrentSlide(cardsPerView + index)}
               aria-label={`Ir para ${item.title}`}
-              className="relative flex items-center justify-center min-w-[44px] min-h-[44px]"
+              className="relative flex items-center justify-center min-w-[18px] min-h-[28px] md:min-w-[44px] md:min-h-[44px]"
             >
-              <span className={`block h-2.5 rounded-full transition-all duration-300 ${
+              <span className={`block h-1.5 md:h-2.5 rounded-full transition-all duration-300 ${
                 index === logicalSlide
-                  ? 'w-6 bg-primary'
-                  : 'w-2.5 bg-primary/30 hover:bg-primary/50'
+                  ? 'w-4 md:w-6 bg-primary'
+                  : 'w-1.5 md:w-2.5 bg-primary/30 hover:bg-primary/50'
               }`} />
             </button>
           ))}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu } from 'lucide-react';
+import { Instagram, Menu } from 'lucide-react';
 
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
@@ -48,8 +48,7 @@ export default function Header() {
   const isHome = location.pathname === '/';
   const [open, setOpen] = useState(false);
 
-  // On internal pages, always show the reserve button
-  const showReserveBtn = isHome ? pastHero : scrolled;
+  const showReserveBtn = scrolled || !isHome;
 
   useEffect(() => {
     const closeOnHashChange = () => setOpen(false);
@@ -89,12 +88,21 @@ export default function Header() {
         </nav>
 
         <div
-          className={`hidden lg:flex justify-self-end transition-all duration-500 ease-out ${
+          className={`hidden lg:flex items-center gap-4 justify-self-end transition-all duration-500 ease-out ${
             showReserveBtn
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 -translate-y-2 pointer-events-none'
           }`}
         >
+          <a
+            href="https://www.instagram.com/artgreenpousada/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram Art Green"
+            className="text-white/80 hover:text-white transition-colors"
+          >
+            <Instagram size={20} />
+          </a>
           <a
             href="https://reservas.artgreenpousada.com.br/"
             target="_blank"
@@ -105,12 +113,22 @@ export default function Header() {
           </a>
         </div>
 
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            <button className="lg:hidden p-2" aria-label="Abrir menu">
-              <Menu size={26} className="text-white" />
-            </button>
-          </SheetTrigger>
+        <div className="flex items-center gap-1 lg:hidden">
+          <a
+            href="https://www.instagram.com/artgreenpousada/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram Art Green"
+            className="p-2 text-white/80 hover:text-white transition-colors"
+          >
+            <Instagram size={22} />
+          </a>
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <button className="p-2" aria-label="Abrir menu">
+                <Menu size={26} className="text-white" />
+              </button>
+            </SheetTrigger>
 
           <SheetContent>
             <div className="mt-10 flex h-full flex-col">
@@ -140,16 +158,27 @@ export default function Header() {
               </nav>
 
               <a
+                href="https://www.instagram.com/artgreenpousada/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-center gap-2 border border-white/20 px-6 py-3.5 text-white/90 hover:text-white hover:border-white/50 transition-colors mt-8 uppercase tracking-wider text-sm font-body font-medium"
+              >
+                <Instagram size={18} />
+                Instagram
+              </a>
+              <a
                 href="https://reservas.artgreenpousada.com.br/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-reserve mt-10 text-center"
+                className="btn-reserve mt-4 text-center"
               >
                 Reservar Agora
               </a>
             </div>
           </SheetContent>
         </Sheet>
+        </div>
       </div>
     </header>
   );

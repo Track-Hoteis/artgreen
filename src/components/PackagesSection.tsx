@@ -170,7 +170,7 @@ export default function PackagesSection() {
 
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
-                        <div className="absolute inset-0 flex flex-col justify-end p-6">
+                        <div className="absolute inset-0 flex flex-col justify-end items-center text-center md:items-start md:text-left p-6">
                           <span className="text-xs uppercase tracking-widest font-medium text-white bg-primary px-3 py-1 rounded-full w-fit mb-3">
                             {pkg.tag}
                           </span>

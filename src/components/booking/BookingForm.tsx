@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Users, Search, Tag } from 'lucide-react';
+import { startOfDay, addDays } from 'date-fns';
 
 import DateRangePicker from './DateRangePicker';
 import ChildrenSelector from './ChildrenSelector';
@@ -11,8 +12,8 @@ interface BookingFormProps {
 }
 
 export default function BookingForm({ variant, showTitle }: BookingFormProps) {
-  const [from, setFrom] = useState<Date | undefined>(undefined);
-  const [to, setTo] = useState<Date | undefined>(undefined);
+  const [from, setFrom] = useState<Date | undefined>(() => startOfDay(new Date()));
+  const [to, setTo] = useState<Date | undefined>(() => startOfDay(addDays(new Date(), 2)));
   const [adults, setAdults] = useState(2);
   const [childrenCount, setChildrenCount] = useState(0);
   const [childrenAges, setChildrenAges] = useState<number[]>([]);

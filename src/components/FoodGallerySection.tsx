@@ -28,9 +28,9 @@ const dishes = [
     label: 'Massas Artesanais',
   },
   {
-    src: '/gastronomia/IMG_4644.webp',
-    alt: 'Mesa posta elegante com taças de vinho no restaurante Art Cucina',
-    label: 'Ambiente Exclusivo',
+    src: '/gastronomia/IMG_4654.webp',
+    alt: 'Duo de violoncelo e violino em apresentação musical no Art Cucina',
+    label: 'Música ao Vivo',
   },
 ];
 
@@ -59,7 +59,7 @@ export default function FoodGallerySection() {
     <section aria-label="Pratos e drinks do Art Cucina" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <FadeInUp className="text-center mb-14">
-          <img src="/logo-artcucina.webp" alt="Art Cucina" className="h-10 md:h-12 mb-4 mx-auto" />
+          <img src="/logo-artcucina.webp" alt="Art Cucina" className="h-20 md:h-28 mb-4 mx-auto" />
           <p className="section-eyebrow">Nosso Menu</p>
           <h2 className="section-title">gastronomia exclusiva</h2>
           <p className="text-text-medium max-w-2xl mx-auto mt-4 font-body">

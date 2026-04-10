@@ -1,5 +1,4 @@
 import FadeInUp from '@/components/animations/FadeInUp';
-import VideoLazy from '@/components/VideoLazy';
 
 const highlights = [
   'Culinária italiana artesanal',
@@ -16,22 +15,19 @@ export default function GastronomySection() {
   return (
     <section id="gastronomia" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-          <FadeInUp>
-            <div className="relative overflow-hidden h-[460px] sm:h-[560px] lg:h-[620px]">
-              <VideoLazy
-                lazySrc="https://greenland.b-cdn.net/vertical%20artcucina.mp4"
-                poster="/gastronomia/IMG_4655.webp"
-                autoPlay
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover object-center scale-[1.9]"
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center lg:items-stretch">
+          <FadeInUp className="lg:h-full">
+            <div className="relative overflow-hidden h-[460px] sm:h-[560px] lg:h-full">
+              <img
+                src="/experiencias/venha.webp"
+                alt="Restaurante Art Cucina com ambiente acolhedor na serra"
+                className="absolute inset-0 w-full h-full object-cover object-center"
               />
             </div>
           </FadeInUp>
 
-          <FadeInUp delay={0.1}>
-            <img src="/logo-artcucina.webp" alt="Art Cucina" className="h-10 md:h-12 mb-4" />
+          <FadeInUp delay={0.1} className="text-center lg:text-left">
+            <img src="/logo-artcucina.webp" alt="Art Cucina" className="h-20 md:h-28 mb-4 mx-auto lg:mx-0" />
             <p className="section-eyebrow">Restaurante Art Cucina</p>
             <h2 className="section-title text-2xl md:text-3xl lg:text-4xl">
               Experiência gastronômica em ambiente romântico

@@ -429,15 +429,41 @@ export default function ExperiencesPage() {
             </div>
           </div>
 
-          <div className="relative h-[50vh] lg:h-[700px] overflow-hidden">
-            <VideoLazy
-              lazySrc="https://greenland.b-cdn.net/vertical%20artcucina.mp4"
-              startAtSeconds={6}
-              autoPlay
-              loop
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover object-center scale-[1.9]"
-            />
+          <div className="grid grid-cols-2 gap-2 h-[50vh] lg:h-[700px]">
+            <div className="overflow-hidden">
+              <img
+                src="/gastronomia/IMG_4654.webp"
+                alt="Duo de violoncelo e violino ao entardecer"
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="overflow-hidden">
+              <img
+                src="/gastronomia/IMG_4653.webp"
+                alt="Saxofonista tocando dentro do restaurante"
+                loading="lazy"
+                className="w-full h-full object-cover"
+                style={{ objectPosition: 'top' }}
+              />
+            </div>
+            <div className="overflow-hidden">
+              <img
+                src="/gastronomia/IMG_4656.webp"
+                alt="Saxofonista animando o jantar"
+                loading="lazy"
+                className="w-full h-full object-cover"
+                style={{ objectPosition: 'top' }}
+              />
+            </div>
+            <div className="overflow-hidden">
+              <img
+                src="/gastronomia/IMG_4657.webp"
+                alt="Violoncelista sorrindo durante apresentação"
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>

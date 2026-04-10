@@ -105,7 +105,6 @@ export default function GastronomyPage() {
       <section className="relative h-dvh overflow-hidden">
         <VideoLazy
           lazySrc="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
-          poster="https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG"
           autoPlay
           loop
           playsInline
@@ -162,7 +161,7 @@ export default function GastronomyPage() {
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Text */}
             <FadeInUp>
-              <img src="/logo-artcucina.webp" alt="Art Cucina" className="h-10 md:h-12 mb-4" />
+              <img src="/logo-artcucina.webp" alt="Art Cucina" className="h-20 md:h-28 mb-4" />
               <p className="section-eyebrow">Restaurante</p>
               <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
                 art cucina
@@ -263,16 +262,24 @@ export default function GastronomyPage() {
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-white/40" />
         <FadeInUp>
           <div className="relative w-full aspect-video overflow-hidden">
+            {/* Mobile: vertical video */}
             <VideoLazy
               lazySrc="https://greenland.b-cdn.net/restaurante-transicao.mp4"
-              poster="/gastronomia/IMG_4652.webp"
               autoPlay
               loop
               playsInline
-              className="w-full h-full object-cover"
+              className="md:hidden w-full h-full object-cover"
+            />
+            {/* Desktop: horizontal video */}
+            <VideoLazy
+              lazySrc="https://greenland.b-cdn.net/transicao-desktop.mp4"
+              autoPlay
+              loop
+              playsInline
+              className="hidden md:block w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/20 pointer-events-none" />
             <div className="absolute inset-0 flex items-center justify-center">
@@ -283,7 +290,7 @@ export default function GastronomyPage() {
             <img
               src="/logo-artcucina.webp"
               alt="Art Cucina"
-              className="absolute bottom-4 right-4 h-10 lg:h-14 opacity-50 pointer-events-none"
+              className="absolute bottom-4 right-4 h-20 lg:h-28 opacity-50 pointer-events-none"
             />
           </div>
         </FadeInUp>
@@ -541,11 +548,6 @@ export default function GastronomyPage() {
 
         <div className="relative z-10 text-center px-6 py-20">
           <FadeInUp>
-            <img
-              src="/logo-artcucina.webp"
-              alt="Art Cucina"
-              className="h-14 md:h-20 mx-auto mb-8 opacity-80"
-            />
             <h2 className="font-display text-4xl md:text-5xl text-white mb-5">
               reserve sua experiência gastronômica
             </h2>
