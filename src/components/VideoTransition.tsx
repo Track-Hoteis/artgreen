@@ -12,7 +12,7 @@ export default function VideoTransition() {
             autoPlay
             loop
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full"
           />
           <img
             src="/logo-artcucina.webp"

@@ -8,29 +8,59 @@ type Props = React.VideoHTMLAttributes<HTMLVideoElement> & {
   startAtSeconds?: number;
 };
 
-/** Safari-safe play(): older Safari may return undefined instead of a Promise */
-function safePlay(el: HTMLVideoElement) {
-  try {
-    const p = el.play();
-    if (p !== undefined) p.catch(() => {});
-  } catch {
-    /* ignore – play() threw synchronously (rare) */
-  }
-}
+const RETRY_DELAYS = [500, 1500];
 
-export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px', startAtSeconds, autoPlay: _autoPlay, ...props }: Props) {
+export default function VideoLazy({
+  lazySrc,
+  lazyRootMargin = '0px 0px 900px 0px',
+  startAtSeconds,
+  autoPlay: _autoPlay,
+  className,
+  poster,
+  ...props
+}: Props) {
   const ref = useRef<HTMLVideoElement | null>(null);
-  const [activeSrc, setActiveSrc] = useState<string | null>(null);
+  const [loaded, setLoaded] = useState(false);
+  const [showPlayBtn, setShowPlayBtn] = useState(false);
   const shouldPlayRef = useRef(false);
+  const retryRef = useRef(0);
 
-  // ── Second effect: once React has rendered the <source>, load + play ──
+  // ── Attempt play with retry logic ──
+  const attemptPlay = useCallback((el: HTMLVideoElement) => {
+    const doPlay = () => {
+      try {
+        const p = el.play();
+        if (p !== undefined) {
+          p.then(() => {
+            setShowPlayBtn(false);
+          }).catch(() => {
+            // Retry with increasing delays
+            if (retryRef.current < RETRY_DELAYS.length) {
+              const delay = RETRY_DELAYS[retryRef.current]!;
+              retryRef.current += 1;
+              setTimeout(() => doPlay(), delay);
+            } else {
+              // All retries exhausted — show play button for user gesture
+              setShowPlayBtn(true);
+            }
+          });
+        }
+      } catch {
+        setShowPlayBtn(true);
+      }
+    };
+    doPlay();
+  }, []);
+
+  // ── Load + play once src is set (uses el.src, NOT <source> element) ──
   useEffect(() => {
-    if (!activeSrc) return;
+    if (!loaded) return;
     const el = ref.current;
     if (!el) return;
 
+    // Set src directly on element — more reliable than <source> on iOS Safari
     el.preload = 'auto';
-    try { el.load(); } catch {}
+    el.src = lazySrc;
 
     if (typeof startAtSeconds === 'number' && startAtSeconds > 0) {
       const setStart = () => { try { el.currentTime = startAtSeconds; } catch {} };
@@ -38,16 +68,27 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px
       else el.addEventListener('loadedmetadata', setStart, { once: true });
     }
 
-    const tryPlay = () => safePlay(el);
+    const tryPlay = () => attemptPlay(el);
     if (el.readyState >= 3) {
       tryPlay();
     } else {
       el.addEventListener('canplay', tryPlay, { once: true });
       el.addEventListener('loadeddata', tryPlay, { once: true });
     }
-  }, [activeSrc, startAtSeconds]);
 
-  // ── First effect: IntersectionObserver triggers lazy load ──
+    // Show play button on stall/error
+    const onStalled = () => setShowPlayBtn(true);
+    const onError = () => setShowPlayBtn(true);
+    el.addEventListener('stalled', onStalled, { once: true });
+    el.addEventListener('error', onError, { once: true });
+
+    return () => {
+      el.removeEventListener('stalled', onStalled);
+      el.removeEventListener('error', onError);
+    };
+  }, [loaded, lazySrc, startAtSeconds, attemptPlay]);
+
+  // ── IntersectionObserver triggers lazy load ──
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -62,7 +103,7 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px
     // Resume playback when tab regains focus (Safari pauses background tabs)
     const onVisibility = () => {
       if (document.visibilityState === 'visible' && el.paused && el.readyState >= 2) {
-        safePlay(el);
+        attemptPlay(el);
       }
     };
     document.addEventListener('visibilitychange', onVisibility);
@@ -72,7 +113,8 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             shouldPlayRef.current = true;
-            setActiveSrc(prev => prev || lazySrc);
+            retryRef.current = 0;
+            setLoaded(true);
             obs.disconnect();
           }
         });
@@ -85,31 +127,51 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px
       observer.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, [lazyRootMargin, lazySrc]);
+  }, [lazyRootMargin, lazySrc, attemptPlay]);
 
-  // ── Fallback: if autoplay silently fails, start on first user touch/click ──
+  // ── Fallback: user gesture starts playback (guaranteed on iOS) ──
   const handleInteraction = useCallback(() => {
     const el = ref.current;
     if (el && el.paused && shouldPlayRef.current) {
-      safePlay(el);
+      retryRef.current = 0;
+      attemptPlay(el);
     }
-  }, []);
+  }, [attemptPlay]);
 
   return (
-    // eslint-disable-next-line jsx-a11y/media-has-caption
-    <video
-      ref={ref}
-      muted
-      playsInline
-      // @ts-expect-error webkit-playsinline is non-standard but needed for old iOS
-      webkit-playsinline=""
-      preload="none"
-      onClickCapture={handleInteraction}
-      onTouchStartCapture={handleInteraction}
-      {...props}
-    >
-      {activeSrc && <source src={activeSrc} type="video/mp4" />}
-      <track kind="captions" default />
-    </video>
+    <div className={`relative ${className ?? ''}`} style={{ lineHeight: 0 }}>
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <video
+        ref={ref}
+        muted
+        playsInline
+        // @ts-expect-error webkit-playsinline is non-standard but needed for old iOS
+        webkit-playsinline=""
+        preload="none"
+        poster={poster}
+        onClickCapture={handleInteraction}
+        onTouchStartCapture={handleInteraction}
+        className="w-full h-full object-cover"
+        {...props}
+      >
+        <track kind="captions" default />
+      </video>
+
+      {/* Play button fallback – shown when autoplay fails after retries */}
+      {showPlayBtn && (
+        <button
+          type="button"
+          aria-label="Reproduzir vídeo"
+          onClick={handleInteraction}
+          className="absolute inset-0 z-10 flex items-center justify-center bg-black/20"
+        >
+          <span className="flex items-center justify-center w-16 h-16 rounded-full bg-white/80 backdrop-blur-sm shadow-lg transition-transform active:scale-90">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-[#374E38] ml-1">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </button>
+      )}
+    </div>
   );
 }

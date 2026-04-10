@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
   UtensilsCrossed,
@@ -93,53 +92,6 @@ export default function GastronomyPage() {
   const sideImages = restImages.slice(0, 4);
   const bottomImages = restImages.slice(4);
 
-  const heroVideoRef = useRef<HTMLVideoElement>(null);
-
-  // Safari/iOS autoplay fallback: programmatic play after mount
-  useEffect(() => {
-    const el = heroVideoRef.current;
-    if (!el) return;
-    el.muted = true;
-    el.defaultMuted = true;
-    el.setAttribute('muted', '');
-    el.setAttribute('playsinline', '');
-    el.setAttribute('webkit-playsinline', '');
-
-    const tryPlay = () => {
-      try {
-        const p = el.play();
-        if (p !== undefined) p.catch(() => {});
-      } catch {}
-    };
-
-    if (el.readyState >= 3) {
-      tryPlay();
-    } else {
-      el.addEventListener('canplay', tryPlay, { once: true });
-      el.addEventListener('loadeddata', tryPlay, { once: true });
-    }
-
-    // Resume on tab focus (Safari pauses background videos)
-    const onVisibility = () => {
-      if (document.visibilityState === 'visible' && el.paused && el.readyState >= 2) {
-        tryPlay();
-      }
-    };
-    document.addEventListener('visibilitychange', onVisibility);
-    return () => document.removeEventListener('visibilitychange', onVisibility);
-  }, []);
-
-  // Fallback: start on user interaction (Low Power Mode, Data Saver, etc.)
-  const handleHeroInteraction = useCallback(() => {
-    const el = heroVideoRef.current;
-    if (el && el.paused) {
-      try {
-        const p = el.play();
-        if (p !== undefined) p.catch(() => {});
-      } catch {}
-    }
-  }, []);
-
   return (
     <main className="bg-cream">
       <SEO
@@ -150,25 +102,15 @@ export default function GastronomyPage() {
       {/* ============================================================ */}
       {/* 1. HERO CINEMATOGRÁFICO                                      */}
       {/* ============================================================ */}
-      <section
-        className="relative h-screen overflow-hidden bg-black"
-        onClick={handleHeroInteraction}
-        onTouchStart={handleHeroInteraction}
-      >
-        <video
-          ref={heroVideoRef}
+      <section className="relative h-screen overflow-hidden bg-black">
+        <VideoLazy
+          lazySrc="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
+          lazyRootMargin="0px 0px 0px 0px"
           autoPlay
-          muted
           loop
           playsInline
-          // @ts-expect-error webkit-playsinline is non-standard but needed for old iOS Safari
-          webkit-playsinline=""
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4" type="video/mp4" />
-          <track kind="captions" default />
-        </video>
+          className="absolute inset-0 w-full h-full"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6">
@@ -309,7 +251,7 @@ export default function GastronomyPage() {
               autoPlay
               loop
               playsInline
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full"
             />
             <div className="absolute inset-0 bg-black/20 pointer-events-none" />
             <div className="absolute inset-0 flex items-center justify-center">
