@@ -103,14 +103,25 @@ export default function GastronomyPage() {
       {/* 1. HERO CINEMATOGRÁFICO                                      */}
       {/* ============================================================ */}
       <section className="relative h-screen overflow-hidden bg-black">
-        <VideoLazy
-          lazySrc="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
-          lazyRootMargin="0px 0px 0px 0px"
-          className="absolute inset-0 w-full h-full"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
+        {/* Vídeo de fundo — padrão Bunny CDN nativo (sem JS) */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto object-cover pointer-events-none"
+            style={{ minWidth: '100vw', minHeight: '100vh' }}
+          >
+            <source
+              src="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20 z-10" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6">
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-6">
           <motion.img
             src="/logo-artcucina-branca.png"
             alt="Art Cucina"
