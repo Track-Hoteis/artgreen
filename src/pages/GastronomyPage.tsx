@@ -102,21 +102,13 @@ export default function GastronomyPage() {
       {/* ============================================================ */}
       {/* 1. HERO CINEMATOGRÁFICO — Vídeo 100vh                       */}
       {/* ============================================================ */}
-      <section className="relative h-dvh overflow-hidden">
+      <section className="relative h-dvh overflow-hidden bg-black">
         <VideoLazy
           lazySrc="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
           autoPlay
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Fallback poster for mobile / slow connections */}
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center -z-10"
-          style={{
-            backgroundImage:
-              'url(https://irp.cdn-website.com/8406003a/dms3rep/multi/4F3A0831.JPG)',
-          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
 
@@ -255,22 +247,14 @@ export default function GastronomyPage() {
       {/* 4. VÍDEO IMERSIVO — "Um Sabor da Serra"                     */}
       {/* ============================================================ */}
       <section className="relative bg-stone-900">
-        <div className="relative w-full aspect-[9/16] md:aspect-video overflow-hidden">
-            {/* Mobile: vertical video */}
-            <VideoLazy
-              lazySrc="https://greenland.b-cdn.net/restaurante-transicao.mp4"
-              autoPlay
-              loop
-              playsInline
-              className="md:hidden w-full h-full object-cover"
-            />
-            {/* Desktop: horizontal video */}
+        <div className="relative w-full h-[70vh] md:h-[60vh] lg:h-[80vh] overflow-hidden">
             <VideoLazy
               lazySrc="https://greenland.b-cdn.net/transicao-desktop.mp4"
+              lazyRootMargin="0px 0px 400px 0px"
               autoPlay
               loop
               playsInline
-              className="hidden md:block w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/20 pointer-events-none" />
             <div className="absolute inset-0 flex items-center justify-center">
