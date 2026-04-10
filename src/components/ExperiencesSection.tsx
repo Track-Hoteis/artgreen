@@ -32,7 +32,7 @@ function getCardsPerView(width: number): 1 | 2 | 3 | 4 {
 }
 
 export default function ExperiencesSection() {
-  const [currentSlide, setCurrentSlide] = useState(() =>
+  const [currentSlide, setCurrentSlide] = useState<number>(() =>
     typeof window === 'undefined' ? 1 : getCardsPerView(window.innerWidth),
   );
   const [isTransitionEnabled, setIsTransitionEnabled] = useState(true);

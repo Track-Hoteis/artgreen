@@ -12,11 +12,6 @@ const mosaicImages = [
   { src: '/fazendinha (8).webp', alt: 'Fazendinha imagem 8' },
 ];
 
-/* Column A (left):  images 0, 2, 4, 6  —  tall, short, tall, short */
-/* Column B (right): images 1, 3, 5, 7  —  short, tall, short, tall */
-const colA = [0, 2, 4, 6];
-const colB = [1, 3, 5, 7];
-
 function ImageModal({
   src,
   alt,
@@ -79,44 +74,6 @@ function ImageModal({
         onClick={(e) => e.stopPropagation()}
       />
     </div>
-  );
-}
-
-function MasonryItem({
-  src,
-  alt,
-  tall,
-  index,
-  onClick,
-}: {
-  src: string;
-  alt: string;
-  tall: boolean;
-  index: number;
-  onClick: () => void;
-}) {
-  return (
-    <FadeInUp delay={index * 0.05}>
-      <article
-        className={`group relative overflow-hidden cursor-pointer ${
-          tall ? 'row-span-2' : ''
-        }`}
-        onClick={onClick}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); }
-        }}
-      >
-        <img
-          src={src}
-          alt={alt}
-          loading={index < 4 ? 'eager' : 'lazy'}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-      </article>
-    </FadeInUp>
   );
 }
 

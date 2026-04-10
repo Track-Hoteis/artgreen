@@ -1,4 +1,4 @@
-import { Car, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { Car, Mail, MapPin, MessageCircle } from 'lucide-react';
 
 import FadeInUp from '@/components/animations/FadeInUp';
 

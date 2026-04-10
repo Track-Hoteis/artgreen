@@ -16,7 +16,6 @@ import {
 
 import FadeInUp from '@/components/animations/FadeInUp';
 import ParallaxImage from '@/components/animations/ParallaxImage';
-import VideoLazy from '@/components/VideoLazy';
 import { SEO } from '@/components/SEO';
 import { experiences } from '@/data/experiences';
 

@@ -43,7 +43,7 @@ function usePastHero() {
 
 export default function Header() {
   const scrolled = useScrolled();
-  const pastHero = usePastHero();
+  usePastHero();
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [open, setOpen] = useState(false);
