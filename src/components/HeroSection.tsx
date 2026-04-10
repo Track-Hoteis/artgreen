@@ -55,9 +55,6 @@ export default function HeroSection() {
             <div className="relative overflow-hidden bg-black h-[280px] sm:h-[360px] md:h-[430px] lg:h-full">
               <VideoLazy
                 lazySrc="https://greenland.b-cdn.net/hero.mp4"
-                autoPlay
-                loop
-                playsInline
                 className="absolute inset-0 w-full h-full"
               />
             </div>

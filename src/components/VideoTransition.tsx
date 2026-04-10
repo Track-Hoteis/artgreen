@@ -9,9 +9,6 @@ export default function VideoTransition() {
           <VideoLazy
             lazySrc="https://greenland.b-cdn.net/transicao-desktop.mp4"
             lazyRootMargin="0px 0px 1200px 0px"
-            autoPlay
-            loop
-            playsInline
             className="w-full h-full"
           />
           <img

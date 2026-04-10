@@ -106,9 +106,6 @@ export default function GastronomyPage() {
         <VideoLazy
           lazySrc="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
           lazyRootMargin="0px 0px 0px 0px"
-          autoPlay
-          loop
-          playsInline
           className="absolute inset-0 w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
@@ -248,9 +245,6 @@ export default function GastronomyPage() {
             <VideoLazy
               lazySrc="https://greenland.b-cdn.net/transicao-desktop.mp4"
               lazyRootMargin="0px 0px 400px 0px"
-              autoPlay
-              loop
-              playsInline
               className="absolute inset-0 w-full h-full"
             />
             <div className="absolute inset-0 bg-black/20 pointer-events-none" />
