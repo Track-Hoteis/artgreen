@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
   UtensilsCrossed,
@@ -118,6 +118,26 @@ export default function GastronomyPage() {
       el.addEventListener('canplay', tryPlay, { once: true });
       el.addEventListener('loadeddata', tryPlay, { once: true });
     }
+
+    // Resume on tab focus (Safari pauses background videos)
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible' && el.paused && el.readyState >= 2) {
+        tryPlay();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => document.removeEventListener('visibilitychange', onVisibility);
+  }, []);
+
+  // Fallback: start on user interaction (Low Power Mode, Data Saver, etc.)
+  const handleHeroInteraction = useCallback(() => {
+    const el = heroVideoRef.current;
+    if (el && el.paused) {
+      try {
+        const p = el.play();
+        if (p !== undefined) p.catch(() => {});
+      } catch {}
+    }
   }, []);
 
   return (
@@ -130,7 +150,11 @@ export default function GastronomyPage() {
       {/* ============================================================ */}
       {/* 1. HERO CINEMATOGRÁFICO                                      */}
       {/* ============================================================ */}
-      <section className="relative h-screen overflow-hidden bg-black">
+      <section
+        className="relative h-screen overflow-hidden bg-black"
+        onClick={handleHeroInteraction}
+        onTouchStart={handleHeroInteraction}
+      >
         <video
           ref={heroVideoRef}
           autoPlay

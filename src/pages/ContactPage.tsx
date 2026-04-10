@@ -76,7 +76,7 @@ export default function ContactPage() {
                   <p className="flex items-center justify-center gap-1">
                     <MessageCircle size={14} />
                     <a
-                      href="https://wa.me/552127480222"
+                      href="https://wa.me/5521969688419"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-primary transition-colors"

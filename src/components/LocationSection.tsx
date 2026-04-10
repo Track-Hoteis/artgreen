@@ -44,7 +44,7 @@ export default function LocationSection() {
                   <MessageCircle size={14} className="text-primary" /> (21) 2748-0222
                 </a>
                 <a
-                  href="https://wa.me/552127480222"
+                  href="https://wa.me/5521969688419"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-text-primary hover:text-primary transition-colors"

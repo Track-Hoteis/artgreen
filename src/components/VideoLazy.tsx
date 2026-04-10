@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 type Props = React.VideoHTMLAttributes<HTMLVideoElement> & {
   lazySrc: string;
@@ -21,7 +21,33 @@ function safePlay(el: HTMLVideoElement) {
 export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px', startAtSeconds, autoPlay: _autoPlay, ...props }: Props) {
   const ref = useRef<HTMLVideoElement | null>(null);
   const [activeSrc, setActiveSrc] = useState<string | null>(null);
+  const shouldPlayRef = useRef(false);
 
+  // ── Second effect: once React has rendered the <source>, load + play ──
+  useEffect(() => {
+    if (!activeSrc) return;
+    const el = ref.current;
+    if (!el) return;
+
+    el.preload = 'auto';
+    try { el.load(); } catch {}
+
+    if (typeof startAtSeconds === 'number' && startAtSeconds > 0) {
+      const setStart = () => { try { el.currentTime = startAtSeconds; } catch {} };
+      if (el.readyState >= 1) setStart();
+      else el.addEventListener('loadedmetadata', setStart, { once: true });
+    }
+
+    const tryPlay = () => safePlay(el);
+    if (el.readyState >= 3) {
+      tryPlay();
+    } else {
+      el.addEventListener('canplay', tryPlay, { once: true });
+      el.addEventListener('loadeddata', tryPlay, { once: true });
+    }
+  }, [activeSrc, startAtSeconds]);
+
+  // ── First effect: IntersectionObserver triggers lazy load ──
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -32,18 +58,6 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px
     el.setAttribute('muted', '');
     el.setAttribute('playsinline', '');
     el.setAttribute('webkit-playsinline', '');
-
-    const playWhenReady = () => {
-      if (el.readyState >= 3) {
-        safePlay(el);
-        return;
-      }
-
-      const tryPlay = () => safePlay(el);
-      // Safari sometimes fires 'loadeddata' but not 'canplay'; listen to both
-      el.addEventListener('canplay', tryPlay, { once: true });
-      el.addEventListener('loadeddata', tryPlay, { once: true });
-    };
 
     // Resume playback when tab regains focus (Safari pauses background tabs)
     const onVisibility = () => {
@@ -57,34 +71,8 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px
       (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (!activeSrc) {
-              el.preload = 'auto';
-              // Use <source> element via React state (better Safari compat than el.src)
-              setActiveSrc(lazySrc);
-              // Fallback: also set src directly in case React render hasn't flushed yet
-              if (!el.querySelector('source[src]')) {
-                el.src = lazySrc;
-              }
-              try {
-                el.load();
-              } catch {}
-            }
-
-            if (typeof startAtSeconds === 'number' && startAtSeconds > 0) {
-              const setStartTime = () => {
-                try {
-                  el.currentTime = startAtSeconds;
-                } catch {}
-              };
-
-              if (el.readyState >= 1) {
-                setStartTime();
-              } else {
-                el.addEventListener('loadedmetadata', setStartTime, { once: true });
-              }
-            }
-
-            playWhenReady();
+            shouldPlayRef.current = true;
+            setActiveSrc(prev => prev || lazySrc);
             obs.disconnect();
           }
         });
@@ -97,10 +85,29 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px
       observer.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, [lazyRootMargin, lazySrc, startAtSeconds, activeSrc]);
+  }, [lazyRootMargin, lazySrc]);
+
+  // ── Fallback: if autoplay silently fails, start on first user touch/click ──
+  const handleInteraction = useCallback(() => {
+    const el = ref.current;
+    if (el && el.paused && shouldPlayRef.current) {
+      safePlay(el);
+    }
+  }, []);
 
   return (
-    <video ref={ref} muted playsInline preload="none" {...props}>
+    // eslint-disable-next-line jsx-a11y/media-has-caption
+    <video
+      ref={ref}
+      muted
+      playsInline
+      // @ts-expect-error webkit-playsinline is non-standard but needed for old iOS
+      webkit-playsinline=""
+      preload="none"
+      onClickCapture={handleInteraction}
+      onTouchStartCapture={handleInteraction}
+      {...props}
+    >
       {activeSrc && <source src={activeSrc} type="video/mp4" />}
       <track kind="captions" default />
     </video>
