@@ -250,7 +250,7 @@ export default function ExperiencesPage() {
       {/* ============================================================ */}
       <section className="relative h-dvh overflow-hidden">
         <motion.img
-          src="/experiencias/experiencias.webp"
+          src="/experiencias.jpeg"
           alt="Experiências Art Green"
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}

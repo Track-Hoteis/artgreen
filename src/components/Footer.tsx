@@ -25,7 +25,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           <FadeInUp>
-            <div className="mb-4">
+            <div className="mb-4 flex justify-center sm:justify-start">
               <img
                 src="/logo.webp"
                 alt="Art Green"
