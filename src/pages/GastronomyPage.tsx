@@ -100,20 +100,22 @@ export default function GastronomyPage() {
         url="/gastronomia"
       />
       {/* ============================================================ */}
-      {/* 1. HERO CINEMATOGRÁFICO — Vídeo 100vh                       */}
+      {/* 1. HERO CINEMATOGRÁFICO                                      */}
       {/* ============================================================ */}
-      <section className="relative h-dvh overflow-hidden bg-black">
-        <VideoLazy
-          lazySrc="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
+      <section className="relative h-screen overflow-hidden bg-black">
+        <video
           autoPlay
+          muted
           loop
           playsInline
+          preload="auto"
+          src="https://greenland.b-cdn.net/horizontal%20-%20camera%20-%20Teres%C3%B3polis_1.mp4"
           className="absolute inset-0 w-full h-full object-cover"
-        />
+        >
+          <track kind="captions" default />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
 
-
-        {/* Central content — Logo + subtitle */}
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6">
           <motion.img
             src="/logo-artcucina-branca.png"
@@ -141,8 +143,6 @@ export default function GastronomyPage() {
             Teresópolis
           </motion.p>
         </div>
-
-        {/* Breadcrumbs and scroll indicator removed per design request */}
       </section>
 
       {/* ============================================================ */}
