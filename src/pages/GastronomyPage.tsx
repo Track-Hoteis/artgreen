@@ -254,17 +254,8 @@ export default function GastronomyPage() {
       {/* ============================================================ */}
       {/* 4. VÍDEO IMERSIVO — "Um Sabor da Serra"                     */}
       {/* ============================================================ */}
-      <section className="relative">
-        {/* Background dish image */}
-        <img
-          src="/gastronomia/IMG_4651.webp"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-white/40" />
-        <FadeInUp>
-          <div className="relative w-full aspect-[9/16] md:aspect-video overflow-hidden">
+      <section className="relative bg-stone-900">
+        <div className="relative w-full aspect-[9/16] md:aspect-video overflow-hidden">
             {/* Mobile: vertical video */}
             <VideoLazy
               lazySrc="https://greenland.b-cdn.net/restaurante-transicao.mp4"
@@ -293,7 +284,6 @@ export default function GastronomyPage() {
               className="absolute bottom-4 right-4 h-20 lg:h-28 opacity-50 pointer-events-none"
             />
           </div>
-        </FadeInUp>
       </section>
 
       {/* ============================================================ */}

@@ -8,7 +8,7 @@ type Props = React.VideoHTMLAttributes<HTMLVideoElement> & {
   startAtSeconds?: number;
 };
 
-export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px', startAtSeconds, ...props }: Props) {
+export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px', startAtSeconds, autoPlay: _autoPlay, ...props }: Props) {
   const ref = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -19,10 +19,9 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px
     el.defaultMuted = true;
     el.setAttribute('muted', '');
     el.setAttribute('playsinline', '');
-    el.preload = 'metadata';
 
     const playWhenReady = () => {
-      if (el.readyState >= 2) {
+      if (el.readyState >= 3) {
         el.play().catch(() => {});
         return;
       }
@@ -73,7 +72,7 @@ export default function VideoLazy({ lazySrc, lazyRootMargin = '0px 0px 900px 0px
   }, [lazyRootMargin, lazySrc, startAtSeconds]);
 
   return (
-    <video ref={ref} muted playsInline preload="metadata" {...props}>
+    <video ref={ref} muted playsInline preload="none" {...props}>
       <track kind="captions" default />
     </video>
   );
