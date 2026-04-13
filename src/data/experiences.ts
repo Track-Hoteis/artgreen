@@ -39,8 +39,7 @@ export const experiences: Experience[] = [
     icon: 'horse',
     title: 'Passeio a Cavalo',
     description: 'Experiência única com a natureza serrana.',
-    image:
-      'https://irp.cdn-website.com/8406003a/dms3rep/multi/ag_area_lazer_ft-18.jpg',
+    image: '/IMG_5269.webp',
     category: 'Aventura',
     longDescription:
       'Percorra trilhas cercadas pela mata atlântica e paisagens da serra fluminense montado a cavalo. Uma experiência que conecta você à natureza de forma única e inesquecível.',
@@ -61,7 +60,7 @@ export const experiences: Experience[] = [
     icon: 'bike',
     title: 'Passeio de Bicicleta',
     description: 'Bicicletas disponíveis para toda a família.',
-    image: '/servicos/bicicletas.webp',
+    image: '/IMG_5274.webp',
     category: 'Aventura',
     longDescription:
       'Bikes disponíveis para toda a família. Pedale pela ciclovia que contorna a área de lazer e aproveite o ar puro da serra.',
@@ -116,7 +115,7 @@ export const experiences: Experience[] = [
     icon: 'train',
     title: 'Passeio de Trenzinho',
     description: 'Diversão garantida para os pequenos e toda a família.',
-    image: '/servicos/trenzinho.webp',
+    image: '/IMG_5271.webp',
     category: 'Diversão',
     longDescription:
       'Passeio de trenzinho pela área da pousada, diversão garantida para crianças e adultos.',

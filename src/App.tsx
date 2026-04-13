@@ -15,6 +15,8 @@ const GastronomyPage = lazy(() => import('./pages/GastronomyPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const PackagesPage = lazy(() => import('./pages/PackagesPage'));
 const PackageDetailPage = lazy(() => import('./pages/PackageDetailPage'));
+const VacationsPage = lazy(() => import('./pages/VacationsPage'));
+const VacationDetailPage = lazy(() => import('./pages/VacationDetailPage'));
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
           <Route path="/contato" element={<ContactPage />} />
           <Route path="/pacotes" element={<PackagesPage />} />
           <Route path="/pacotes/:slug" element={<PackageDetailPage />} />
+          <Route path="/ferias" element={<VacationsPage />} />
+          <Route path="/ferias/:slug" element={<VacationDetailPage />} />
         </Routes>
       </Suspense>
       <Footer />

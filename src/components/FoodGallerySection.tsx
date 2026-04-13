@@ -28,9 +28,9 @@ const dishes = [
     label: 'Massas Artesanais',
   },
   {
-    src: '/gastronomia/IMG_4654.webp',
-    alt: 'Duo de violoncelo e violino em apresentação musical no Art Cucina',
-    label: 'Música ao Vivo',
+    src: '/gastronomia/IMG_5289.webp',
+    alt: 'Ambiente sofisticado do restaurante Art Cucina na serra',
+    label: 'Ambiente Sofisticado',
   },
 ];
 

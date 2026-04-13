@@ -48,13 +48,13 @@ const gallery = [
     alt: 'Duo de violoncelo e violino em frente ao restaurante Art Cucina ao entardecer',
   },
   {
-    src: '/gastronomia/IMG_4649.webp',
-    alt: 'Hóspede escolhendo rótulos na adega de vinhos do Art Cucina',
+    src: '/gastronomia/IMG_5170.webp',
+    alt: 'Detalhes gastronômicos do Art Cucina',
   },
   {
-    src: '/gastronomia/IMG_4653.webp',
-    alt: 'Saxofonista tocando música ao vivo dentro do restaurante Art Cucina',
-    objectPosition: 'top',
+    src: '/IMG_5277.webp',
+    alt: 'Mesa posta elegante no restaurante Art Cucina',
+    objectPosition: 'center',
   },
   {
     src: '/gastronomia/IMG_4655.webp',
@@ -69,8 +69,8 @@ const gallery = [
     alt: 'Spaghetti com queijo parmesão ralado servido na pedra-sabão',
   },
   {
-    src: '/gastronomia/IMG_4650.webp',
-    alt: 'Creme gratinado em ramequim com taça de vinho tinto',
+    src: '/gastronomia/IMG_5287.webp',
+    alt: 'Experiência gastronômica no Art Cucina',
   },
   {
     src: '/gastronomia/IMG_4648.webp',
@@ -280,8 +280,8 @@ export default function GastronomyPage() {
               </div>
               <div className="overflow-hidden">
                 <img
-                  src="/gastronomia/IMG_4650.webp"
-                  alt="Creme gratinado em ramequim com taça de vinho tinto"
+                  src="/gastronomia/IMG_5287.webp"
+                  alt="Experiência gastronômica no Art Cucina"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover"
@@ -298,8 +298,8 @@ export default function GastronomyPage() {
               </div>
               <div className="overflow-hidden">
                 <img
-                  src="/gastronomia/IMG_4649.webp"
-                  alt="Hóspede escolhendo rótulos na adega de vinhos do Art Cucina"
+                  src="/gastronomia/IMG_5170.webp"
+                  alt="Detalhes gastronômicos do Art Cucina"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover"
@@ -436,7 +436,7 @@ export default function GastronomyPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {[
               { src: '/gastronomia/IMG_4654.webp', alt: 'Duo de violoncelo e violino ao entardecer' },
-              { src: '/gastronomia/IMG_4653.webp', alt: 'Saxofonista tocando dentro do restaurante', objectPosition: 'top' },
+              { src: '/gastronomia/IMG_5289.webp', alt: 'Ambiente sofisticado do Art Cucina' },
               { src: '/gastronomia/IMG_4656.webp', alt: 'Saxofonista animando o jantar', objectPosition: 'top' },
               { src: '/gastronomia/IMG_4657.webp', alt: 'Violoncelista sorrindo durante apresentação' },
             ].map((img, i) => (

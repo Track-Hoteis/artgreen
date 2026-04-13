@@ -96,6 +96,60 @@ export const packages: Package[] = [
       { icon: 'coffee', label: 'Café incluso' },
     ],
   },
+  {
+    id: 5,
+    slug: 'dia-das-maes-2026',
+    tag: '10% OFF',
+    title: 'Dia das Mães',
+    description: 'Brindes Especiais para elas',
+    fullDescription:
+      'Celebre o Dia das Mães na Art Green com um final de semana inesquecível. Surpreenda quem mais importa com brindes especiais, hospedagem com café da manhã e acesso completo às áreas de lazer. Uma homenagem em meio à serra fluminense.',
+    dates: '08 a 10 de Maio de 2026',
+    startDate: '2026-05-08',
+    endDate: '2026-05-10',
+    imageUrl: '/Pacotes/IMG_5260.JPG',
+    href: 'https://reservas.artgreenpousada.com.br/hotels/HOTEL_OMNI_19674?locate=pt-BR&currencyId=16&destinationName=&mysite=ob&startDate=2026-05-08&endDate=2026-05-10&adults=2&children=0&ag=&childrenAges=&promoCode=14587',
+    includes: [
+      'Hospedagem com café da manhã',
+      'Brindes especiais para as mães',
+      'Acesso completo às áreas de lazer',
+      'Piscinas e hidromassagem',
+      '10% de desconto com código 14587',
+    ],
+    highlights: [
+      { icon: 'sparkles', label: 'Brindes especiais' },
+      { icon: 'coffee', label: 'Café incluso' },
+      { icon: 'waves', label: 'Piscinas' },
+      { icon: 'trees', label: 'Natureza' },
+    ],
+  },
+  {
+    id: 6,
+    slug: 'dia-dos-namorados-2026',
+    tag: '5% OFF',
+    title: 'Dia dos Namorados',
+    description: 'Programação especial',
+    fullDescription:
+      'Viva o Dia dos Namorados em um cenário romântico na serra fluminense. Programação especial para casais com hospedagem, café da manhã e momentos inesquecíveis no restaurante Art Cucina. O refúgio perfeito a dois.',
+    dates: '12 a 14 de Junho de 2026',
+    startDate: '2026-06-12',
+    endDate: '2026-06-14',
+    imageUrl: '/Pacotes/IMG_5261.webp',
+    href: 'https://reservas.artgreenpousada.com.br/hotels/HOTEL_OMNI_19674?locate=pt-BR&currencyId=16&destinationName=&mysite=ob&startDate=2026-06-12&endDate=2026-06-14&adults=2&children=0&ag=&childrenAges=&promoCode=71532',
+    includes: [
+      'Hospedagem com café da manhã',
+      'Programação especial para casais',
+      'Acesso completo às áreas de lazer',
+      'Jantar romântico no Art Cucina',
+      '5% de desconto com código 71532',
+    ],
+    highlights: [
+      { icon: 'wine', label: 'Jantar romântico' },
+      { icon: 'music', label: 'Música ao vivo' },
+      { icon: 'sparkles', label: 'Programação especial' },
+      { icon: 'mountain', label: 'Serra fluminense' },
+    ],
+  },
 ];
 
 function parseDateOnly(value?: string): number | null {
