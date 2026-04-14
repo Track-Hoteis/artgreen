@@ -48,6 +48,71 @@ export default function VacationDetailPage() {
 
   const otherVacations = vacations.filter((v) => v.slug !== vacation.slug);
 
+  const dateSelectionCard = (
+    <div className="bg-white p-8">
+      <span className="inline-flex text-[11px] uppercase tracking-[0.2em] font-medium text-white bg-primary px-3 py-1.5 font-body mb-4">
+        Até {Math.max(...vacation.dateOptions.map((o) => o.discount))}% OFF
+      </span>
+
+      <h3 className="font-display text-3xl text-text-primary mb-3">
+        {vacation.title}
+      </h3>
+
+      <p className="text-text-medium font-body text-sm leading-relaxed mb-6 border-b border-gray-100 pb-6">
+        Escolha a semana ideal para suas férias e reserve com
+        desconto exclusivo. Estadias de meio de semana com preços
+        especiais.
+      </p>
+
+      <p className="font-body text-xs uppercase tracking-[0.15em] font-medium text-text-primary mb-4">
+        Selecione sua semana
+      </p>
+
+      <div className="space-y-3">
+        {vacation.dateOptions.map((opt) => (
+          <a
+            key={opt.startDate}
+            href={buildBookingUrl(opt)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/btn flex items-center gap-4 border border-gray-200 p-4 hover:border-primary hover:bg-primary/5 transition-all duration-300"
+          >
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-1">
+                <CalendarDays
+                  size={14}
+                  className="text-accent shrink-0"
+                />
+                <span className="font-body text-sm font-medium text-text-primary">
+                  {opt.label}
+                </span>
+              </div>
+              <div className="flex items-center gap-3 text-xs text-text-medium font-body">
+                <span className="flex items-center gap-1">
+                  <Moon size={12} />
+                  {opt.nights} diárias
+                </span>
+              </div>
+            </div>
+            <span className="flex items-center gap-1 bg-primary text-white text-sm font-bold font-body px-3 py-2 shrink-0 group-hover/btn:bg-primary-dark transition-colors">
+              <Percent size={14} />
+              {opt.discount}% OFF
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <a
+        href="https://wa.me/552127480222"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn-outline-dark w-full text-center block mt-6"
+      >
+        Falar no WhatsApp
+      </a>
+    </div>
+  );
+
   return (
     <main className="bg-cream">
       <SEO
@@ -71,13 +136,20 @@ export default function VacationDetailPage() {
           <div className="grid lg:grid-cols-[1fr_400px] gap-12 lg:gap-16">
             {/* Left column */}
             <div>
-              {/* Featured image */}
+              {/* Date selection card — mobile only */}
+              <div className="lg:hidden mb-10">
+                <FadeInUp>
+                  {dateSelectionCard}
+                </FadeInUp>
+              </div>
+
+              {/* Featured image — desktop only */}
               <FadeInUp>
-                <div className="overflow-hidden mb-10">
+                <div className="hidden lg:block overflow-hidden mb-10">
                   <img
                     src={vacation.imageUrl}
                     alt={`${vacation.title} na Art Green Teresópolis`}
-                    className="w-full h-[300px] md:h-[420px] object-cover object-center"
+                    className="w-full h-[420px] object-cover object-center"
                   />
                 </div>
               </FadeInUp>
@@ -172,70 +244,11 @@ export default function VacationDetailPage() {
               </FadeInUp>
             </div>
 
-            {/* Right column - Sidebar with date options */}
-            <div>
+            {/* Right column - Sidebar with date options (desktop only) */}
+            <div className="hidden lg:block">
               <FadeInUp delay={0.1}>
-                <div className="bg-white p-8 sticky top-24">
-                  <span className="inline-flex text-[11px] uppercase tracking-[0.2em] font-medium text-white bg-primary px-3 py-1.5 font-body mb-4">
-                    Até {Math.max(...vacation.dateOptions.map((o) => o.discount))}% OFF
-                  </span>
-
-                  <h3 className="font-display text-3xl text-text-primary mb-3">
-                    {vacation.title}
-                  </h3>
-
-                  <p className="text-text-medium font-body text-sm leading-relaxed mb-6 border-b border-gray-100 pb-6">
-                    Escolha a semana ideal para suas férias e reserve com
-                    desconto exclusivo. Estadias de meio de semana com preços
-                    especiais.
-                  </p>
-
-                  <p className="font-body text-xs uppercase tracking-[0.15em] font-medium text-text-primary mb-4">
-                    Selecione sua semana
-                  </p>
-
-                  <div className="space-y-3">
-                    {vacation.dateOptions.map((opt) => (
-                      <a
-                        key={opt.startDate}
-                        href={buildBookingUrl(opt)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/btn flex items-center gap-4 border border-gray-200 p-4 hover:border-primary hover:bg-primary/5 transition-all duration-300"
-                      >
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <CalendarDays
-                              size={14}
-                              className="text-accent shrink-0"
-                            />
-                            <span className="font-body text-sm font-medium text-text-primary">
-                              {opt.label}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-3 text-xs text-text-medium font-body">
-                            <span className="flex items-center gap-1">
-                              <Moon size={12} />
-                              {opt.nights} diárias
-                            </span>
-                          </div>
-                        </div>
-                        <span className="flex items-center gap-1 bg-primary text-white text-sm font-bold font-body px-3 py-2 shrink-0 group-hover/btn:bg-primary-dark transition-colors">
-                          <Percent size={14} />
-                          {opt.discount}% OFF
-                        </span>
-                      </a>
-                    ))}
-                  </div>
-
-                  <a
-                    href="https://wa.me/552127480222"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-outline-dark w-full text-center block mt-6"
-                  >
-                    Falar no WhatsApp
-                  </a>
+                <div className="sticky top-24">
+                  {dateSelectionCard}
                 </div>
               </FadeInUp>
             </div>
