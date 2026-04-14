@@ -16,6 +16,7 @@ import {
 
 import FadeInUp from '@/components/animations/FadeInUp';
 import ParallaxImage from '@/components/animations/ParallaxImage';
+import MassageSection from '@/components/MassageSection';
 import { SEO } from '@/components/SEO';
 import { experiences } from '@/data/experiences';
 
@@ -470,8 +471,8 @@ export default function ExperiencesPage() {
       {/* ============================================================ */}
       {/* 7. SALÃO DE JOGOS — Pattern D (Feature Section)              */}
       {/* ============================================================ */}
-      <section className="bg-primary">
-        <div className="grid lg:grid-cols-2">
+      <section className="bg-primary h-screen max-h-[1000px]">
+        <div className="grid lg:grid-cols-2 h-full">
           <div className="flex items-center px-6 md:px-12 lg:px-20 py-16 lg:py-24">
             <FadeInUp>
               <div className="text-white/60 mb-5">
@@ -505,19 +506,37 @@ export default function ExperiencesPage() {
             </FadeInUp>
           </div>
 
-          <FadeInUp>
-            <div className="relative h-[50vh] lg:h-full min-h-[400px] overflow-hidden">
-              <motion.img
-                src={jogos.image}
-                alt={jogos.title}
-                className="w-full h-full object-cover"
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.6 }}
-              />
+          <FadeInUp className="h-full overflow-hidden">
+            <div className="grid grid-rows-2 gap-1.5 h-full">
+              <div className="overflow-hidden min-h-0">
+                <motion.img
+                  src={jogos.image}
+                  alt={jogos.title}
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.6 }}
+                />
+              </div>
+              <div className="overflow-hidden min-h-0">
+                <motion.img
+                  src="/servicos/IMG_5276.webp"
+                  alt="Salão de jogos Art Green"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.6 }}
+                />
+              </div>
             </div>
           </FadeInUp>
         </div>
       </section>
+
+      {/* ============================================================ */}
+      {/* 7.5 MASSAGEM — Serviço Extra                                 */}
+      {/* ============================================================ */}
+      <MassageSection />
 
       {/* ============================================================ */}
       {/* 8. FAZENDINHA — Enhanced                                     */}
